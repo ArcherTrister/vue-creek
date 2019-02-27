@@ -12,7 +12,7 @@ module.exports = {
   output: {
     path: path.resolve(process.cwd(), './lib'),
     publicPath: '/dist/',
-    filename: 'element-ui.common.js',
+    filename: 'vue-tiny.common.js',
     chunkFilename: '[id].js',
     libraryExport: 'default',
     library: 'ELEMENT',
@@ -37,7 +37,11 @@ module.exports = {
     rules: [
       {
         test: /\.(jsx?|babel|es6)$/,
-        include: process.cwd(),
+        include: [
+          process.cwd(),
+          path.resolve(__dirname, 'packages/bigdata-table'),
+          path.resolve(__dirname, 'node_modules/element-ui/src')
+        ],
         exclude: config.jsexclude,
         loader: 'babel-loader'
       },
@@ -64,8 +68,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new ProgressBarPlugin(),
-    new VueLoaderPlugin()
-  ]
+  plugins: [new ProgressBarPlugin(), new VueLoaderPlugin()]
 };

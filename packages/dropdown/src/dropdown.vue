@@ -1,10 +1,10 @@
 <script>
-  import Clickoutside from 'element-ui/src/utils/clickoutside';
-  import Emitter from 'element-ui/src/mixins/emitter';
-  import Migrating from 'element-ui/src/mixins/migrating';
-  import ElButton from 'element-ui/packages/button';
-  import ElButtonGroup from 'element-ui/packages/button-group';
-  import { generateId } from 'element-ui/src/utils/util';
+  import Clickoutside from 'vue-tiny/src/utils/clickoutside';
+  import Emitter from 'vue-tiny/src/mixins/emitter';
+  import Migrating from 'vue-tiny/src/mixins/migrating';
+  import ElButton from 'vue-tiny/packages/button';
+  import ElButtonGroup from 'vue-tiny/packages/button-group';
+  import { generateId } from 'vue-tiny/src/utils/util';
 
   export default {
     name: 'ElDropdown',

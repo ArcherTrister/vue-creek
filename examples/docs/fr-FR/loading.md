@@ -226,7 +226,7 @@ Affichez une animation en plein écran quand vous charger des données.
 Vous pouvez invoquer Loading comme un service. Importez le service Loading:
 
 ```javascript
-import { Loading } from 'element-ui';
+import { Loading } from 'vue-tiny';
 ```
 Et invoquer-le:
 

@@ -22,8 +22,8 @@
 
 ```javascript
 import Vue from 'vue';
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from 'vue-tiny';
+import 'vue-tiny/lib/theme-chalk/index.css';
 import App from './App.vue';
 
 Vue.use(ElementUI);
@@ -55,7 +55,7 @@ npm install babel-plugin-component -D
     [
       "component",
       {
-        "libraryName": "element-ui",
+        "libraryName": "vue-tiny",
         "styleLibraryName": "theme-chalk"
       }
     ]
@@ -67,7 +67,7 @@ npm install babel-plugin-component -D
 
 ```javascript
 import Vue from 'vue';
-import { Button, Select } from 'element-ui';
+import { Button, Select } from 'vue-tiny';
 import App from './App.vue';
 
 Vue.component(Button.name, Button);
@@ -155,7 +155,7 @@ import {
   MessageBox,
   Message,
   Notification
-} from 'element-ui';
+} from 'vue-tiny';
 
 Vue.use(Pagination);
 Vue.use(Dialog);
@@ -240,7 +240,7 @@ Vue.prototype.$message = Message;
 
 ```js
 import Vue from 'vue';
-import Element from 'element-ui';
+import Element from 'vue-tiny';
 Vue.use(Element, { size: 'small', zIndex: 3000 });
 ```
 
@@ -248,7 +248,7 @@ Vue.use(Element, { size: 'small', zIndex: 3000 });
 
 ```js
 import Vue from 'vue';
-import { Button } from 'element-ui';
+import { Button } from 'vue-tiny';
 
 Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 };
 Vue.use(Button);

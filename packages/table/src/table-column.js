@@ -1,7 +1,7 @@
-import ElCheckbox from 'element-ui/packages/checkbox';
-import ElTag from 'element-ui/packages/tag';
-import objectAssign from 'element-ui/src/utils/merge';
-import { getPropByPath } from 'element-ui/src/utils/util';
+import ElCheckbox from 'vue-tiny/packages/checkbox';
+import ElTag from 'vue-tiny/packages/tag';
+import objectAssign from 'vue-tiny/src/utils/merge';
+import { getPropByPath } from 'vue-tiny/src/utils/util';
 
 let columnIdSeed = 1;
 

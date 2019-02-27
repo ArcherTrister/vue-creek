@@ -1,4 +1,4 @@
-export * from './element-ui'
+export * from './vue-tiny'
 
-import * as ElementUI from './element-ui'
+import * as ElementUI from './vue-tiny'
 export default ElementUI

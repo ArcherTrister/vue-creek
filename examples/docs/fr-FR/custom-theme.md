@@ -14,15 +14,15 @@ Le site précédent vous permet de visualiser et de télécharger un nouveau th�
 $--color-primary: teal;
 
 /* chemin vers le fichier de police, requis */
-$--font-path: '~element-ui/lib/theme-chalk/fonts';
+$--font-path: '~vue-tiny/lib/theme-chalk/fonts';
 
-@import "~element-ui/packages/theme-chalk/src/index";
+@import "~vue-tiny/packages/theme-chalk/src/index";
 ```
 
 Puis dans le fichier d'entrée, importez ce style au lieu de celui d'Element:
 ```JS
 import Vue from 'vue'
-import Element from 'element-ui'
+import Element from 'vue-tiny'
 import './element-variables.scss'
 
 Vue.use(Element)
@@ -101,7 +101,7 @@ Par défaut le thème généré est placé dans `./theme`. Vous pouvez spécifie
 
 ```javascript
 import '../theme/index.css'
-import ElementUI from 'element-ui'
+import ElementUI from 'vue-tiny'
 import Vue from 'vue'
 
 Vue.use(ElementUI)
@@ -115,7 +115,7 @@ Si vous utilisez `babel-plugin-component` pour les imports sur demande, modifiez
     [
       "component",
       {
-        "libraryName": "element-ui",
+        "libraryName": "vue-tiny",
         "styleLibraryName": "~theme"
       }
     ]

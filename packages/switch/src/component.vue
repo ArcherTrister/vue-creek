@@ -36,8 +36,8 @@
   </div>
 </template>
 <script>
-  import Focus from 'element-ui/src/mixins/focus';
-  import Migrating from 'element-ui/src/mixins/migrating';
+  import Focus from 'vue-tiny/src/mixins/focus';
+  import Migrating from 'vue-tiny/src/mixins/migrating';
 
   export default {
     name: 'ElSwitch',

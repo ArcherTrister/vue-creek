@@ -14,15 +14,15 @@ The above website enables you to preview theme of a new theme color in real-time
 $--color-primary: teal;
 
 /* icon font path, required */
-$--font-path: '~element-ui/lib/theme-chalk/fonts';
+$--font-path: '~vue-tiny/lib/theme-chalk/fonts';
 
-@import "~element-ui/packages/theme-chalk/src/index";
+@import "~vue-tiny/packages/theme-chalk/src/index";
 ```
 
 Then in the entry file of your project, import this style file instead of Element's built CSS:
 ```JS
 import Vue from 'vue'
-import Element from 'element-ui'
+import Element from 'vue-tiny'
 import './element-variables.scss'
 
 Vue.use(Element)
@@ -100,7 +100,7 @@ By default the build theme file is placed inside `./theme`. You can specify its 
 
 ```javascript
 import '../theme/index.css'
-import ElementUI from 'element-ui'
+import ElementUI from 'vue-tiny'
 import Vue from 'vue'
 
 Vue.use(ElementUI)
@@ -114,7 +114,7 @@ If you are using `babel-plugin-component` for on-demand import, just modify `.ba
     [
       "component",
       {
-        "libraryName": "element-ui",
+        "libraryName": "vue-tiny",
         "styleLibraryName": "~theme"
       }
     ]

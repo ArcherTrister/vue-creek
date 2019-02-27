@@ -189,7 +189,7 @@ Add more modules based on your scenario.
 ```
 :::
 <script>
-  import { addClass } from 'element-ui/src/utils/dom';
+  import { addClass } from 'vue-tiny/src/utils/dom';
   export default {
     data() {
       return {

@@ -1,7 +1,7 @@
 import { getCell, getColumnByCell, getRowIdentity } from './util';
-import { getStyle, hasClass } from 'element-ui/src/utils/dom';
-import ElCheckbox from 'element-ui/packages/checkbox';
-import ElTooltip from 'element-ui/packages/tooltip';
+import { getStyle, hasClass } from 'vue-tiny/src/utils/dom';
+import ElCheckbox from 'vue-tiny/packages/checkbox';
+import ElTooltip from 'vue-tiny/packages/tooltip';
 import debounce from 'throttle-debounce/debounce';
 import LayoutObserver from './layout-observer';
 
