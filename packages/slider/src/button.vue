@@ -28,7 +28,7 @@
 </template>
 
 <script>
-  import ElTooltip from 'vue-tiny/packages/tooltip';
+  import ElTooltip from 'vue-creek/packages/tooltip';
 
   export default {
     name: 'ElSliderButton',

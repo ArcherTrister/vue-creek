@@ -1,4 +1,4 @@
-import { addClass, removeClass } from 'vue-tiny/src/utils/dom';
+import { addClass, removeClass } from 'vue-creek/src/utils/dom';
 
 class Transition {
   beforeEnter(el) {

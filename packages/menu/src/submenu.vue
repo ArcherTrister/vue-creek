@@ -1,8 +1,8 @@
 <script>
-  import ElCollapseTransition from 'vue-tiny/src/transitions/collapse-transition';
+  import ElCollapseTransition from 'vue-creek/src/transitions/collapse-transition';
   import menuMixin from './menu-mixin';
-  import Emitter from 'vue-tiny/src/mixins/emitter';
-  import Popper from 'vue-tiny/src/utils/vue-popper';
+  import Emitter from 'vue-creek/src/mixins/emitter';
+  import Popper from 'vue-creek/src/utils/vue-popper';
 
   const poperMixins = {
     props: {

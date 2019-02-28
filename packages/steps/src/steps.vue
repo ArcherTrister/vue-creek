@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Migrating from 'vue-tiny/src/mixins/migrating';
+import Migrating from 'vue-creek/src/mixins/migrating';
 
 export default {
   name: 'ElSteps',

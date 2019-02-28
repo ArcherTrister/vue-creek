@@ -1,9 +1,9 @@
 import Pager from './pager.vue';
-import ElSelect from 'vue-tiny/packages/select';
-import ElOption from 'vue-tiny/packages/option';
-import ElInput from 'vue-tiny/packages/input';
-import Locale from 'vue-tiny/src/mixins/locale';
-import { valueEquals } from 'vue-tiny/src/utils/util';
+import ElSelect from 'vue-creek/packages/select';
+import ElOption from 'vue-creek/packages/option';
+import ElInput from 'vue-creek/packages/input';
+import Locale from 'vue-creek/src/mixins/locale';
+import { valueEquals } from 'vue-creek/src/utils/util';
 
 export default {
   name: 'ElPagination',

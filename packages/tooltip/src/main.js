@@ -1,8 +1,8 @@
-import Popper from 'vue-tiny/src/utils/vue-popper';
+import Popper from 'vue-creek/src/utils/vue-popper';
 import debounce from 'throttle-debounce/debounce';
-import { addClass, removeClass, on, off } from 'vue-tiny/src/utils/dom';
-import { getFirstComponentChild } from 'vue-tiny/src/utils/vdom';
-import { generateId } from 'vue-tiny/src/utils/util';
+import { addClass, removeClass, on, off } from 'vue-creek/src/utils/dom';
+import { getFirstComponentChild } from 'vue-creek/src/utils/vdom';
+import { generateId } from 'vue-creek/src/utils/util';
 import Vue from 'vue';
 
 export default {

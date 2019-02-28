@@ -57,9 +57,9 @@
 </template>
 
 <script type="text/babel">
-  import ElInputNumber from 'vue-tiny/packages/input-number';
+  import ElInputNumber from 'vue-creek/packages/input-number';
   import SliderButton from './button.vue';
-  import Emitter from 'vue-tiny/src/mixins/emitter';
+  import Emitter from 'vue-creek/src/mixins/emitter';
 
   export default {
     name: 'ElSlider',

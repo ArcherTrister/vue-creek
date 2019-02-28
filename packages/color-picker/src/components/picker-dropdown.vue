@@ -43,10 +43,10 @@
   import HueSlider from './hue-slider';
   import AlphaSlider from './alpha-slider';
   import Predefine from './predefine';
-  import Popper from 'vue-tiny/src/utils/vue-popper';
-  import Locale from 'vue-tiny/src/mixins/locale';
-  import ElInput from 'vue-tiny/packages/input';
-  import ElButton from 'vue-tiny/packages/button';
+  import Popper from 'vue-creek/src/utils/vue-popper';
+  import Locale from 'vue-creek/src/mixins/locale';
+  import ElInput from 'vue-creek/packages/input';
+  import ElButton from 'vue-creek/packages/button';
 
   export default {
     name: 'el-color-picker-dropdown',

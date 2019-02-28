@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Loading from './loading.vue';
-import { addClass, removeClass, getStyle } from 'vue-tiny/src/utils/dom';
-import { PopupManager } from 'vue-tiny/src/utils/popup';
-import afterLeave from 'vue-tiny/src/utils/after-leave';
+import { addClass, removeClass, getStyle } from 'vue-creek/src/utils/dom';
+import { PopupManager } from 'vue-creek/src/utils/popup';
+import afterLeave from 'vue-creek/src/utils/after-leave';
 const Mask = Vue.extend(Loading);
 
 const loadingDirective = {};

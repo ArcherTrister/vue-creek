@@ -1,8 +1,8 @@
 <script>
 import UploadList from './upload-list';
 import Upload from './upload';
-import ElProgress from 'vue-tiny/packages/progress';
-import Migrating from 'vue-tiny/src/mixins/migrating';
+import ElProgress from 'vue-creek/packages/progress';
+import Migrating from 'vue-creek/src/mixins/migrating';
 
 function noop() {}
 

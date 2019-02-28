@@ -85,12 +85,12 @@
 
 <script>
 import Vue from 'vue';
-import Clickoutside from 'vue-tiny/src/utils/clickoutside';
+import Clickoutside from 'vue-creek/src/utils/clickoutside';
 import { formatDate, parseDate, isDateObject, getWeekNumber } from './util';
-import Popper from 'vue-tiny/src/utils/vue-popper';
-import Emitter from 'vue-tiny/src/mixins/emitter';
-import ElInput from 'vue-tiny/packages/input';
-import merge from 'vue-tiny/src/utils/merge';
+import Popper from 'vue-creek/src/utils/vue-popper';
+import Emitter from 'vue-creek/src/mixins/emitter';
+import ElInput from 'vue-creek/packages/input';
+import merge from 'vue-creek/src/utils/merge';
 
 const NewPopper = {
   props: {

@@ -6,7 +6,7 @@
   </transition>
 </template>
 <script>
-  import Popper from 'vue-tiny/src/utils/vue-popper';
+  import Popper from 'vue-creek/src/utils/vue-popper';
 
   export default {
     name: 'ElDropdownMenu',

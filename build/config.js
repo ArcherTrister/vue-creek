@@ -9,16 +9,16 @@ var transitionList = fs.readdirSync(
 var externals = {};
 
 Object.keys(Components).forEach(function(key) {
-  externals[`vue-tiny/packages/${key}`] = `vue-tiny/lib/${key}`;
+  externals[`vue-creek/packages/${key}`] = `vue-creek/lib/${key}`;
 });
 
-externals['vue-tiny/src/locale'] = 'vue-tiny/lib/locale';
+externals['vue-creek/src/locale'] = 'vue-creek/lib/locale';
 
 transitionList.forEach(function(file) {
   file = path.basename(file, '.js');
   externals[
-    `vue-tiny/src/transitions/${file}`
-  ] = `vue-tiny/lib/transitions/${file}`;
+    `vue-creek/src/transitions/${file}`
+  ] = `vue-creek/lib/transitions/${file}`;
 });
 
 externals = [
@@ -37,7 +37,7 @@ exports.alias = {
   main: path.resolve(__dirname, '../src'),
   packages: path.resolve(__dirname, '../packages'),
   examples: path.resolve(__dirname, '../examples'),
-  'vue-tiny': path.resolve(__dirname, '../')
+  'vue-creek': path.resolve(__dirname, '../')
 };
 
 exports.vue = {

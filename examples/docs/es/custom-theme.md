@@ -14,15 +14,15 @@ Este sitio, le permitirá obtener una vista previa del tema con un nuevo color e
 $--color-primary: teal;
 
 /* Ubicación de la fuente, obligatoria */
-$--font-path: '~vue-tiny/lib/theme-chalk/fonts';
+$--font-path: '~vue-creek/lib/theme-chalk/fonts';
 
-@import "~vue-tiny/packages/theme-chalk/src/index";
+@import "~vue-creek/packages/theme-chalk/src/index";
 ```
 
 Entonces, en el archivo principal del proyecto, importe este archivo de estilos en lugar de los estilos de Element:
 ```JS
 import Vue from 'vue'
-import Element from 'vue-tiny'
+import Element from 'vue-creek'
 import './element-variables.scss'
 
 Vue.use(Element)
@@ -100,7 +100,7 @@ Por defecto, el archivo de tema construido es colocado dentro de `./theme`. Pued
 
 ```javascript
 import '../theme/index.css'
-import ElementUI from 'vue-tiny'
+import ElementUI from 'vue-creek'
 import Vue from 'vue'
 
 Vue.use(ElementUI)
@@ -114,7 +114,7 @@ Si esta utilizando `babel-plugin-component` para importar bajo demanda, solo deb
     [
       "component",
       {
-        "libraryName": "vue-tiny",
+        "libraryName": "vue-creek",
         "styleLibraryName": "~theme"
       }
     ]

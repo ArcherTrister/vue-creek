@@ -140,7 +140,7 @@
 ```
 :::
 <script>
-  import { addClass } from 'vue-tiny/src/utils/dom';
+  import { addClass } from 'vue-creek/src/utils/dom';
   export default {
     methods: {
       handleSizeChange(val) {

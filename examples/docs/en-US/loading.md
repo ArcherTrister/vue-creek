@@ -224,7 +224,7 @@ Show a full screen animation while loading data.
 ### Service
 You can also invoke Loading with a service. Import Loading service:
 ```javascript
-import { Loading } from 'vue-tiny';
+import { Loading } from 'vue-creek';
 ```
 Invoke it:
 ```javascript

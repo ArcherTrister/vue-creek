@@ -200,12 +200,12 @@
     extractDateFormat,
     extractTimeFormat
   } from '../util';
-  import Clickoutside from 'vue-tiny/src/utils/clickoutside';
-  import Locale from 'vue-tiny/src/mixins/locale';
+  import Clickoutside from 'vue-creek/src/utils/clickoutside';
+  import Locale from 'vue-creek/src/mixins/locale';
   import TimePicker from './time';
   import DateTable from '../basic/date-table';
-  import ElInput from 'vue-tiny/packages/input';
-  import ElButton from 'vue-tiny/packages/button';
+  import ElInput from 'vue-creek/packages/input';
+  import ElButton from 'vue-creek/packages/button';
 
   const advanceDate = (date, amount) => {
     return new Date(new Date(date).getTime() + amount);

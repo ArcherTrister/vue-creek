@@ -1,4 +1,4 @@
-import scrollbarWidth from 'vue-tiny/src/utils/scrollbar-width';
+import scrollbarWidth from 'vue-creek/src/utils/scrollbar-width';
 import Vue from 'vue';
 
 class TableLayout {

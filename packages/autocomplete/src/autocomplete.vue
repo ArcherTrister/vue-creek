@@ -58,13 +58,13 @@
 </template>
 <script>
   import debounce from 'throttle-debounce/debounce';
-  import ElInput from 'vue-tiny/packages/input';
-  import Clickoutside from 'vue-tiny/src/utils/clickoutside';
+  import ElInput from 'vue-creek/packages/input';
+  import Clickoutside from 'vue-creek/src/utils/clickoutside';
   import ElAutocompleteSuggestions from './autocomplete-suggestions.vue';
-  import Emitter from 'vue-tiny/src/mixins/emitter';
-  import Migrating from 'vue-tiny/src/mixins/migrating';
-  import { generateId } from 'vue-tiny/src/utils/util';
-  import Focus from 'vue-tiny/src/mixins/focus';
+  import Emitter from 'vue-creek/src/mixins/emitter';
+  import Migrating from 'vue-creek/src/mixins/migrating';
+  import { generateId } from 'vue-creek/src/utils/util';
+  import Focus from 'vue-creek/src/mixins/focus';
 
   export default {
     name: 'ElAutocomplete',

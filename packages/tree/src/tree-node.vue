@@ -72,9 +72,9 @@
 </template>
 
 <script type="text/jsx">
-  import ElCollapseTransition from 'vue-tiny/src/transitions/collapse-transition';
-  import ElCheckbox from 'vue-tiny/packages/checkbox';
-  import emitter from 'vue-tiny/src/mixins/emitter';
+  import ElCollapseTransition from 'vue-creek/src/transitions/collapse-transition';
+  import ElCheckbox from 'vue-creek/packages/checkbox';
+  import emitter from 'vue-creek/src/mixins/emitter';
   import { getNodeKey } from './model/util';
 
   export default {

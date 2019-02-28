@@ -18,9 +18,9 @@
   </transition>
 </template>
 <script>
-  import Popper from 'vue-tiny/src/utils/vue-popper';
-  import Emitter from 'vue-tiny/src/mixins/emitter';
-  import ElScrollbar from 'vue-tiny/packages/scrollbar';
+  import Popper from 'vue-creek/src/utils/vue-popper';
+  import Emitter from 'vue-creek/src/mixins/emitter';
+  import ElScrollbar from 'vue-creek/packages/scrollbar';
 
   export default {
     components: { ElScrollbar },

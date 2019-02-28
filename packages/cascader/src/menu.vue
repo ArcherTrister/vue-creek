@@ -1,7 +1,7 @@
 <script>
-  import { isDef } from 'vue-tiny/src/utils/shared';
-  import scrollIntoView from 'vue-tiny/src/utils/scroll-into-view';
-  import { generateId } from 'vue-tiny/src/utils/util';
+  import { isDef } from 'vue-creek/src/utils/shared';
+  import scrollIntoView from 'vue-creek/src/utils/scroll-into-view';
+  import { generateId } from 'vue-creek/src/utils/util';
 
   const copyArray = (arr, props) => {
     if (!arr || !Array.isArray(arr) || !props) return arr;

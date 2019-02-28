@@ -1,4 +1,4 @@
-import { hasOwn } from 'vue-tiny/src/utils/util';
+import { hasOwn } from 'vue-creek/src/utils/util';
 
 const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
 /**

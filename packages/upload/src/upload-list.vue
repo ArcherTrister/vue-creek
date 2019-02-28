@@ -61,8 +61,8 @@
   </transition-group>
 </template>
 <script>
-  import Locale from 'vue-tiny/src/mixins/locale';
-  import ElProgress from 'vue-tiny/packages/progress';
+  import Locale from 'vue-creek/src/mixins/locale';
+  import ElProgress from 'vue-creek/packages/progress';
 
   export default {
 

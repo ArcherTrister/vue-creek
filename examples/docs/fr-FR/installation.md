@@ -5,18 +5,18 @@
 Installer Element via npm est recommandé, il fonctionne parfaitement avec [webpack](https://webpack.js.org/).
 
 ```shell
-npm i vue-tiny -S
+npm i vue-creek -S
 ```
 
 ### CDN
 
-Obtenez la dernière version via [unpkg.com/vue-tiny](https://unpkg.com/vue-tiny/), et importez le JavaScript et le CSS dans votre page.
+Obtenez la dernière version via [unpkg.com/vue-creek](https://unpkg.com/vue-creek/), et importez le JavaScript et le CSS dans votre page.
 
 ```html
 <!-- import du CSS -->
-<link rel="stylesheet" href="https://unpkg.com/vue-tiny/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="https://unpkg.com/vue-creek/lib/theme-chalk/index.css">
 <!-- import du JavaScript -->
-<script src="https://unpkg.com/vue-tiny/lib/index.js"></script>
+<script src="https://unpkg.com/vue-creek/lib/index.js"></script>
 ```
 
 :::tip

@@ -1,6 +1,6 @@
-import { hasClass, addClass, removeClass } from 'vue-tiny/src/utils/dom';
-import ElCheckbox from 'vue-tiny/packages/checkbox';
-import ElTag from 'vue-tiny/packages/tag';
+import { hasClass, addClass, removeClass } from 'vue-creek/src/utils/dom';
+import ElCheckbox from 'vue-creek/packages/checkbox';
+import ElTag from 'vue-creek/packages/tag';
 import Vue from 'vue';
 import FilterPanel from './filter-panel.vue';
 import LayoutObserver from './layout-observer';

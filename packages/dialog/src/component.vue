@@ -35,9 +35,9 @@
 </template>
 
 <script>
-  import Popup from 'vue-tiny/src/utils/popup';
-  import Migrating from 'vue-tiny/src/mixins/migrating';
-  import emitter from 'vue-tiny/src/mixins/emitter';
+  import Popup from 'vue-creek/src/utils/popup';
+  import Migrating from 'vue-creek/src/mixins/migrating';
+  import emitter from 'vue-creek/src/mixins/emitter';
 
   export default {
     name: 'ElDialog',

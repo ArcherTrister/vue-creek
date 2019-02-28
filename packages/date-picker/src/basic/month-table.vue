@@ -48,10 +48,10 @@
 </template>
 
 <script type="text/babel">
-  import Locale from 'vue-tiny/src/mixins/locale';
+  import Locale from 'vue-creek/src/mixins/locale';
   import { isDate, range, getDayCountOfMonth, nextDate } from '../util';
-  import { hasClass } from 'vue-tiny/src/utils/dom';
-  import { arrayFindIndex, coerceTruthyValueToArray } from 'vue-tiny/src/utils/util';
+  import { hasClass } from 'vue-creek/src/utils/dom';
+  import { arrayFindIndex, coerceTruthyValueToArray } from 'vue-creek/src/utils/util';
 
   const datesInMonth = (year, month) => {
     const numOfDays = getDayCountOfMonth(year, month);

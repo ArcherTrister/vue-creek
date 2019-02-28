@@ -46,9 +46,9 @@
   </div>
 </template>
 <script>
-  import ElInput from 'vue-tiny/packages/input';
-  import Focus from 'vue-tiny/src/mixins/focus';
-  import RepeatClick from 'vue-tiny/src/directives/repeat-click';
+  import ElInput from 'vue-creek/packages/input';
+  import Focus from 'vue-creek/src/mixins/focus';
+  import RepeatClick from 'vue-creek/src/directives/repeat-click';
 
   export default {
     name: 'ElInputNumber',

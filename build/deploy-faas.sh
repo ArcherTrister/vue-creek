@@ -9,8 +9,8 @@ SUB_FOLDER='2.5'
 mkdir $SUB_FOLDER
 rm -rf *.js *.css *.map static
 rm -rf $SUB_FOLDER/**
-cp -rf ../../examples/vue-tiny/** .
-cp -rf ../../examples/vue-tiny/** $SUB_FOLDER/
+cp -rf ../../examples/vue-creek/** .
+cp -rf ../../examples/vue-creek/** $SUB_FOLDER/
 cd ../..
 
 # deploy domestic site

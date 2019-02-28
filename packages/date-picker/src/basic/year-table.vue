@@ -44,9 +44,9 @@
 </template>
 
 <script type="text/babel">
-  import { hasClass } from 'vue-tiny/src/utils/dom';
+  import { hasClass } from 'vue-creek/src/utils/dom';
   import { isDate, range, nextDate, getDayCountOfYear } from '../util';
-  import { arrayFindIndex, coerceTruthyValueToArray } from 'vue-tiny/src/utils/util';
+  import { arrayFindIndex, coerceTruthyValueToArray } from 'vue-creek/src/utils/util';
 
   const datesInYear = year => {
     const numOfDays = getDayCountOfYear(year);

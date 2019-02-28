@@ -1,4 +1,4 @@
-import VuePopup from 'vue-tiny/src/utils/popup';
+import VuePopup from 'vue-creek/src/utils/popup';
 import { createTest, destroyVM } from '../util';
 
 const Popup = Object.assign({}, VuePopup, {

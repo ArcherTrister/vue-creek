@@ -29,9 +29,9 @@
       ],
       "plugins": [
         ["module-resolver", {
-          "root": ["vue-tiny"],
+          "root": ["vue-creek"],
           "alias": {
-            "vue-tiny/src": "vue-tiny/lib"
+            "vue-creek/src": "vue-creek/lib"
           }
         }]
       ]

@@ -77,13 +77,13 @@
 </template>
 
 <script type="text/babel">
-  import Popup from 'vue-tiny/src/utils/popup';
-  import Locale from 'vue-tiny/src/mixins/locale';
-  import ElInput from 'vue-tiny/packages/input';
-  import ElButton from 'vue-tiny/packages/button';
-  import { addClass, removeClass } from 'vue-tiny/src/utils/dom';
-  import { t } from 'vue-tiny/src/locale';
-  import Dialog from 'vue-tiny/src/utils/aria-dialog';
+  import Popup from 'vue-creek/src/utils/popup';
+  import Locale from 'vue-creek/src/mixins/locale';
+  import ElInput from 'vue-creek/packages/input';
+  import ElButton from 'vue-creek/packages/button';
+  import { addClass, removeClass } from 'vue-creek/src/utils/dom';
+  import { t } from 'vue-creek/src/locale';
+  import Dialog from 'vue-creek/src/utils/aria-dialog';
 
   let messageBox;
   let typeMap = {

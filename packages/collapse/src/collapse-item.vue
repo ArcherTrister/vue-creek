@@ -44,9 +44,9 @@
   </div>
 </template>
 <script>
-  import ElCollapseTransition from 'vue-tiny/src/transitions/collapse-transition';
-  import Emitter from 'vue-tiny/src/mixins/emitter';
-  import { generateId } from 'vue-tiny/src/utils/util';
+  import ElCollapseTransition from 'vue-creek/src/transitions/collapse-transition';
+  import Emitter from 'vue-creek/src/mixins/emitter';
+  import { generateId } from 'vue-creek/src/utils/util';
 
   export default {
     name: 'ElCollapseItem',

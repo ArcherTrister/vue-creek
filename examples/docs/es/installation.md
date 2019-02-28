@@ -5,18 +5,18 @@
 Instalar mediante npm es la forma recomendada ya que se integra facilmente con [webpack](https://webpack.js.org/).
 
 ```shell
-npm i vue-tiny -S
+npm i vue-creek -S
 ```
 
 ### CDN
 
-Obtenga la última versión desde [unpkg.com/vue-tiny](https://unpkg.com/vue-tiny/) , e importe el JavaScript y los archivos CSS en su página.
+Obtenga la última versión desde [unpkg.com/vue-creek](https://unpkg.com/vue-creek/) , e importe el JavaScript y los archivos CSS en su página.
 
 ```html
 <!-- import CSS -->
-<link rel="stylesheet" href="https://unpkg.com/vue-tiny/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="https://unpkg.com/vue-creek/lib/theme-chalk/index.css">
 <!-- import JavaScript -->
-<script src="https://unpkg.com/vue-tiny/lib/index.js"></script>
+<script src="https://unpkg.com/vue-creek/lib/index.js"></script>
 ```
 
 ##Tip

@@ -16,8 +16,8 @@
 </template>
 
 <script type="text/babel">
-  import Emitter from 'vue-tiny/src/mixins/emitter';
-  import { getValueByPath, escapeRegexpString } from 'vue-tiny/src/utils/util';
+  import Emitter from 'vue-creek/src/mixins/emitter';
+  import { getValueByPath, escapeRegexpString } from 'vue-creek/src/utils/util';
 
   export default {
     mixins: [Emitter],

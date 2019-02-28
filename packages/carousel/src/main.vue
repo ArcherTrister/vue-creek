@@ -51,7 +51,7 @@
 
 <script>
 import throttle from 'throttle-debounce/throttle';
-import { addResizeListener, removeResizeListener } from 'vue-tiny/src/utils/resize-event';
+import { addResizeListener, removeResizeListener } from 'vue-creek/src/utils/resize-event';
 
 export default {
   name: 'ElCarousel',

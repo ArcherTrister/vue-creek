@@ -35,7 +35,7 @@
   </label>
 </template>
 <script>
-  import Emitter from 'vue-tiny/src/mixins/emitter';
+  import Emitter from 'vue-creek/src/mixins/emitter';
 
   export default {
     name: 'ElRadioButton',

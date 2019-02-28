@@ -30,8 +30,8 @@
 </template>
 <script>
   import Menu from './menu-mixin';
-  import ElTooltip from 'vue-tiny/packages/tooltip';
-  import Emitter from 'vue-tiny/src/mixins/emitter';
+  import ElTooltip from 'vue-creek/packages/tooltip';
+  import Emitter from 'vue-creek/src/mixins/emitter';
 
   export default {
     name: 'ElMenuItem',

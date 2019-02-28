@@ -102,10 +102,10 @@
   </div>
 </template>
 <script>
-  import emitter from 'vue-tiny/src/mixins/emitter';
-  import Migrating from 'vue-tiny/src/mixins/migrating';
+  import emitter from 'vue-creek/src/mixins/emitter';
+  import Migrating from 'vue-creek/src/mixins/migrating';
   import calcTextareaHeight from './calcTextareaHeight';
-  import merge from 'vue-tiny/src/utils/merge';
+  import merge from 'vue-creek/src/utils/merge';
 
   export default {
     name: 'ElInput',

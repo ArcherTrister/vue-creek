@@ -1,4 +1,4 @@
-import objectAssign from 'vue-tiny/src/utils/merge';
+import objectAssign from 'vue-creek/src/utils/merge';
 import { markNodeData, NODE_KEY } from './util';
 
 export const getChildState = node => {

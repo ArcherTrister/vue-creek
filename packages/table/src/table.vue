@@ -213,12 +213,12 @@
 </template>
 
 <script type="text/babel">
-  import ElCheckbox from 'vue-tiny/packages/checkbox';
+  import ElCheckbox from 'vue-creek/packages/checkbox';
   import debounce from 'throttle-debounce/debounce';
-  import { addResizeListener, removeResizeListener } from 'vue-tiny/src/utils/resize-event';
-  import Mousewheel from 'vue-tiny/src/directives/mousewheel';
-  import Locale from 'vue-tiny/src/mixins/locale';
-  import Migrating from 'vue-tiny/src/mixins/migrating';
+  import { addResizeListener, removeResizeListener } from 'vue-creek/src/utils/resize-event';
+  import Mousewheel from 'vue-creek/src/directives/mousewheel';
+  import Locale from 'vue-creek/src/mixins/locale';
+  import Migrating from 'vue-creek/src/mixins/migrating';
   import TableStore from './table-store';
   import TableLayout from './table-layout';
   import TableBody from './table-body';

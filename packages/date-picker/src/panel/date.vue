@@ -161,10 +161,10 @@
     extractTimeFormat,
     timeWithinRange
   } from '../util';
-  import Clickoutside from 'vue-tiny/src/utils/clickoutside';
-  import Locale from 'vue-tiny/src/mixins/locale';
-  import ElInput from 'vue-tiny/packages/input';
-  import ElButton from 'vue-tiny/packages/button';
+  import Clickoutside from 'vue-creek/src/utils/clickoutside';
+  import Locale from 'vue-creek/src/mixins/locale';
+  import ElInput from 'vue-creek/packages/input';
+  import ElButton from 'vue-creek/packages/button';
   import TimePicker from './time';
   import YearTable from '../basic/year-table';
   import MonthTable from '../basic/month-table';

@@ -1,8 +1,8 @@
 <script type="text/jsx">
-  import emitter from 'vue-tiny/src/mixins/emitter';
-  import Migrating from 'vue-tiny/src/mixins/migrating';
-  import Menubar from 'vue-tiny/src/utils/menu/aria-menubar';
-  import { addClass, removeClass, hasClass } from 'vue-tiny/src/utils/dom';
+  import emitter from 'vue-creek/src/mixins/emitter';
+  import Migrating from 'vue-creek/src/mixins/migrating';
+  import Menubar from 'vue-creek/src/utils/menu/aria-menubar';
+  import { addClass, removeClass, hasClass } from 'vue-creek/src/utils/dom';
 
   export default {
     name: 'ElMenu',

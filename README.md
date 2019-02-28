@@ -9,21 +9,21 @@
   <a href="https://coveralls.io/github/ElemeFE/element?branch=master">
     <img src="https://coveralls.io/repos/github/ElemeFE/element/badge.svg?branch=master">
   </a>
-  <a href="https://cdnjs.com/libraries/vue-tiny">
-    <img src="https://img.shields.io/cdnjs/v/vue-tiny.svg">
+  <a href="https://cdnjs.com/libraries/vue-creek">
+    <img src="https://img.shields.io/cdnjs/v/vue-creek.svg">
   </a>
-  <a href="https://www.npmjs.org/package/vue-tiny">
-    <img src="https://img.shields.io/npm/v/vue-tiny.svg">
+  <a href="https://www.npmjs.org/package/vue-creek">
+    <img src="https://img.shields.io/npm/v/vue-creek.svg">
   </a>
-  <a href="https://npmcharts.com/compare/vue-tiny?minimal=true">
-    <img src="http://img.shields.io/npm/dm/vue-tiny.svg">
+  <a href="https://npmcharts.com/compare/vue-creek?minimal=true">
+    <img src="http://img.shields.io/npm/dm/vue-creek.svg">
   </a>
   <br>
-  <a href="http://img.badgesize.io/https://unpkg.com/vue-tiny/lib/index.js?compression=gzip&label=gzip%20size:%20JS">
-    <img src="http://img.badgesize.io/https://unpkg.com/vue-tiny/lib/index.js?compression=gzip&label=gzip%20size:%20JS">
+  <a href="http://img.badgesize.io/https://unpkg.com/vue-creek/lib/index.js?compression=gzip&label=gzip%20size:%20JS">
+    <img src="http://img.badgesize.io/https://unpkg.com/vue-creek/lib/index.js?compression=gzip&label=gzip%20size:%20JS">
   </a>
-  <a href="http://img.badgesize.io/https://unpkg.com/vue-tiny/lib/theme-chalk/index.css?compression=gzip&label=gzip%20size:%20CSS">
-    <img src="http://img.badgesize.io/https://unpkg.com/vue-tiny/lib/theme-chalk/index.css?compression=gzip&label=gzip%20size:%20CSS">
+  <a href="http://img.badgesize.io/https://unpkg.com/vue-creek/lib/theme-chalk/index.css?compression=gzip&label=gzip%20size:%20CSS">
+    <img src="http://img.badgesize.io/https://unpkg.com/vue-creek/lib/theme-chalk/index.css?compression=gzip&label=gzip%20size:%20CSS">
   </a>
   <a href="#backers">
     <img src="https://opencollective.com/element/backers/badge.svg">
@@ -87,13 +87,13 @@
 
 ## Install
 ```shell
-npm install vue-tiny -S
+npm install vue-creek -S
 ```
 
 ## Quick Start
 ``` javascript
 import Vue from 'vue'
-import Element from 'vue-tiny'
+import Element from 'vue-creek'
 
 Vue.use(Element)
 
@@ -102,7 +102,7 @@ import {
   Select,
   Button
   // ...
-} from 'vue-tiny'
+} from 'vue-creek'
 
 Vue.component(Select.name, Select)
 Vue.component(Button.name, Button)

@@ -36,9 +36,9 @@
 </template>
 <script>
   import AsyncValidator from 'async-validator';
-  import emitter from 'vue-tiny/src/mixins/emitter';
-  import objectAssign from 'vue-tiny/src/utils/merge';
-  import { noop, getPropByPath } from 'vue-tiny/src/utils/util';
+  import emitter from 'vue-creek/src/mixins/emitter';
+  import objectAssign from 'vue-creek/src/utils/merge';
+  import { noop, getPropByPath } from 'vue-creek/src/utils/util';
 
   export default {
     name: 'ElFormItem',
