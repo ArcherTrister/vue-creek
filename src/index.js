@@ -17,7 +17,7 @@ const install = function(Vue, opts = {}) {
     Vue.component(component.name, component);
   });
 
-  Vue.prototype.$ELEMENT = {
+  Vue.prototype.$CREEK = {
     size: opts.size || '',
     zIndex: opts.zIndex || 2000
   };
@@ -30,7 +30,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-  version: '1.0.0',
+  version: '1.0.1',
   locale: locale.use,
   i18n: locale.i18n,
   install,

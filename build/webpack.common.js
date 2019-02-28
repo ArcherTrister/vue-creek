@@ -15,7 +15,7 @@ module.exports = {
     filename: 'vue-creek.common.js',
     chunkFilename: '[id].js',
     libraryExport: 'default',
-    library: 'ELEMENT',
+    library: 'CREEK',
     libraryTarget: 'commonjs2'
   },
   resolve: {
