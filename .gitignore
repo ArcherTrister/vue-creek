@@ -16,7 +16,6 @@ examples/pages/en-US
 examples/pages/zh-CN
 examples/pages/es
 examples/pages/fr-FR
-fe.element/vue-creek
 .npmrc
 coverage
 waiter.config.js

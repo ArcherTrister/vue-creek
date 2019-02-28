@@ -26,29 +26,22 @@ const webpackConfig = {
     rules: [
       {
         test: /\.(jsx?|babel|es6|js)$/,
-        include: process.cwd(),
+        // include: process.cwd(),
+        include: [
+          path.resolve(process.cwd(), 'src'),
+          path.resolve(process.cwd(), 'packages/bigdata-table'),
+          path.resolve(process.cwd(), 'node_modules/element-ui/src'),
+          path.resolve(process.cwd(), 'node_modules/element-ui/packages')
+        ],
         // exclude: config.jsexclude,
         loader: 'babel-loader'
       },
-      // {
-      //   test: /\.vue$/,
-      //   loader: 'vue-loader',
-      //   options: {
-      //     compilerOptions: {
-      //       preserveWhitespace: false
-      //     }
-      //   }
-      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          loaders: {
-            css: 'vue-style-loader!css-loader',
-            less: 'vue-style-loader!css-loader!less-loader'
-          },
-          postLoaders: {
-            html: 'babel-loader'
+          compilerOptions: {
+            preserveWhitespace: false
           }
         }
       },

@@ -1,6 +1,6 @@
 {
   "name": "vue-creek",
-  "version": "2.5.4",
+  "version": "1.0.1",
   "description": "A Component Library for Vue.js.",
   "main": "lib/vue-creek.common.js",
   "files": [
@@ -12,7 +12,7 @@
   "typings": "types/index.d.ts",
   "scripts": {
     "bootstrap": "yarn || npm i",
-    "build:file": "node build/bin/iconInit.js & node build/bin/build-entry.js & node build/bin/i18n.js & node build/bin/version.js",
+    "build:file": "node build/bin/build-entry.js & node build/bin/i18n.js & node build/bin/version.js",
     "build:theme": "node build/bin/gen-cssfile && gulp build --gulpfile packages/theme-chalk/gulpfile.js && cp-cli packages/theme-chalk/lib lib/theme-chalk",
     "build:utils": "cross-env BABEL_ENV=utils babel src --out-dir lib --ignore src/index.js",
     "build:umd": "node build/bin/build-locale.js",
@@ -28,22 +28,22 @@
     "test:watch": "npm run build:theme && cross-env BABEL_ENV=test karma start test/unit/karma.conf.js"
   },
   "faas": {
-    "domain": "element",
-    "public": "temp_web/element"
+    "domain": "vue-creek",
+    "public": "temp_web/vue-creek"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:ElemeFE/element.git"
+    "url": "git@github.com:ArcherTrister/vue-creek.git"
   },
-  "homepage": "http://element.eleme.io",
+  "homepage": "http://vue-creek.lxking.cn",
   "keywords": [
-    "eleme",
+    "creek",
     "vue",
     "components"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ElemeFE/element/issues"
+    "url": "https://github.com/ArcherTrister/vue-creek/issues"
   },
   "unpkg": "lib/index.js",
   "style": "lib/theme-chalk/index.css",

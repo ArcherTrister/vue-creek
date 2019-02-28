@@ -36,13 +36,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(jsx?|babel|es6)$/,
+        test: /\.(jsx?|babel|es6|js)$/,
+        // include: process.cwd(),
         include: [
-          process.cwd(),
-          path.resolve(__dirname, 'packages/bigdata-table'),
-          path.resolve(__dirname, 'node_modules/element-ui/src')
+          path.resolve(process.cwd(), 'src'),
+          path.resolve(process.cwd(), 'packages/bigdata-table'),
+          path.resolve(process.cwd(), 'node_modules/element-ui/src'),
+          path.resolve(process.cwd(), 'node_modules/element-ui/packages')
         ],
-        exclude: config.jsexclude,
+        // exclude: config.jsexclude,
         loader: 'babel-loader'
       },
       {
