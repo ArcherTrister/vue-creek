@@ -24,8 +24,8 @@ export default {
        */
       headerHeight: 0,
       /**
-      * @description 表格行高
-      */
+       * @description 表格行高
+       */
       //  rowHeight: 32,
       //  表格滚动区域高度
       wrapperHeight: 0,
@@ -62,7 +62,9 @@ export default {
     initGroupHeight(data) {
       //  分组数据
       let moduleNb = Math.ceil(this.height / this.rowHeight) + this.appendNum;
-      console.log('moduleNb', moduleNb);
+      if (isNaN(moduleNb)) {
+        moduleNb = 35;
+      }
       let groupHeight = {};
       if (data.length > moduleNb) {
         for (let i in data) {
@@ -86,9 +88,18 @@ export default {
       let t2 = 0;
       if (scrollTop > this.groupHeight[0]) {
         switch (this.currentIndex) {
-          case 0: t0 = parseInt(this.groupIndex / 3, 10); t1 = t2 = t0; break;
-          case 1: t1 = parseInt(this.groupIndex / 3, 10); t0 = t1 + 1; t2 = t1; break;
-          case 2: t2 = parseInt(this.groupIndex / 3, 10); t0 = t1 = t2 + 1;
+          case 0:
+            t0 = parseInt(this.groupIndex / 3, 10);
+            t1 = t2 = t0;
+            break;
+          case 1:
+            t1 = parseInt(this.groupIndex / 3, 10);
+            t0 = t1 + 1;
+            t2 = t1;
+            break;
+          case 2:
+            t2 = parseInt(this.groupIndex / 3, 10);
+            t0 = t1 = t2 + 1;
         }
       }
       this.times0 = t0;
@@ -124,8 +135,10 @@ export default {
       this.$nextTick(() => {
         this.updateHeight();
         this.setComputedProps();
-        let scrollBarWidth = this.totalRowHeight > this.wrapperHeight ? getScrollbarWidth() : 0;
-        this.outerWidth = this.$refs.bodyWrapper.offsetWidth - 2 - scrollBarWidth;
+        let scrollBarWidth =
+          this.totalRowHeight > this.wrapperHeight ? getScrollbarWidth() : 0;
+        this.outerWidth =
+          this.$refs.bodyWrapper.offsetWidth - 2 - scrollBarWidth;
         // let width = this.colWidth * this.columns.length + (this.showIndex ? this.indexWidthInside : 0);
         // this.tableWidth = width > this.outerWidth ? width : this.outerWidth;
         // this.tableWidth = this.fixedWrapperWidth ? this.outerWidth : (width > this.outerWidth ? width : this.outerWidth);
@@ -144,15 +157,19 @@ export default {
     },
     //  三个Vnode的外包装
     renderTable(h, prop) {
-      return h('div', {
-        class: 'vue-element-bigdata-table-div',
-        style: prop.style
-      }, this.getTables(h, prop));
+      return h(
+        'div',
+        {
+          class: 'vue-element-bigdata-table-div',
+          style: prop.style
+        },
+        this.getTables(h, prop)
+      );
     },
     //  生成body
     getItemTable(h, data, index, prop) {
       return h(ElTableBody, {
-        style: {width: '100%'},
+        style: { width: '100%' },
         props: {
           store: this.store,
           tableData: data,
@@ -172,7 +189,7 @@ export default {
         },
         on: {
           //
-          'changeHeight': (index, height) => {
+          changeHeight: (index, height) => {
             this.groupHeight[index] = height;
             //
             this.setComputedProps();
@@ -206,7 +223,9 @@ export default {
   },
   computed: {
     bottomPlaceholderHeight() {
-      return (this.placeholderHeight - this.topPlaceholderHeight) < 0 ? 0 : this.placeholderHeight - this.topPlaceholderHeight;
+      return this.placeholderHeight - this.topPlaceholderHeight < 0
+        ? 0
+        : this.placeholderHeight - this.topPlaceholderHeight;
     },
     placeholderHeight() {
       //  当前三块总高度
@@ -229,7 +248,10 @@ export default {
       //  通过当前上部站位得到三个table最上一个table的是哪个组
       // let index = 0;
       for (let i in this.groupHeight) {
-        if (top >= height && top < (height + (this.groupHeight[i] ? this.groupHeight[i] : 0))) {
+        if (
+          top >= height &&
+          top < height + (this.groupHeight[i] ? this.groupHeight[i] : 0)
+        ) {
           this.groupIndex = +i;
           break;
         }
@@ -272,7 +294,6 @@ export default {
       this.groupHeight = this.initGroupHeight(newValue);
       this.resize();
     }
-
   },
   mounted() {
     this.$nextTick(() => {
