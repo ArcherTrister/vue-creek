@@ -2,7 +2,7 @@
 mkdir temp_web
 npm run deploy:build
 cd temp_web
-git clone --depth 1 -b gh-pages --single-branch https://github.com/ElemeFE/vue-creek.git && cd vue-creek
+git clone --depth 1 -b gh-pages --single-branch https://github.com/ArcherTrister/vue-creek.git && cd vue-creek
 
 # build sub folder
 SUB_FOLDER='2.5'

@@ -36,7 +36,7 @@ if [ "$TRAVIS_TAG" ]; then
   # build site
   npm run deploy:build
   cd temp_web
-  git clone --depth 1 -b gh-pages --single-branch https://$ROT_TOKEN@github.com/ElemeFE/vue-creek.git && cd vue-creek
+  git clone --depth 1 -b gh-pages --single-branch https://$ROT_TOKEN@github.com/ArcherTrister/vue-creek.git && cd vue-creek
   # build sub folder
   echo $TRAVIS_TAG
 
