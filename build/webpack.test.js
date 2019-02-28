@@ -25,15 +25,9 @@ const webpackConfig = {
   module: {
     rules: [
       {
-        test: /\.(jsx?|babel|es6|js)$/,
-        // include: process.cwd(),
-        include: [
-          path.resolve(process.cwd(), 'src'),
-          path.resolve(process.cwd(), 'packages/bigdata-table'),
-          path.resolve(process.cwd(), 'node_modules/element-ui/src'),
-          path.resolve(process.cwd(), 'node_modules/element-ui/packages')
-        ],
-        // exclude: config.jsexclude,
+        test: /\.(jsx?|babel|es6)$/,
+        include: process.cwd(),
+        exclude: config.jsexclude,
         loader: 'babel-loader'
       },
       {

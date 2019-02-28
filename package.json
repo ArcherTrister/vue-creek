@@ -1,8 +1,8 @@
 {
-  "name": "vue-creek",
-  "version": "1.0.1",
+  "name": "element-ui",
+  "version": "2.5.4",
   "description": "A Component Library for Vue.js.",
-  "main": "lib/vue-creek.common.js",
+  "main": "lib/element-ui.common.js",
   "files": [
     "lib",
     "src",
@@ -12,47 +12,44 @@
   "typings": "types/index.d.ts",
   "scripts": {
     "bootstrap": "yarn || npm i",
-    "build:file": "node build/bin/build-entry.js & node build/bin/i18n.js & node build/bin/version.js",
+    "build:file": "node build/bin/iconInit.js & node build/bin/build-entry.js & node build/bin/version.js",
     "build:theme": "node build/bin/gen-cssfile && gulp build --gulpfile packages/theme-chalk/gulpfile.js && cp-cli packages/theme-chalk/lib lib/theme-chalk",
     "build:utils": "cross-env BABEL_ENV=utils babel src --out-dir lib --ignore src/index.js",
     "build:umd": "node build/bin/build-locale.js",
     "clean": "rimraf lib && rimraf packages/*/lib && rimraf test/**/coverage",
-    "deploy:build": "npm run build:file && cross-env NODE_ENV=production webpack --config build/webpack.demo.js && echo vue-creek.archertrister.io>>examples/vue-creek/CNAME",
+    "deploy:build": "npm run build:file && cross-env NODE_ENV=production webpack --config build/webpack.demo.js && echo element.eleme.io>>examples/element-ui/CNAME",
     "dev": "npm run bootstrap && npm run build:file && cross-env NODE_ENV=development webpack-dev-server --config build/webpack.demo.js & node build/bin/template.js",
     "dev:play": "npm run build:file && cross-env NODE_ENV=development PLAY_ENV=true webpack-dev-server --config build/webpack.demo.js",
     "dist": "npm run clean && npm run build:file && npm run lint && webpack --config build/webpack.conf.js && webpack --config build/webpack.common.js && webpack --config build/webpack.component.js && npm run build:utils && npm run build:umd && npm run build:theme",
-    "i18n": "node build/bin/i18n.js",
     "lint": "eslint src/**/* test/**/* packages/**/* build/**/* --quiet",
     "pub": "npm run bootstrap && sh build/git-release.sh && sh build/release.sh && node build/bin/gen-indices.js && sh build/deploy-faas.sh",
     "test": "npm run lint && npm run build:theme && cross-env CI_ENV=/dev/ BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test:watch": "npm run build:theme && cross-env BABEL_ENV=test karma start test/unit/karma.conf.js"
   },
   "faas": {
-    "domain": "vue-creek",
-    "public": "temp_web/vue-creek"
+    "domain": "element",
+    "public": "temp_web/element"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:ArcherTrister/vue-creek.git"
+    "url": "git@github.com:ElemeFE/element.git"
   },
-  "homepage": "http://vue-creek.lxking.cn",
+  "homepage": "http://element.eleme.io",
   "keywords": [
-    "creek",
+    "eleme",
     "vue",
     "components"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ArcherTrister/vue-creek/issues"
+    "url": "https://github.com/ElemeFE/element/issues"
   },
   "unpkg": "lib/index.js",
   "style": "lib/theme-chalk/index.css",
   "dependencies": {
     "async-validator": "~1.8.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.0",
-    "babel-preset-env": "^1.7.0",
     "deepmerge": "^1.2.0",
-    "element-ui": "^2.5.4",
     "normalize-wheel": "^1.0.1",
     "resize-observer-polyfill": "^1.5.0",
     "throttle-debounce": "^1.0.1"
@@ -70,6 +67,7 @@
     "babel-plugin-module-resolver": "^2.2.0",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-stage-2": "^6.24.1",
     "chai": "^3.5.0",
     "cheerio": "^0.18.0",
@@ -123,6 +121,7 @@
     "uglifyjs-webpack-plugin": "^2.1.1",
     "uppercamelcase": "^1.1.0",
     "url-loader": "^1.0.1",
+    "vue": "^2.5.16",
     "vue-loader": "^15.2.4",
     "vue-markdown-loader": "^2.4.1",
     "vue-router": "^3.0.1",

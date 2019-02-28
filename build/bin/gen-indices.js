@@ -8,9 +8,9 @@ const key = require('./algolia-key');
 
 const client = algoliasearch('4C63BTGP6S', key);
 const langs = {
-  'zh-CN': 'vue-creek-zh',
-  'en-US': 'vue-creek-en',
-  'es': 'vue-creek-es'
+  'zh-CN': 'element-zh',
+  'en-US': 'element-en',
+  'es': 'element-es'
 };
 
 ['zh-CN', 'en-US', 'es'].forEach(lang => {

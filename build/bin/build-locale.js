@@ -29,8 +29,8 @@ fileList
         var code = result.code;
 
         code = code
-          .replace('define(\'', 'define(\'vue-creek/locale/')
-          .replace('global.', 'global.CREEK.lang = global.CREEK.lang || {}; \n    global.CREEK.lang.');
+          .replace('define(\'', 'define(\'element/locale/')
+          .replace('global.', 'global.ELEMENT.lang = global.ELEMENT.lang || {}; \n    global.ELEMENT.lang.');
         save(resolve(__dirname, '../../lib/umd/locale', file)).write(code);
 
         console.log(file);

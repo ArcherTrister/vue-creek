@@ -4,18 +4,18 @@ import Utils from './aria-utils';
  * @constructor
  * @desc Dialog object providing modal focus management.
  *
- * Assumptions: The vue-creek serving as the dialog container is present in the
+ * Assumptions: The element serving as the dialog container is present in the
  * DOM and hidden. The dialog container has role='dialog'.
  *
  * @param dialogId
- *          The ID of the vue-creek serving as the dialog container.
+ *          The ID of the element serving as the dialog container.
  * @param focusAfterClosed
  *          Either the DOM node or the ID of the DOM node to focus when the
  *          dialog closes.
  * @param focusFirst
  *          Optional parameter containing either the DOM node or the ID of the
  *          DOM node to focus when the dialog opens. If not specified, the
- *          first focusable vue-creek in the dialog will receive focus.
+ *          first focusable element in the dialog will receive focus.
  */
 var aria = aria || {};
 var tabEvent;
@@ -23,7 +23,7 @@ var tabEvent;
 aria.Dialog = function(dialog, focusAfterClosed, focusFirst) {
   this.dialogNode = dialog;
   if (this.dialogNode === null || this.dialogNode.getAttribute('role') !== 'dialog') {
-    throw new Error('Dialog() requires a DOM vue-creek with ARIA role of dialog.');
+    throw new Error('Dialog() requires a DOM element with ARIA role of dialog.');
   }
 
   if (typeof focusAfterClosed === 'string') {

@@ -35,10 +35,10 @@ const webpackConfig = {
   mode: process.env.NODE_ENV,
   entry: isProd ? {
     docs: './examples/entry.js',
-    'vue-creek': './src/index.js'
+    'element-ui': './src/index.js'
   } : (isPlay ? './examples/play.js' : './examples/entry.js'),
   output: {
-    path: path.resolve(process.cwd(), './examples/vue-creek/'),
+    path: path.resolve(process.cwd(), './examples/element-ui/'),
     publicPath: process.env.CI_ENV || '',
     filename: '[name].[hash:7].js',
     chunkFilename: isProd ? '[name].[hash:7].js' : '[name].js'
@@ -69,15 +69,9 @@ const webpackConfig = {
         loader: 'eslint-loader'
       },
       {
-        test: /\.(jsx?|babel|es6|js)$/,
-        // include: process.cwd(),
-        include: [
-          path.resolve(process.cwd(), 'src'),
-          path.resolve(process.cwd(), 'packages/bigdata-table'),
-          path.resolve(process.cwd(), 'node_modules/element-ui/src'),
-          path.resolve(process.cwd(), 'node_modules/element-ui/packages')
-        ],
-        // exclude: config.jsexclude,
+        test: /\.(jsx?|babel|es6)$/,
+        include: process.cwd(),
+        exclude: config.jsexclude,
         loader: 'babel-loader'
       },
       {
