@@ -1,6 +1,6 @@
 #! /bin/sh
 mkdir temp_web
-git config --global user.name "element-bot"
+git config --global user.name "vue-creek-bot"
 git config --global user.email "wallement@gmail.com"
 
 if [ "$ROT_TOKEN" = "" ]; then
@@ -36,7 +36,7 @@ if [ "$TRAVIS_TAG" ]; then
   # build site
   npm run deploy:build
   cd temp_web
-  git clone --depth 1 -b gh-pages --single-branch https://$ROT_TOKEN@github.com/ElemeFE/element.git && cd element
+  git clone --depth 1 -b gh-pages --single-branch https://$ROT_TOKEN@github.com/ElemeFE/vue-creek.git && cd vue-creek
   # build sub folder
   echo $TRAVIS_TAG
 

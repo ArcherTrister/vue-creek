@@ -17,9 +17,9 @@ module.exports = {
     chunkFilename: '[id].js',
     libraryTarget: 'umd',
     libraryExport: 'default',
-    library: 'ELEMENT',
+    library: 'CREEK',
     umdNamedDefine: true,
-    globalObject: 'typeof self !== \'undefined\' ? self : this'
+    globalObject: "typeof self !== 'undefined' ? self : this"
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -50,8 +50,10 @@ module.exports = {
       {
         test: /\.(jsx?|babel|es6|js)$/,
         include: [
-          process.cwd(),
-          path.resolve(process.cwd(), 'node_modules/element-ui/packages/tag/src'),
+          path.resolve(
+            process.cwd(),
+            'node_modules/element-ui/packages/tag/src'
+          ),
           path.resolve(process.cwd(), 'packages/bigdata-table'),
           path.resolve(process.cwd(), 'src')
         ],
@@ -81,8 +83,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new ProgressBarPlugin(),
-    new VueLoaderPlugin()
-  ]
+  plugins: [new ProgressBarPlugin(), new VueLoaderPlugin()]
 };

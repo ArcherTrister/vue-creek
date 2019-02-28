@@ -18,7 +18,7 @@ const webpackConfig = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: Object.assign(config.alias, {
-      'vue$': 'vue/dist/vue.common.js'
+      vue$: 'vue/dist/vue.common.js'
     }),
     modules: ['node_modules']
   },
@@ -27,8 +27,10 @@ const webpackConfig = {
       {
         test: /\.(jsx?|babel|es6|js)$/,
         include: [
-          process.cwd(),
-          path.resolve(process.cwd(), 'node_modules/element-ui/packages/tag/src'),
+          path.resolve(
+            process.cwd(),
+            'node_modules/element-ui/packages/tag/src'
+          ),
           path.resolve(process.cwd(), 'packages/bigdata-table'),
           path.resolve(process.cwd(), 'src')
         ],
@@ -58,15 +60,11 @@ const webpackConfig = {
       }
     ]
   },
-  plugins: [
-    new VueLoaderPlugin()
-  ]
+  plugins: [new VueLoaderPlugin()]
 };
 
 if (!process.env.CI_ENV) {
-  webpackConfig.plugins.push(
-    new ProgressBarPlugin()
-  );
+  webpackConfig.plugins.push(new ProgressBarPlugin());
 }
 
 module.exports = webpackConfig;

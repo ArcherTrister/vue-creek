@@ -1,5 +1,5 @@
 {
-  "name": "element-theme-chalk",
+  "name": "vue-creek-theme-chalk",
   "version": "2.5.4",
   "description": "Element component chalk theme.",
   "main": "lib/index.css",
@@ -16,7 +16,7 @@
     "url": "git+https://github.com/ElementUI/theme-chalk.git"
   },
   "keywords": [
-    "element",
+    "vue-creek",
     "theme"
   ],
   "author": "yi.shyang@ele.me",

@@ -19,7 +19,7 @@ const install = function(Vue, opts = {}) {
     Vue.component(component.name, component);
   });
 
-  Vue.prototype.$ELEMENT = {
+  Vue.prototype.$CREEK = {
     size: opts.size || '',
     zIndex: opts.zIndex || 2000
   };

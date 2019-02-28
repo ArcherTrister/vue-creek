@@ -6,13 +6,17 @@ var localePath = resolve(__dirname, '../../src/locale/lang');
 var fileList = fs.readdirSync(localePath);
 
 var transform = function(filename, name, cb) {
-  require('babel-core').transformFile(resolve(localePath, filename), {
-    plugins: [
-      'add-module-exports',
-      ['transform-es2015-modules-umd', {loose: true}]
-    ],
-    moduleId: name
-  }, cb);
+  require('babel-core').transformFile(
+    resolve(localePath, filename),
+    {
+      plugins: [
+        'add-module-exports',
+        ['transform-es2015-modules-umd', { loose: true }]
+      ],
+      moduleId: name
+    },
+    cb
+  );
 };
 
 fileList
@@ -29,8 +33,11 @@ fileList
         var code = result.code;
 
         code = code
-          .replace('define(\'', 'define(\'element/locale/')
-          .replace('global.', 'global.ELEMENT.lang = global.ELEMENT.lang || {}; \n    global.ELEMENT.lang.');
+          .replace("define('", "define('vue-creek/locale/")
+          .replace(
+            'global.',
+            'global.CREEK.lang = global.CREEK.lang || {}; \n    global.CREEK.lang.'
+          );
         save(resolve(__dirname, '../../lib/umd/locale', file)).write(code);
 
         console.log(file);

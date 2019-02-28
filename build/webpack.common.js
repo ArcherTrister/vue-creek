@@ -15,7 +15,7 @@ module.exports = {
     filename: 'vue-creek.common.js',
     chunkFilename: '[id].js',
     libraryExport: 'default',
-    library: 'ELEMENT',
+    library: 'CREEK',
     libraryTarget: 'commonjs2'
   },
   resolve: {
@@ -38,8 +38,10 @@ module.exports = {
       {
         test: /\.(jsx?|babel|es6|js)$/,
         include: [
-          process.cwd(),
-          path.resolve(process.cwd(), 'node_modules/element-ui/packages/tag/src'),
+          path.resolve(
+            process.cwd(),
+            'node_modules/element-ui/packages/tag/src'
+          ),
           path.resolve(process.cwd(), 'packages/bigdata-table'),
           path.resolve(process.cwd(), 'src')
         ],
@@ -69,8 +71,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new ProgressBarPlugin(),
-    new VueLoaderPlugin()
-  ]
+  plugins: [new ProgressBarPlugin(), new VueLoaderPlugin()]
 };
