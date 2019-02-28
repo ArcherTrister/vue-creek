@@ -12,7 +12,7 @@ module.exports = {
   output: {
     path: path.resolve(process.cwd(), './lib'),
     publicPath: '/dist/',
-    filename: 'element-ui.common.js',
+    filename: 'vue-creek.common.js',
     chunkFilename: '[id].js',
     libraryExport: 'default',
     library: 'ELEMENT',
@@ -36,9 +36,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(jsx?|babel|es6)$/,
-        include: process.cwd(),
-        exclude: config.jsexclude,
+        test: /\.(jsx?|babel|es6|js)$/,
+        include: [
+          process.cwd(),
+          path.resolve(process.cwd(), 'node_modules/element-ui/packages/tag/src'),
+          path.resolve(process.cwd(), 'packages/bigdata-table'),
+          path.resolve(process.cwd(), 'src')
+        ],
+        // exclude: config.jsexclude,
         loader: 'babel-loader'
       },
       {

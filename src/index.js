@@ -2,8 +2,8 @@
 
 import Main from '../packages/main/index.js';
 import BigdataTable from '../packages/bigdata-table/index.js';
-import locale from 'element-ui/src/locale';
-import CollapseTransition from 'element-ui/src/transitions/collapse-transition';
+import locale from 'vue-creek/src/locale';
+import CollapseTransition from 'vue-creek/src/transitions/collapse-transition';
 
 const components = [
   Main,
