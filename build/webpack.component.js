@@ -31,16 +31,9 @@ const webpackConfig = {
   module: {
     rules: [
       {
-        test: /\.(jsx?|babel|es6|js)$/,
-        include: [
-          path.resolve(
-            process.cwd(),
-            'node_modules/element-ui/packages/tag/src'
-          ),
-          path.resolve(process.cwd(), 'packages/bigdata-table'),
-          path.resolve(process.cwd(), 'src')
-        ],
-        // exclude: config.jsexclude,
+        test: /\.(jsx?|babel|es6)$/,
+        include: process.cwd(),
+        exclude: config.jsexclude,
         loader: 'babel-loader'
       },
       {
@@ -66,7 +59,10 @@ const webpackConfig = {
       }
     ]
   },
-  plugins: [new ProgressBarPlugin(), new VueLoaderPlugin()]
+  plugins: [
+    new ProgressBarPlugin(),
+    new VueLoaderPlugin()
+  ]
 };
 
 module.exports = webpackConfig;

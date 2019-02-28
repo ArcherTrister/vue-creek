@@ -1,6 +1,6 @@
 import { getCell, getColumnByCell, getRowIdentity } from './util';
-import { hasClass, addClass, removeClass } from 'element-ui/src/utils/dom';
-import ElCheckbox from 'element-ui/packages/checkbox';
+import { hasClass, addClass, removeClass } from 'vue-creek/src/utils/dom';
+import ElCheckbox from 'vue-creek/packages/checkbox';
 import debounce from 'throttle-debounce/debounce';
 import LayoutObserver from './layout-observer';
 

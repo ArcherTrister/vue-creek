@@ -1,18 +1,18 @@
 @import 'common/var';
 
 @font-face {
-  font-family: 'creek-icons';
-  src: url('#{$--font-path}/element-icons.woff') format('woff'),
-    /* chrome, firefox */ url('#{$--font-path}/element-icons.ttf')
+  font-family: 'vue-creek-icons';
+  src: url('#{$--font-path}/vue-creek-icons.woff') format('woff'),
+    /* chrome, firefox */ url('#{$--font-path}/vue-creek-icons.ttf')
       format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
   font-weight: normal;
   font-style: normal;
 }
 
-[class^='c-icon-'],
-[class*=' c-icon-'] {
+[class^='el-icon-'],
+[class*=' el-icon-'] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'creek-icons' !important;
+  font-family: 'vue-creek-icons' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;

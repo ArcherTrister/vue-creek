@@ -11,6 +11,11 @@ lerna-debug.log.*
 lib
 .idea
 .vscode
+examples/vue-creek
+examples/pages/en-US
+examples/pages/zh-CN
+examples/pages/es
+examples/pages/fr-FR
 .npmrc
 coverage
 waiter.config.js

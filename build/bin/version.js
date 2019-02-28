@@ -1,8 +1,6 @@
-var fs = require('fs');
-var path = require('path');
 var version = process.env.VERSION || require('../../package.json').version;
 var content = {
-  '1.0.2': '1.0',
+  '1.0.3': '1.0',
   '2.0.11': '2.0',
   '2.1.0': '2.1',
   '2.2.2': '2.2',
@@ -10,7 +8,3 @@ var content = {
   '2.4.11': '2.4'
 };
 if (!content[version]) content[version] = '2.5';
-fs.writeFileSync(
-  path.resolve(__dirname, '../../examples/versions.json'),
-  JSON.stringify(content)
-);

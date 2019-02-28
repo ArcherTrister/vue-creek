@@ -4,7 +4,7 @@ var nodeExternals = require('webpack-node-externals');
 var Components = require('../components.json');
 
 var utilsList = fs.readdirSync(path.resolve(__dirname, '../src/utils'));
-// var mixinsList = fs.readdirSync(path.resolve(__dirname, '../src/mixins'));
+var mixinsList = fs.readdirSync(path.resolve(__dirname, '../src/mixins'));
 var transitionList = fs.readdirSync(path.resolve(__dirname, '../src/transitions'));
 var externals = {};
 
@@ -17,10 +17,10 @@ utilsList.forEach(function(file) {
   file = path.basename(file, '.js');
   externals[`vue-creek/src/utils/${file}`] = `vue-creek/lib/utils/${file}`;
 });
-// mixinsList.forEach(function(file) {
-//   file = path.basename(file, '.js');
-//   externals[`vue-creek/src/mixins/${file}`] = `vue-creek/lib/mixins/${file}`;
-// });
+mixinsList.forEach(function(file) {
+  file = path.basename(file, '.js');
+  externals[`vue-creek/src/mixins/${file}`] = `vue-creek/lib/mixins/${file}`;
+});
 transitionList.forEach(function(file) {
   file = path.basename(file, '.js');
   externals[`vue-creek/src/transitions/${file}`] = `vue-creek/lib/transitions/${file}`;

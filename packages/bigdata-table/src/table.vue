@@ -1,6 +1,6 @@
 <template>
   <div class="el-table vue-element-bigdata-table"
-    :class="[{
+       :class="[{
       'el-table--fit': fit,
       'el-table--striped': stripe,
       'el-table--border': border || isGroup,
@@ -12,229 +12,212 @@
       'el-table--enable-row-hover': !store.states.isComplex,
       'el-table--enable-row-transition': (store.states.data || []).length !== 0 && (store.states.data || []).length < 100
     }, tableSize ? `el-table--${ tableSize }` : '']"
-    @mouseleave="handleMouseLeave($event)">
-    <div class="hidden-columns" ref="hiddenColumns"><slot></slot></div>
-    <div
-      v-if="showHeader"
-      v-mousewheel="handleHeaderFooterMousewheel"
-      class="el-table__header-wrapper"
-      ref="headerWrapper">
-      <table-header
-        ref="tableHeader"
-        :store="store"
-        :border="border"
-        :default-sort="defaultSort"
-        :style="{
+       @mouseleave="handleMouseLeave($event)">
+    <div class="hidden-columns"
+         ref="hiddenColumns">
+      <slot></slot>
+    </div>
+    <div v-if="showHeader"
+         v-mousewheel="handleHeaderFooterMousewheel"
+         class="el-table__header-wrapper"
+         ref="headerWrapper">
+      <table-header ref="tableHeader"
+                    :store="store"
+                    :border="border"
+                    :default-sort="defaultSort"
+                    :style="{
           width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
         }">
       </table-header>
     </div>
-    <div
-      class="el-table__body-wrapper"
-      ref="bodyWrapper"
-      :class="[layout.scrollX ? `is-scrolling-${scrollPosition}` : 'is-scrolling-none']"
-      :style="[bodyHeight]"
-       @DOMMouseScroll="handleScroll"
-       @scroll="handleScroll"
-      >
+    <div class="el-table__body-wrapper"
+         ref="bodyWrapper"
+         :class="[layout.scrollX ? `is-scrolling-${scrollPosition}` : 'is-scrolling-none']"
+         :style="[bodyHeight]"
+         @DOMMouseScroll="handleScroll"
+         @scroll="handleScroll">
       <div>
         <div :style="{height: `${topPlaceholderHeight}px`}"></div>
         <render-dom :render="renderTable"
-          :context="context"
-          :store="store"
-          :stripe="stripe"
-          :row-class-name="rowClassName"
-          :row-style="rowStyle"
-          :highlight="highlightCurrentRow"
-          :style="{
+                    :context="context"
+                    :store="store"
+                    :stripe="stripe"
+                    :row-class-name="rowClassName"
+                    :row-style="rowStyle"
+                    :highlight="highlightCurrentRow"
+                    :style="{
             width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
-          }"
-        ></render-dom>
+          }"></render-dom>
         <div :style="{height: `${bottomPlaceholderHeight}px`}"></div>
       </div>
-      <div
-        v-if="!data || data.length === 0"
-        class="el-table__empty-block"
-        ref="emptyBlock"
-        :style="{
+      <div v-if="!data || data.length === 0"
+           class="el-table__empty-block"
+           ref="emptyBlock"
+           :style="{
           width: bodyWidth
         }">
         <span class="el-table__empty-text">
           <slot name="empty">{{ emptyText || t('el.table.emptyText') }}</slot>
         </span>
       </div>
-      <div
-        v-if="$slots.append"
-        class="el-table__append-wrapper"
-        ref="appendWrapper">
+      <div v-if="$slots.append"
+           class="el-table__append-wrapper"
+           ref="appendWrapper">
         <slot name="append"></slot>
       </div>
     </div>
-    <div
-      v-if="showSummary"
-      v-show="data && data.length > 0"
-      v-mousewheel="handleHeaderFooterMousewheel"
-      class="el-table__footer-wrapper"
-      ref="footerWrapper">
-      <table-footer
-        :store="store"
-        :border="border"
-        :sum-text="sumText || t('el.table.sumText')"
-        :summary-method="summaryMethod"
-        :default-sort="defaultSort"
-        :style="{
+    <div v-if="showSummary"
+         v-show="data && data.length > 0"
+         v-mousewheel="handleHeaderFooterMousewheel"
+         class="el-table__footer-wrapper"
+         ref="footerWrapper">
+      <table-footer :store="store"
+                    :border="border"
+                    :sum-text="sumText || t('el.table.sumText')"
+                    :summary-method="summaryMethod"
+                    :default-sort="defaultSort"
+                    :style="{
           width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
         }">
       </table-footer>
     </div>
-    <div
-      v-if="fixedColumns.length > 0"
-      v-mousewheel="handleFixedMousewheel"
-      class="el-table__fixed"
-      ref="fixedWrapper"
-      :style="[{
+    <div v-if="fixedColumns.length > 0"
+         v-mousewheel="handleFixedMousewheel"
+         class="el-table__fixed"
+         ref="fixedWrapper"
+         :style="[{
         width: layout.fixedWidth ? layout.fixedWidth + 'px' : ''
       },
       fixedHeight]">
-      <div
-        v-if="showHeader"
-        class="el-table__fixed-header-wrapper"
-        ref="fixedHeaderWrapper" >
-        <table-header
-          ref="fixedTableHeader"
-          fixed="left"
-          :border="border"
-          :store="store"
-          :style="{
+      <div v-if="showHeader"
+           class="el-table__fixed-header-wrapper"
+           ref="fixedHeaderWrapper">
+        <table-header ref="fixedTableHeader"
+                      fixed="left"
+                      :border="border"
+                      :store="store"
+                      :style="{
             width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
           }"></table-header>
       </div>
-      <div
-        class="el-table__fixed-body-wrapper"
-        ref="fixedBodyWrapper"
-        :style="[{
+      <div class="el-table__fixed-body-wrapper"
+           ref="fixedBodyWrapper"
+           :style="[{
           top: layout.headerHeight + 'px'
         },
         fixedBodyHeight]">
         <div>
           <div :style="{height: `${topPlaceholderHeight}px`}"></div>
-          <render-dom :render="renderTable" :fixed="'left'"
-          :store="store"
-          :stripe="stripe"
-          :highlight="highlightCurrentRow"
-          :row-class-name="rowClassName"
-          :row-style="rowStyle"
-          :style="{
+          <render-dom :render="renderTable"
+                      :fixed="'left'"
+                      :store="store"
+                      :stripe="stripe"
+                      :highlight="highlightCurrentRow"
+                      :row-class-name="rowClassName"
+                      :row-style="rowStyle"
+                      :style="{
             width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
-          }"
-          ></render-dom>
+          }"></render-dom>
           <div :style="{height: `${bottomPlaceholderHeight}px`}"></div>
         </div>
-        <div
-          v-if="$slots.append"
-          class="el-table__append-gutter"
-          :style="{
+        <div v-if="$slots.append"
+             class="el-table__append-gutter"
+             :style="{
             height: layout.appendHeight + 'px'
           }"></div>
       </div>
-      <div
-        v-if="showSummary"
-        v-show="data && data.length > 0"
-        class="el-table__fixed-footer-wrapper"
-        ref="fixedFooterWrapper">
-        <table-footer
-          fixed="left"
-          :border="border"
-          :sum-text="sumText || t('el.table.sumText')"
-          :summary-method="summaryMethod"
-          :store="store"
-          :style="{
+      <div v-if="showSummary"
+           v-show="data && data.length > 0"
+           class="el-table__fixed-footer-wrapper"
+           ref="fixedFooterWrapper">
+        <table-footer fixed="left"
+                      :border="border"
+                      :sum-text="sumText || t('el.table.sumText')"
+                      :summary-method="summaryMethod"
+                      :store="store"
+                      :style="{
             width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
           }"></table-footer>
       </div>
     </div>
-    <div
-      v-if="rightFixedColumns.length > 0"
-      v-mousewheel="handleFixedMousewheel"
-      class="el-table__fixed-right"
-      ref="rightFixedWrapper"
-      :style="[{
+    <div v-if="rightFixedColumns.length > 0"
+         v-mousewheel="handleFixedMousewheel"
+         class="el-table__fixed-right"
+         ref="rightFixedWrapper"
+         :style="[{
         width: layout.rightFixedWidth ? layout.rightFixedWidth + 'px' : '',
         right: layout.scrollY ? (border ? layout.gutterWidth : (layout.gutterWidth || 0)) + 'px' : ''
       },
       fixedHeight]">
       <div v-if="showHeader"
-        class="el-table__fixed-header-wrapper"
-        ref="rightFixedHeaderWrapper">
-        <table-header
-          ref="rightFixedTableHeader"
-          fixed="right"
-          :border="border"
-          :store="store"
-          :style="{
+           class="el-table__fixed-header-wrapper"
+           ref="rightFixedHeaderWrapper">
+        <table-header ref="rightFixedTableHeader"
+                      fixed="right"
+                      :border="border"
+                      :store="store"
+                      :style="{
             width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
           }"></table-header>
       </div>
-      <div
-        class="el-table__fixed-body-wrapper"
-        ref="rightFixedBodyWrapper"
-        :style="[{
+      <div class="el-table__fixed-body-wrapper"
+           ref="rightFixedBodyWrapper"
+           :style="[{
           top: layout.headerHeight + 'px'
         },
         fixedBodyHeight]">
         <div>
           <div :style="{height: `${topPlaceholderHeight}px`}"></div>
-          <render-dom :render="renderTable" :fixed="'right'"
-            :store="store"
-            :stripe="stripe"
-            :row-class-name="rowClassName"
-            :row-style="rowStyle"
-            :highlight="highlightCurrentRow"
-            :style="{
+          <render-dom :render="renderTable"
+                      :fixed="'right'"
+                      :store="store"
+                      :stripe="stripe"
+                      :row-class-name="rowClassName"
+                      :row-style="rowStyle"
+                      :highlight="highlightCurrentRow"
+                      :style="{
               width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
-            }"
-          ></render-dom>
+            }"></render-dom>
           <div :style="{height: `${bottomPlaceholderHeight}px`}"></div>
         </div>
       </div>
-      <div
-        v-if="showSummary"
-        v-show="data && data.length > 0"
-        class="el-table__fixed-footer-wrapper"
-        ref="rightFixedFooterWrapper">
-        <table-footer
-          fixed="right"
-          :border="border"
-          :sum-text="sumText || t('el.table.sumText')"
-          :summary-method="summaryMethod"
-          :store="store"
-          :style="{
+      <div v-if="showSummary"
+           v-show="data && data.length > 0"
+           class="el-table__fixed-footer-wrapper"
+           ref="rightFixedFooterWrapper">
+        <table-footer fixed="right"
+                      :border="border"
+                      :sum-text="sumText || t('el.table.sumText')"
+                      :summary-method="summaryMethod"
+                      :store="store"
+                      :style="{
             width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
           }"></table-footer>
       </div>
     </div>
-    <div
-      v-if="rightFixedColumns.length > 0"
-      class="el-table__fixed-right-patch"
-      ref="rightFixedPatch"
-      :style="{
+    <div v-if="rightFixedColumns.length > 0"
+         class="el-table__fixed-right-patch"
+         ref="rightFixedPatch"
+         :style="{
         width: layout.scrollY ? layout.gutterWidth + 'px' : '0',
         height: layout.headerHeight + 'px'
       }"></div>
-    <div class="el-table__column-resize-proxy" ref="resizeProxy" v-show="resizeProxyVisible"></div>
+    <div class="el-table__column-resize-proxy"
+         ref="resizeProxy"
+         v-show="resizeProxyVisible"></div>
   </div>
 </template>
 
 <script type="text/babel">
-import ElCheckbox from 'element-ui/packages/checkbox';
+import ElCheckbox from 'vue-creek/packages/checkbox';
 import debounce from 'throttle-debounce/debounce';
 import {
   addResizeListener,
   removeResizeListener
-} from 'element-ui/src/utils/resize-event';
-import Mousewheel from 'element-ui/src/directives/mousewheel';
-import Locale from 'element-ui/src/mixins/locale';
-import Migrating from 'element-ui/src/mixins/migrating';
+} from 'vue-creek/src/utils/resize-event';
+import Mousewheel from 'vue-creek/src/directives/mousewheel';
+import Locale from 'vue-creek/src/mixins/locale';
+import Migrating from 'vue-creek/src/mixins/migrating';
 import TableStore from './table-store';
 import TableLayout from './table-layout';
 import TableBody from './table-body';
@@ -478,7 +461,7 @@ export default {
 
   computed: {
     tableSize() {
-      return this.size || (this.$ELEMENT || {}).size;
+      return this.size || (this.$CREEK || {}).size;
     },
 
     bodyWrapper() {
@@ -529,8 +512,8 @@ export default {
           'max-height':
             (this.showHeader
               ? this.maxHeight -
-                this.layout.headerHeight -
-                this.layout.footerHeight
+              this.layout.headerHeight -
+              this.layout.footerHeight
               : this.maxHeight - this.layout.footerHeight) + 'px'
         };
       }
@@ -693,7 +676,12 @@ export default {
 };
 </script>
 <style>
-  .vue-element-bigdata-table .vue-element-bigdata-table-div > table > tbody > tr > td{
-    padding: 0;
-  }
+.vue-element-bigdata-table
+  .vue-element-bigdata-table-div
+  > table
+  > tbody
+  > tr
+  > td {
+  padding: 0;
+}
 </style>
