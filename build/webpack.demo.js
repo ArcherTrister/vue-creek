@@ -69,17 +69,30 @@ const webpackConfig = {
         loader: 'eslint-loader'
       },
       {
-        test: /\.(jsx?|babel|es6)$/,
+        test: /\.(jsx?|babel|es6|js)$/,
         include: process.cwd(),
-        exclude: config.jsexclude,
+        // exclude: config.jsexclude,
         loader: 'babel-loader'
       },
+      // {
+      //   test: /\.vue$/,
+      //   loader: 'vue-loader',
+      //   options: {
+      //     compilerOptions: {
+      //       preserveWhitespace: false
+      //     }
+      //   }
+      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          compilerOptions: {
-            preserveWhitespace: false
+          loaders: {
+            css: 'vue-style-loader!css-loader',
+            less: 'vue-style-loader!css-loader!less-loader'
+          },
+          postLoaders: {
+            html: 'babel-loader'
           }
         }
       },
