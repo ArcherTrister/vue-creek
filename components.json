@@ -1,3 +1,4 @@
 {
-  "main": "./packages/main/index.js"
+  "main": "./packages/main/index.js",
+  "bigdata-table": "./packages/bigdata-table/index.js"
 }
