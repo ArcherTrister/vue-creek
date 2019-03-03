@@ -206,7 +206,7 @@ export default {
       default() {
         return {
           autoplay: false,
-          volume: 0.9,
+          volume: 0.5,
           poster: ''
         };
       }
@@ -330,7 +330,12 @@ export default {
         console.log(e);
       });
       this.$video.addEventListener('progress', (e) => {
-        this.video.loaded = (-1 + (this.$video.buffered.end(0) / this.$video.duration)) * 100;
+        try {
+          let end = this.$video.buffered.end(0);
+          this.video.loaded = (-1 + (end / this.$video.duration)) * 100;
+        } catch (error) {
+          this.video.loaded = 0;
+        }
       });
       this.video.len = this.$video.duration;
     },

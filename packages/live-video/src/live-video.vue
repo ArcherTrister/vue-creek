@@ -12,7 +12,8 @@
            transition="fade"
            v-show="state.contrlShow">
         <button class="__cov-contrl-play-btn"
-                @click="play">
+                @click="play"
+                v-show="options.showPlayBtn">
           <svg class="__cov-contrl-play-btn-icon"
                v-show="!state.playing"
                viewBox="0 0 47 57"
@@ -71,7 +72,8 @@
         </button>
         <div class="__cov-contrl-video-slider"
              @click="slideClick"
-             @mousedown="videoMove">
+             @mousedown="videoMove"
+             v-show="options.showSlider">
           <div class="__cov-contrl-video-inner"
                :style="{ 'transform': `translate3d(${video.pos.current}px, 0, 0)`}"></div>
           <div class="__cov-contrl-video-rail">
@@ -79,10 +81,12 @@
                  :style="{ 'transform': 'translate3d(' +video.loaded + '%, 0, 0)'}"></div>
           </div>
         </div>
-        <div class="__cov-contrl-video-time">
+        <div class="__cov-contrl-video-time"
+             v-show="options.showTime">
           <span class="__cov-contrl-video-time-text">{{video.displayTime}}</span>
         </div>
-        <div class="__cov-contrl-vol-box">
+        <div class="__cov-contrl-vol-box"
+             v-show="options.showVol">
           <button class="__cov-contrl-play-btn"
                   @click="volMuted">
             <svg class="__cov-contrl-vol-btn-icon"
@@ -145,7 +149,8 @@
           </div>
         </div>
         <button class="__cov-contrl-play-btn"
-                @click="fullScreen">
+                @click="fullScreen"
+                v-show="options.showFullScreen">
           <svg class="__cov-contrl-vol-btn-icon"
                viewBox="0 0 33 33"
                version="1.1"
@@ -177,21 +182,21 @@ const getMousePosition = function(e, type = 'x') {
   }
   return e.pageY;
 };
-const pad = (val) => {
-  val = Math.floor(val);
-  if (val < 10) {
-    return '0' + val;
-  }
-  return val + '';
-};
-const timeParse = (sec) => {
-  let min = 0;
-  min = Math.floor(sec / 60);
-  sec = sec - min * 60;
-  return pad(min) + ':' + pad(sec);
-};
+// const pad = (val) => {
+//   val = Math.floor(val);
+//   if (val < 10) {
+//     return '0' + val;
+//   }
+//   return val + '';
+// };
+// const timeParse = (sec) => {
+//   let min = 0;
+//   min = Math.floor(sec / 60);
+//   sec = sec - min * 60;
+//   return pad(min) + ':' + pad(sec);
+// };
 export default {
-  name: 'FlvVideo',
+  name: 'LiveVideo',
   props: {
     videoContainer: { type: String, default() { return '__videoContainer'; } },
     sources: {
@@ -209,15 +214,23 @@ export default {
       default() {
         return {
           autoplay: false,
-          volume: 0.9,
-          poster: ''
+          volume: 0.5,
+          poster: '',
+          showPlayBtn: false,
+          showSlider: false,
+          showTime: true,
+          showVol: false,
+          showFullScreen: true
         };
       }
     }
   },
   data() {
     return {
+      startTime: new Date(),
+      firstPlay: true,
       $video: null,
+      $flvVideo: null,
       video: {
         $videoSlider: null,
         len: 0,
@@ -262,9 +275,11 @@ export default {
   },
   ready() {
     this.init();
+    this.startTime = new Date();
   },
   mounted() {
     this.init();
+    this.startTime = new Date();
   },
   beforeDestroy() {
     document.body.removeEventListener('mousemove', this.mouseMoveAction);
@@ -272,13 +287,13 @@ export default {
   },
   methods: {
     init() {
-      let video = this.$el.getElementsByTagName('video')[0];
+      this.$video = this.$el.getElementsByTagName('video')[0];
       if (flvjs.isSupported()) {
-        if (this.$video) {
-          this.$video.detachMediaElement();
-          delete this.$video;
+        if (this.$flvVideo) {
+          this.$flvVideo.detachMediaElement();
+          delete this.$flvVideo;
         }
-        this.$video = flvjs.createPlayer({
+        this.$flvVideo = flvjs.createPlayer({
           type: this.sources.type,
           isLive: this.sources.isLive,
           hasVideo: true,
@@ -287,10 +302,10 @@ export default {
         }, {
           isLive: this.sources.isLive
         });
-        this.$video.attachMediaElement(video);
+        this.$flvVideo.attachMediaElement(this.$video);
         try {
-          this.$video.load();
-          this.$video.play();
+          this.$flvVideo.load();
+          this.$flvVideo.play();
         } catch (err) {
           console.log(err);
         }
@@ -365,25 +380,15 @@ export default {
     },
     play() {
       this.state.playing = !this.state.playing;
-      if (this.$video) {
+      if (this.$flvVideo) {
         if (this.state.playing) {
-          this.$video.play();
+          if (this.firstPlay) { this.firstPlay = false; this.showRuntime(); }
+          this.$flvVideo.play();
           this.mouseLeaveVideo();
-          this.$video.addEventListener('timeupdate', this.timeline);
-          this.$video.addEventListener('ended', (e) => {
-            this.state.playing = false;
-            this.video.pos.current = 0;
-            this.$video.currentTime = 0;
-          });
         } else {
-          this.$video.pause();
+          this.$flvVideo.pause();
         }
       }
-    },
-    timeline() {
-      const percent = this.$video.currentTime / this.$video.duration;
-      this.video.pos.current = (this.video.pos.width * percent).toFixed(3);
-      this.video.displayTime = timeParse(this.$video.duration - this.$video.currentTime);
     },
     volMove(e) {
       this.initVol();
@@ -461,6 +466,21 @@ export default {
     mouseUpAction(e) {
       this.volume.moving = false;
       this.video.moving = false;
+    },
+    showRuntime() {
+      setTimeout(this.showRuntime(), 1000); // 每秒运行一次函数
+      let Y = new Date();
+      let T = (Y.getTime() - this.startTime.getTime()); // 获取当前时间与指定时间之间的时间间隔（ms）
+      let i = 24 * 60 * 60 * 1000;
+      let d = T / i;
+      let D = Math.floor(d); // 计算天数并向下取整
+      let h = (d - D) * 24;
+      let H = Math.floor(h); // 计算剩余不足一天的小时数并向下取整
+      let m = (h - H) * 60;
+      let M = Math.floor(m); // 计算剩余不足一小时的分钟数并向下取整
+      let s = (m - M) * 60;
+      let S = Math.floor(s); // 计算剩余不足一分钟的秒数并向下取整
+      this.video.displayTime = Y + D + ' ' + H + ':' + M + ':' + S + ':';
     }
   }
 };
