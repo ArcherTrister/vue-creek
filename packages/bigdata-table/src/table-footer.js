@@ -1,7 +1,7 @@
 import LayoutObserver from './layout-observer';
 
 export default {
-  name: 'ElTableFooter',
+  name: 'VcTableFooter',
 
   mixins: [LayoutObserver],
 
@@ -13,7 +13,9 @@ export default {
         sums[index] = this.sumText;
         return;
       }
-      const values = this.store.states.data.map(item => Number(item[column.property]));
+      const values = this.store.states.data.map(item =>
+        Number(item[column.property])
+      );
       const precisions = [];
       let notNumber = true;
       values.forEach(value => {
@@ -40,37 +42,43 @@ export default {
 
     return (
       <table
-        class="el-table__footer"
+        class="vc-table__footer"
         cellspacing="0"
         cellpadding="0"
-        border="0">
+        border="0"
+      >
         <colgroup>
-          {
-            this._l(this.columns, column => <col name={ column.id } />)
-          }
-          {
-            this.hasGutter ? <col name="gutter" /> : ''
-          }
+          {this._l(this.columns, column => (
+            <col name={column.id} />
+          ))}
+          {this.hasGutter ? <col name="gutter" /> : ''}
         </colgroup>
-        <tbody class={ [{ 'has-gutter': this.hasGutter }] }>
+        <tbody class={[{ 'has-gutter': this.hasGutter }]}>
           <tr>
-            {
-              this._l(this.columns, (column, cellIndex) =>
-                <td
-                  colspan={ column.colSpan }
-                  rowspan={ column.rowSpan }
-                  class={ [column.id, column.headerAlign, column.className || '', this.isCellHidden(cellIndex, this.columns) ? 'is-hidden' : '', !column.children ? 'is-leaf' : '', column.labelClassName] }>
-                  <div class={ ['cell', column.labelClassName] }>
-                    {
-                      this.summaryMethod ? this.summaryMethod({ columns: this.columns, data: this.store.states.data })[cellIndex] : sums[cellIndex]
-                    }
-                  </div>
-                </td>
-              )
-            }
-            {
-              this.hasGutter ? <th class="gutter"></th> : ''
-            }
+            {this._l(this.columns, (column, cellIndex) => (
+              <td
+                colspan={column.colSpan}
+                rowspan={column.rowSpan}
+                class={[
+                  column.id,
+                  column.headerAlign,
+                  column.className || '',
+                  this.isCellHidden(cellIndex, this.columns) ? 'is-hidden' : '',
+                  !column.children ? 'is-leaf' : '',
+                  column.labelClassName
+                ]}
+              >
+                <div class={['cell', column.labelClassName]}>
+                  {this.summaryMethod
+                    ? this.summaryMethod({
+                      columns: this.columns,
+                      data: this.store.states.data
+                    })[cellIndex]
+                    : sums[cellIndex]}
+                </div>
+              </td>
+            ))}
+            {this.hasGutter ? <th class="gutter" /> : ''}
           </tr>
         </tbody>
       </table>
@@ -137,7 +145,10 @@ export default {
         }
         return before < this.columnsCount - this.rightFixedCount;
       } else {
-        return (index < this.leftFixedCount) || (index >= this.columnsCount - this.rightFixedCount);
+        return (
+          index < this.leftFixedCount ||
+          index >= this.columnsCount - this.rightFixedCount
+        );
       }
     }
   }

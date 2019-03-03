@@ -9,7 +9,7 @@ const MenuItem = function(domNode) {
 
 MenuItem.prototype.init = function() {
   this.domNode.setAttribute('tabindex', '0');
-  let menuChild = this.domNode.querySelector('.el-menu');
+  let menuChild = this.domNode.querySelector('.vc-menu');
   if (menuChild) {
     this.submenu = new SubMenu(this, menuChild);
   }
@@ -28,7 +28,8 @@ MenuItem.prototype.addListeners = function() {
         break;
       case keys.up:
         Utils.triggerEvent(event.currentTarget, 'mouseenter');
-        this.submenu && this.submenu.gotoSubIndex(this.submenu.subMenuItems.length - 1);
+        this.submenu &&
+          this.submenu.gotoSubIndex(this.submenu.subMenuItems.length - 1);
         prevDef = true;
         break;
       case keys.tab:

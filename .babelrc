@@ -25,15 +25,18 @@
               "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
             }
           }
-        ],
+        ]
       ],
       "plugins": [
-        ["module-resolver", {
-          "root": ["vue-creek"],
-          "alias": {
-            "vue-creek/src": "vue-creek/lib"
+        [
+          "module-resolver",
+          {
+            "root": ["vue-creek"],
+            "alias": {
+              "vue-creek/src": "vue-creek/lib"
+            }
           }
-        }]
+        ]
       ]
     },
     "test": {

@@ -1,7 +1,7 @@
 <template>
-  <label class="el-checkbox"
+  <label class="vc-checkbox"
          :class="[
-      border && checkboxSize ? 'el-checkbox--' + checkboxSize : '',
+      border && checkboxSize ? 'vc-checkbox--' + checkboxSize : '',
       { 'is-disabled': isDisabled },
       { 'is-bordered': border },
       { 'is-checked': isChecked }
@@ -10,7 +10,7 @@
          :aria-checked="indeterminate ? 'mixed': isChecked"
          :aria-disabled="isDisabled"
          :id="id">
-    <span class="el-checkbox__input"
+    <span class="vc-checkbox__input"
           :class="{
         'is-disabled': isDisabled,
         'is-checked': isChecked,
@@ -18,9 +18,9 @@
         'is-focus': focus
       }"
           aria-checked="mixed">
-      <span class="el-checkbox__inner"></span>
+      <span class="vc-checkbox__inner"></span>
       <input v-if="trueLabel || falseLabel"
-             class="el-checkbox__original"
+             class="vc-checkbox__original"
              type="checkbox"
              aria-hidden="true"
              :name="name"
@@ -32,7 +32,7 @@
              @focus="focus = true"
              @blur="focus = false">
       <input v-else
-             class="el-checkbox__original"
+             class="vc-checkbox__original"
              type="checkbox"
              aria-hidden="true"
              :disabled="isDisabled"
@@ -43,7 +43,7 @@
              @focus="focus = true"
              @blur="focus = false">
     </span>
-    <span class="el-checkbox__label"
+    <span class="vc-checkbox__label"
           v-if="$slots.default || label">
       <slot></slot>
       <template v-if="!$slots.default">{{label}}</template>
@@ -54,7 +54,7 @@
 import Emitter from 'vue-creek/src/mixins/emitter';
 
 export default {
-  name: 'ElCheckbox',
+  name: 'VcCheckbox',
 
   mixins: [Emitter],
 
@@ -67,7 +67,7 @@ export default {
     }
   },
 
-  componentName: 'ElCheckbox',
+  componentName: 'VcCheckbox',
 
   data() {
     return {
@@ -97,7 +97,7 @@ export default {
             (this.isLimitExceeded = true));
 
           this.isLimitExceeded === false &&
-            this.dispatch('ElCheckboxGroup', 'input', [val]);
+            this.dispatch('VcCheckboxGroup', 'input', [val]);
         } else {
           this.$emit('input', val);
           this.selfModel = val;
@@ -118,7 +118,7 @@ export default {
     isGroup() {
       let parent = this.$parent;
       while (parent) {
-        if (parent.$options.componentName !== 'ElCheckboxGroup') {
+        if (parent.$options.componentName !== 'VcCheckboxGroup') {
           parent = parent.$parent;
         } else {
           this._checkboxGroup = parent;
@@ -187,7 +187,7 @@ export default {
       this.$emit('change', value, ev);
       this.$nextTick(() => {
         if (this.isGroup) {
-          this.dispatch('ElCheckboxGroup', 'change', [this._checkboxGroup.value]);
+          this.dispatch('VcCheckboxGroup', 'change', [this._checkboxGroup.value]);
         }
       });
     }
@@ -204,7 +204,7 @@ export default {
 
   watch: {
     value(value) {
-      this.dispatch('ElFormItem', 'el.form.change', value);
+      this.dispatch('VcFormItem', 'el.form.change', value);
     }
   }
 };

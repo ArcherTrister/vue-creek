@@ -10,7 +10,7 @@
 var cheerio = require('cheerio');
 
 exports.strip = function(str, tags) {
-  var $ = cheerio.load(str, {decodeEntities: false});
+  var $ = cheerio.load(str, { decodeEntities: false });
 
   if (!tags || tags.length === 0) {
     return str;
@@ -27,7 +27,7 @@ exports.strip = function(str, tags) {
 };
 
 exports.fetch = function(str, tag) {
-  var $ = cheerio.load(str, {decodeEntities: false});
+  var $ = cheerio.load(str, { decodeEntities: false });
   if (!tag) return str;
 
   return $(tag).html();

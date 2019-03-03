@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'ElTag',
+  name: 'VcTag',
   props: {
     text: String,
     closable: Boolean,
@@ -26,18 +26,18 @@ export default {
     }
   },
   render(h) {
-    const classes = ['el-tag', this.type ? `el-tag--${this.type}` : '',
-      this.tagSize ? `el-tag--${this.tagSize}` : '',
+    const classes = ['vc-tag', this.type ? `vc-tag--${this.type}` : '',
+      this.tagSize ? `vc-tag--${this.tagSize}` : '',
       { 'is-hit': this.hit }
     ];
-    const tagEl = (<span class={classes} style={{ backgroundColor: this.color }} on-click={this.handleClick}>
+    const tagVc = (<span class={classes} style={{ backgroundColor: this.color }} on-click={this.handleClick}>
       {this.$slots.default}
       {
-        this.closable && <i class="el-tag__close el-icon-close" on-click={this.handleClose}></i>
+        this.closable && <i class="vc-tag__close vc-icon-close" on-click={this.handleClose}></i>
       }
     </span>);
 
-    return this.disableTransitions ? tagEl : <transition name="el-zoom-in-center">{tagEl}</transition>;
+    return this.disableTransitions ? tagVc : <transition name="vc-zoom-in-center">{tagVc}</transition>;
   }
 };
 </script>

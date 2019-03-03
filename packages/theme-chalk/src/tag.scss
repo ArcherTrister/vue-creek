@@ -1,5 +1,5 @@
-@import "mixins/mixins";
-@import "common/var";
+@import 'mixins/mixins';
+@import 'common/var';
 
 @include b(tag) {
   background-color: $--tag-fill;
@@ -14,7 +14,7 @@
   border: 1px solid $--tag-border;
   white-space: nowrap;
 
-  .el-icon-close {
+  .vc-icon-close {
     border-radius: 50%;
     text-align: center;
     position: relative;
@@ -47,11 +47,11 @@
       border-color: $--tag-info-color;
     }
 
-    .el-tag__close {
+    .vc-tag__close {
       color: $--tag-info-color;
     }
 
-    .el-tag__close:hover {
+    .vc-tag__close:hover {
       background-color: $--tag-info-color;
       color: $--color-white;
     }
@@ -66,11 +66,11 @@
       border-color: $--tag-success-color;
     }
 
-    .el-tag__close {
+    .vc-tag__close {
       color: $--tag-success-color;
     }
 
-    .el-tag__close:hover {
+    .vc-tag__close:hover {
       background-color: $--tag-success-color;
       color: $--color-white;
     }
@@ -85,11 +85,11 @@
       border-color: $--tag-warning-color;
     }
 
-    .el-tag__close {
+    .vc-tag__close {
       color: $--tag-warning-color;
     }
 
-    .el-tag__close:hover {
+    .vc-tag__close:hover {
       background-color: $--tag-warning-color;
       color: $--color-white;
     }
@@ -104,11 +104,11 @@
       border-color: $--tag-danger-color;
     }
 
-    .el-tag__close {
+    .vc-tag__close {
       color: $--tag-danger-color;
     }
 
-    .el-tag__close:hover {
+    .vc-tag__close:hover {
       background-color: $--tag-danger-color;
       color: $--color-white;
     }
@@ -118,8 +118,8 @@
     height: 28px;
     line-height: 26px;
 
-    .el-icon-close {
-      transform: scale(.8);
+    .vc-icon-close {
+      transform: scale(0.8);
     }
   }
 
@@ -128,8 +128,8 @@
     padding: 0 8px;
     line-height: 22px;
 
-    .el-icon-close {
-      transform: scale(.8);
+    .vc-icon-close {
+      transform: scale(0.8);
     }
   }
 
@@ -138,9 +138,9 @@
     padding: 0 5px;
     line-height: 19px;
 
-    .el-icon-close {
+    .vc-icon-close {
       margin-left: -3px;
-      transform: scale(.7);
+      transform: scale(0.7);
     }
   }
 }

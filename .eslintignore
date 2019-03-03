@@ -1,5 +1,8 @@
 src/utils/popper.js
 src/utils/date.js
+src/utils/flv.js
+test/assets/logo.png
+build/logo.png
 examples/play
 *.sh
 node_modules

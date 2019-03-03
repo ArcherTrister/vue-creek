@@ -32,12 +32,12 @@ export default ${ComponentName};`
   {
     filename: 'src/main.vue',
     content: `<template>
-  <div class="el-${componentname}"></div>
+  <div class="vc-${componentname}"></div>
 </template>
 
 <script>
 export default {
-  name: 'El${ComponentName}'
+  name: 'Vc${ComponentName}'
 };
 </script>`
   },
@@ -72,7 +72,10 @@ describe('${ComponentName}', () => {
 `
   },
   {
-    filename: path.join('../../packages/theme-chalk/src', `${componentname}.scss`),
+    filename: path.join(
+      '../../packages/theme-chalk/src',
+      `${componentname}.scss`
+    ),
     content: `@import "mixins/mixins";
 @import "common/var";
 
@@ -81,10 +84,10 @@ describe('${ComponentName}', () => {
   },
   {
     filename: path.join('../../types', `${componentname}.d.ts`),
-    content: `import { ElementUIComponent } from './component'
+    content: `import { VcementUIComponent } from './component'
 
 /** ${ComponentName} Component */
-export declare class El${ComponentName} extends ElementUIComponent {
+export declare class Vc${ComponentName} extends VcementUIComponent {
 }`
   }
 ];
@@ -114,9 +117,10 @@ Object.keys(navConfigFile).forEach(lang => {
   let groups = navConfigFile[lang][4].groups;
   groups[groups.length - 1].list.push({
     path: `/${componentname}`,
-    title: lang === 'zh-CN' && componentname !== chineseName
-      ? `${ComponentName} ${chineseName}`
-      : ComponentName
+    title:
+      lang === 'zh-CN' && componentname !== chineseName
+        ? `${ComponentName} ${chineseName}`
+        : ComponentName
   });
 });
 

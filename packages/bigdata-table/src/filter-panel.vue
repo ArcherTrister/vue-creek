@@ -1,35 +1,43 @@
 <template>
-  <transition name="el-zoom-in-top">
-    <div class="el-table-filter bigdata-header-filter" v-if="multiple" v-show="showPopper">
-      <div class="el-table-filter__content">
-        <el-input class="filter-keyword" v-model="keyWord" @keyup.native="changeKeyWord" size="mini" placeholder="请输入内容"></el-input>
-        <el-checkbox-group class="el-table-filter__checkbox-group" v-model="filteredValue">
-          <el-checkbox
-            class="filter-label"
-            :title="filter.text"
-            v-for="filter in fiList"
-            :key="filter.value"
-            :label="filter.value">{{ filter.text }}</el-checkbox>
-        </el-checkbox-group>
+  <transition name="vc-zoom-in-top">
+    <div class="vc-table-filter bigdata-header-filter"
+         v-if="multiple"
+         v-show="showPopper">
+      <div class="vc-table-filter__content">
+        <vc-input class="filter-keyword"
+                  v-model="keyWord"
+                  @keyup.native="changeKeyWord"
+                  size="mini"
+                  placeholder="请输入内容"></vc-input>
+        <vc-checkbox-group class="vc-table-filter__checkbox-group"
+                           v-model="filteredValue">
+          <vc-checkbox class="filter-label"
+                       :title="filter.text"
+                       v-for="filter in fiList"
+                       :key="filter.value"
+                       :label="filter.value">{{ filter.text }}</vc-checkbox>
+        </vc-checkbox-group>
       </div>
-      <div class="el-table-filter__bottom">
+      <div class="vc-table-filter__bottom">
         <button @click="handleConfirm"
-          :class="{ 'is-disabled': filteredValue.length === 0 }"
-          :disabled="filteredValue.length === 0">{{ t('el.table.confirmFilter') }}</button>
+                :class="{ 'is-disabled': filteredValue.length === 0 }"
+                :disabled="filteredValue.length === 0">{{ t('el.table.confirmFilter') }}</button>
         <button @click="handleReset">{{ t('el.table.resetFilter') }}</button>
       </div>
     </div>
-    <div class="el-table-filter" v-else v-show="showPopper">
-      <ul class="el-table-filter__list">
-        <li class="el-table-filter__list-item"
+    <div class="vc-table-filter"
+         v-else
+         v-show="showPopper">
+      <ul class="vc-table-filter__list">
+        <li class="vc-table-filter__list-item"
             :class="{ 'is-active': filterValue === undefined || filterValue === null }"
             @click="handleSelect(null)">{{ t('el.table.clearFilter') }}</li>
-        <li class="el-table-filter__list-item"
+        <li class="vc-table-filter__list-item"
             v-for="filter in fiList"
             :label="filter.value"
             :key="filter.value"
             :class="{ 'is-active': isActive(filter) }"
-            @click="handleSelect(filter.value)" >{{ filter.text }}</li>
+            @click="handleSelect(filter.value)">{{ filter.text }}</li>
       </ul>
     </div>
   </transition>
@@ -41,11 +49,11 @@ import { PopupManager } from 'vue-creek/src/utils/popup';
 import Locale from 'vue-creek/src/mixins/locale';
 import Clickoutside from 'vue-creek/src/utils/clickoutside';
 import Dropdown from './dropdown';
-import ElCheckbox from 'vue-creek/packages/checkbox';
-import ElCheckboxGroup from 'vue-creek/packages/checkbox-group';
+import VcCheckbox from 'vue-creek/packages/checkbox';
+import VcCheckboxGroup from 'vue-creek/packages/checkbox-group';
 
 export default {
-  name: 'ElTableFilterPanel',
+  name: 'VcTableFilterPanel',
 
   mixins: [Popper, Locale],
 
@@ -54,8 +62,8 @@ export default {
   },
 
   components: {
-    ElCheckbox,
-    ElCheckboxGroup
+    VcCheckbox,
+    VcCheckboxGroup
   },
 
   props: {
@@ -67,9 +75,9 @@ export default {
 
   customRender(h) {
     return (
-      <div class='el-table-filter'>
-        <div class='el-table-filter__content' />
-        <div class='el-table-filter__bottom'>
+      <div class='vc-table-filter'>
+        <div class='vc-table-filter__content' />
+        <div class='vc-table-filter__bottom'>
           <button on-click={this.handleConfirm}>
             {this.t('el.table.confirmFilter')}
           </button>
@@ -177,7 +185,6 @@ export default {
         }
       }
     },
-
     filteredValue: {
       get() {
         if (this.column) {
@@ -237,8 +244,23 @@ export default {
 };
 </script>
 <style scoped>
-.bigdata-header-filter{}
-.bigdata-header-filter .filter-keyword{margin: 5px; margin-bottom: 0; width: 110px;}
-.bigdata-header-filter .el-table-filter__checkbox-group{max-height: 400px; width: 120px; overflow-x: hidden; overflow-y: auto;}
-.bigdata-header-filter .filter-label{width: 120px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.bigdata-header-filter {
+}
+.bigdata-header-filter .filter-keyword {
+  margin: 5px;
+  margin-bottom: 0;
+  width: 110px;
+}
+.bigdata-header-filter .vc-table-filter__checkbox-group {
+  max-height: 400px;
+  width: 120px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.bigdata-header-filter .filter-label {
+  width: 120px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 </style>

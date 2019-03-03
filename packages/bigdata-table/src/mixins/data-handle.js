@@ -1,6 +1,6 @@
 // import TableStore from '../table-store';
 // import TableLayout from '../table-layout';
-import ElTableBody from '../table-body.js';
+import VcTableBody from '../table-body.js';
 import { getScrollbarWidth } from '../util/index.js';
 
 export default {
@@ -168,7 +168,7 @@ export default {
     },
     //  生成body
     getItemTable(h, data, index, prop) {
-      return h(ElTableBody, {
+      return h(VcTableBody, {
         style: { width: '100%' },
         props: {
           store: this.store,

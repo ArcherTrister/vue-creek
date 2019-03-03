@@ -13,7 +13,10 @@ aria.Utils = aria.Utils || {};
 aria.Utils.focusFirstDescendant = function(element) {
   for (var i = 0; i < element.childNodes.length; i++) {
     var child = element.childNodes[i];
-    if (aria.Utils.attemptFocus(child) || aria.Utils.focusFirstDescendant(child)) {
+    if (
+      aria.Utils.attemptFocus(child) ||
+      aria.Utils.focusFirstDescendant(child)
+    ) {
       return true;
     }
   }
@@ -31,7 +34,10 @@ aria.Utils.focusFirstDescendant = function(element) {
 aria.Utils.focusLastDescendant = function(element) {
   for (var i = element.childNodes.length - 1; i >= 0; i--) {
     var child = element.childNodes[i];
-    if (aria.Utils.attemptFocus(child) || aria.Utils.focusLastDescendant(child)) {
+    if (
+      aria.Utils.attemptFocus(child) ||
+      aria.Utils.focusLastDescendant(child)
+    ) {
       return true;
     }
   }
@@ -52,14 +58,16 @@ aria.Utils.attemptFocus = function(element) {
   aria.Utils.IgnoreUtilFocusChanges = true;
   try {
     element.focus();
-  } catch (e) {
-  }
+  } catch (e) {}
   aria.Utils.IgnoreUtilFocusChanges = false;
-  return (document.activeElement === element);
+  return document.activeElement === element;
 };
 
 aria.Utils.isFocusable = function(element) {
-  if (element.tabIndex > 0 || (element.tabIndex === 0 && element.getAttribute('tabIndex') !== null)) {
+  if (
+    element.tabIndex > 0 ||
+    (element.tabIndex === 0 && element.getAttribute('tabIndex') !== null)
+  ) {
     return true;
   }
 
@@ -84,11 +92,11 @@ aria.Utils.isFocusable = function(element) {
 /**
  * 触发一个事件
  * mouseenter, mouseleave, mouseover, keyup, change, click 等
- * @param  {Element} elm
+ * @param  {Element} vcm
  * @param  {String} name
  * @param  {*} opts
  */
-aria.Utils.triggerEvent = function(elm, name, ...opts) {
+aria.Utils.triggerEvent = function(vcm, name, ...opts) {
   let eventName;
 
   if (/^mouse|click/.test(name)) {
@@ -101,11 +109,9 @@ aria.Utils.triggerEvent = function(elm, name, ...opts) {
   const evt = document.createEvent(eventName);
 
   evt.initEvent(name, ...opts);
-  elm.dispatchEvent
-    ? elm.dispatchEvent(evt)
-    : elm.fireEvent('on' + name, evt);
+  vcm.dispatchEvent ? vcm.dispatchEvent(evt) : vcm.fireEvent('on' + name, evt);
 
-  return elm;
+  return vcm;
 };
 
 aria.Utils.keys = {

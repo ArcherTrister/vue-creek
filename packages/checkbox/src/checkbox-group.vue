@@ -2,9 +2,9 @@
 import Emitter from 'vue-creek/src/mixins/emitter';
 
 export default {
-  name: 'ElCheckboxGroup',
+  name: 'VcCheckboxGroup',
 
-  componentName: 'ElCheckboxGroup',
+  componentName: 'VcCheckboxGroup',
 
   mixins: [Emitter],
 
@@ -35,14 +35,14 @@ export default {
 
   watch: {
     value(value) {
-      this.dispatch('ElFormItem', 'el.form.change', [value]);
+      this.dispatch('VcFormItem', 'el.form.change', [value]);
     }
   }
 };
 </script>
 
 <template>
-  <div class="el-checkbox-group"
+  <div class="vc-checkbox-group"
        role="group"
        aria-label="checkbox-group">
     <slot></slot>

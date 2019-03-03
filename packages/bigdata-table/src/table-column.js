@@ -1,5 +1,5 @@
-import ElCheckbox from 'vue-creek/packages/checkbox';
-import ElTag from 'vue-creek/packages/tag';
+import VcCheckbox from 'vue-creek/packages/checkbox';
+import VcTag from 'vue-creek/packages/tag';
 import objectAssign from 'vue-creek/src/utils/merge';
 import { getPropByPath } from 'vue-creek/src/utils/util';
 
@@ -14,7 +14,7 @@ const defaults = {
     minWidth: 48,
     realWidth: 48,
     order: '',
-    className: 'el-table-column--selection'
+    className: 'vc-table-column--selection'
   },
   expand: {
     width: 48,
@@ -33,18 +33,32 @@ const defaults = {
 const forced = {
   selection: {
     renderHeader: function(h, { store }) {
-      return <el-checkbox
-        disabled={ store.states.data && store.states.data.length === 0 }
-        indeterminate={ store.states.selection.length > 0 && !this.isAllSelected }
-        nativeOn-click={ this.toggleAllSelection }
-        value={ this.isAllSelected } />;
+      return (
+        <vc-checkbox
+          disabled={store.states.data && store.states.data.length === 0}
+          indeterminate={
+            store.states.selection.length > 0 && !this.isAllSelected
+          }
+          nativeOn-click={this.toggleAllSelection}
+          value={this.isAllSelected}
+        />
+      );
     },
     renderCell: function(h, { row, column, store, $index }) {
-      return <el-checkbox
-        nativeOn-click={ (event) => event.stopPropagation() }
-        value={ store.isSelected(row) }
-        disabled={ column.selectable ? !column.selectable.call(null, row, $index) : false }
-        on-input={ () => { store.commit('rowSelectedChanged', row); } } />;
+      return (
+        <vc-checkbox
+          nativeOn-click={event => event.stopPropagation()}
+          value={store.isSelected(row)}
+          disabled={
+            column.selectable
+              ? !column.selectable.call(null, row, $index)
+              : false
+          }
+          on-input={() => {
+            store.commit('rowSelectedChanged', row);
+          }}
+        />
+      );
     },
     sortable: false,
     resizable: false
@@ -63,7 +77,7 @@ const forced = {
         i = index($index);
       }
 
-      return <div>{ i }</div>;
+      return <div>{i}</div>;
     },
     sortable: false
   },
@@ -73,14 +87,21 @@ const forced = {
     },
     renderCell: function(h, { row, store }, proxy) {
       const expanded = store.states.expandRows.indexOf(row) > -1;
-      return <div class={ 'el-table__expand-icon ' + (expanded ? 'el-table__expand-icon--expanded' : '') }
-        on-click={ e => proxy.handleExpandClick(row, e) }>
-        <i class='el-icon el-icon-arrow-right'></i>
-      </div>;
+      return (
+        <div
+          class={
+            'vc-table__expand-icon ' +
+            (expanded ? 'vc-table__expand-icon--expanded' : '')
+          }
+          on-click={e => proxy.handleExpandClick(row, e)}
+        >
+          <i class="vc-icon vc-icon-arrow-right" />
+        </div>
+      );
     },
     sortable: false,
     resizable: false,
-    className: 'el-table__expand-column'
+    className: 'vc-table__expand-column'
   }
 };
 
@@ -102,7 +123,8 @@ const getDefaultColumn = function(type, options) {
     column.minWidth = 80;
   }
 
-  column.realWidth = column.width === undefined ? column.minWidth : column.width;
+  column.realWidth =
+    column.width === undefined ? column.minWidth : column.width;
 
   return column;
 };
@@ -116,7 +138,7 @@ const DEFAULT_RENDER_CELL = function(h, { row, column }) {
   return value;
 };
 
-const parseWidth = (width) => {
+const parseWidth = width => {
   if (width !== undefined) {
     width = parseInt(width, 10);
     if (isNaN(width)) {
@@ -126,7 +148,7 @@ const parseWidth = (width) => {
   return width;
 };
 
-const parseMinWidth = (minWidth) => {
+const parseMinWidth = minWidth => {
   if (minWidth !== undefined) {
     minWidth = parseInt(minWidth, 10);
     if (isNaN(minWidth)) {
@@ -137,7 +159,7 @@ const parseMinWidth = (minWidth) => {
 };
 
 export default {
-  name: 'ElTableColumn',
+  name: 'VcTableColumn',
 
   props: {
     type: {
@@ -197,8 +219,8 @@ export default {
   },
 
   components: {
-    ElCheckbox,
-    ElTag
+    VcCheckbox,
+    VcTag
   },
 
   computed: {
@@ -225,7 +247,8 @@ export default {
     let parent = this.columnOrTableParent;
     let owner = this.owner;
     this.isSubColumn = owner !== parent;
-    this.columnId = (parent.tableId || parent.columnId) + '_column_' + columnIdSeed++;
+    this.columnId =
+      (parent.tableId || parent.columnId) + '_column_' + columnIdSeed++;
 
     let type = this.type;
 
@@ -249,12 +272,17 @@ export default {
       isColumnGroup,
       context: this.context,
       align: this.align ? 'is-' + this.align : null,
-      headerAlign: this.headerAlign ? 'is-' + this.headerAlign : (this.align ? 'is-' + this.align : null),
+      headerAlign: this.headerAlign
+        ? 'is-' + this.headerAlign
+        : this.align
+          ? 'is-' + this.align
+          : null,
       sortable: this.sortable === '' ? true : this.sortable,
       sortMethod: this.sortMethod,
       sortBy: this.sortBy,
       resizable: this.resizable,
-      showOverflowTooltip: this.showOverflowTooltip || this.showTooltipWhenOverflow,
+      showOverflowTooltip:
+        this.showOverflowTooltip || this.showTooltipWhenOverflow,
       formatter: this.formatter,
       selectable: this.selectable,
       reserveSelection: this.reserveSelection,
@@ -284,7 +312,7 @@ export default {
       };
 
       column.renderCell = function(h, data) {
-        return <div class="cell">{ renderCell(h, data, this._renderProxy) }</div>;
+        return <div class="cell">{renderCell(h, data, this._renderProxy)}</div>;
       };
 
       return;
@@ -299,16 +327,29 @@ export default {
         renderCell = DEFAULT_RENDER_CELL;
       }
 
-      return _self.showOverflowTooltip || _self.showTooltipWhenOverflow
-        ? <div class="cell el-tooltip" style={ {width: (data.column.realWidth || data.column.width) - 1 + 'px'} }>{ renderCell(h, data) }</div>
-        : <div class="cell">{ renderCell(h, data) }</div>;
+      return _self.showOverflowTooltip || _self.showTooltipWhenOverflow ? (
+        <div
+          class="cell vc-tooltip"
+          style={{
+            width: (data.column.realWidth || data.column.width) - 1 + 'px'
+          }}
+        >
+          {renderCell(h, data)}
+        </div>
+      ) : (
+        <div class="cell">{renderCell(h, data)}</div>
+      );
     };
   },
 
   destroyed() {
     if (!this.$parent) return;
     const parent = this.$parent;
-    this.owner.store.commit('removeColumn', this.columnConfig, this.isSubColumn ? parent.columnConfig : null);
+    this.owner.store.commit(
+      'removeColumn',
+      this.columnConfig,
+      this.isSubColumn ? parent.columnConfig : null
+    );
   },
 
   watch: {
@@ -354,7 +395,8 @@ export default {
 
     headerAlign(newVal) {
       if (this.columnConfig) {
-        this.columnConfig.headerAlign = 'is-' + (newVal ? newVal + '' : this.align);
+        this.columnConfig.headerAlign =
+          'is-' + (newVal ? newVal + '' : this.align);
       }
     },
 
@@ -398,11 +440,19 @@ export default {
     let columnIndex;
 
     if (!this.isSubColumn) {
-      columnIndex = [].indexOf.call(parent.$refs.hiddenColumns.children, this.$el);
+      columnIndex = [].indexOf.call(
+        parent.$refs.hiddenColumns.children,
+        this.$el
+      );
     } else {
       columnIndex = [].indexOf.call(parent.$el.children, this.$el);
     }
 
-    owner.store.commit('insertColumn', this.columnConfig, columnIndex, this.isSubColumn ? parent.columnConfig : null);
+    owner.store.commit(
+      'insertColumn',
+      this.columnConfig,
+      columnIndex,
+      this.isSubColumn ? parent.columnConfig : null
+    );
   }
 };

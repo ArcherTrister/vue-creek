@@ -130,20 +130,38 @@ export default {
           PopupManager.closeModal(this._popupId);
           this._closing = false;
         }
-        PopupManager.openModal(this._popupId, PopupManager.nextZIndex(), this.modalAppendToBody ? undefined : dom, props.modalClass, props.modalFade);
+        PopupManager.openModal(
+          this._popupId,
+          PopupManager.nextZIndex(),
+          this.modalAppendToBody ? undefined : dom,
+          props.modalClass,
+          props.modalFade
+        );
         if (props.lockScroll) {
-          this.withoutHiddenClass = !hasClass(document.body, 'el-popup-parent--hidden');
+          this.withoutHiddenClass = !hasClass(
+            document.body,
+            'vc-popup-parent--hidden'
+          );
           if (this.withoutHiddenClass) {
             this.bodyPaddingRight = document.body.style.paddingRight;
-            this.computedBodyPaddingRight = parseInt(getStyle(document.body, 'paddingRight'), 10);
+            this.computedBodyPaddingRight = parseInt(
+              getStyle(document.body, 'paddingRight'),
+              10
+            );
           }
           scrollBarWidth = getScrollBarWidth();
-          let bodyHasOverflow = document.documentElement.clientHeight < document.body.scrollHeight;
+          let bodyHasOverflow =
+            document.documentElement.clientHeight < document.body.scrollHeight;
           let bodyOverflowY = getStyle(document.body, 'overflowY');
-          if (scrollBarWidth > 0 && (bodyHasOverflow || bodyOverflowY === 'scroll') && this.withoutHiddenClass) {
-            document.body.style.paddingRight = this.computedBodyPaddingRight + scrollBarWidth + 'px';
+          if (
+            scrollBarWidth > 0 &&
+            (bodyHasOverflow || bodyOverflowY === 'scroll') &&
+            this.withoutHiddenClass
+          ) {
+            document.body.style.paddingRight =
+              this.computedBodyPaddingRight + scrollBarWidth + 'px';
           }
-          addClass(document.body, 'el-popup-parent--hidden');
+          addClass(document.body, 'vc-popup-parent--hidden');
         }
       }
 
@@ -206,13 +224,11 @@ export default {
     restoreBodyStyle() {
       if (this.modal && this.withoutHiddenClass) {
         document.body.style.paddingRight = this.bodyPaddingRight;
-        removeClass(document.body, 'el-popup-parent--hidden');
+        removeClass(document.body, 'vc-popup-parent--hidden');
       }
       this.withoutHiddenClass = true;
     }
   }
 };
 
-export {
-  PopupManager
-};
+export { PopupManager };
