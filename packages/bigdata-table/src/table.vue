@@ -517,7 +517,7 @@ export default {
               : this.maxHeight - this.layout.footerHeight) + 'px'
         };
       }
-      return {};
+      return {height: this.layout.bodyHeight ? '300px' : ''};
     },
 
     fixedBodyHeight() {

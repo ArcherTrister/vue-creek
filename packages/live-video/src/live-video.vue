@@ -291,12 +291,7 @@ export default {
           isLive: this.sources.isLive
         });
         this.$flvVideo.attachMediaElement(this.$video);
-        try {
-          this.$flvVideo.load();
-          this.$flvVideo.play();
-        } catch (err) {
-          console.log(err);
-        }
+        this.$flvVideo.load();
       }
 
       this.initCore();
@@ -371,7 +366,7 @@ export default {
       if (this.$flvVideo) {
         if (this.state.playing) {
           if (this.firstPlay) { this.firstPlay = false; this.startTime = new Date(); }
-          if (this.timerOut) {this.showRuntime();}
+          if (this.timerOut == null) {this.showRuntime();}
           this.$flvVideo.play();
           this.mouseLeaveVideo();
         } else {
@@ -470,7 +465,7 @@ export default {
       let M = Math.floor(m); // 计算剩余不足一小时的分钟数并向下取整
       let s = (m - M) * 60;
       let S = Math.floor(s); // 计算剩余不足一分钟的秒数并向下取整
-      this.video.displayTime = (D > 0 ? (D + '天') : '') + (H > 10 ? H : ('0' + H)) + ':' + (M > 10 ? M : ('0' + M)) + ':' + (S > 10 ? S : ('0' + S));
+      this.video.displayTime = (D > 0 ? (D + '天') : '') + (H > 9 ? H : ('0' + H)) + ':' + (M > 9 ? M : ('0' + M)) + ':' + (S > 9 ? S : ('0' + S));
     }
   }
 };

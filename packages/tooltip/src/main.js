@@ -1,12 +1,12 @@
-import Popper from 'element-ui/src/utils/vue-popper';
+import Popper from '../../../src/utils/vue-popper';
 import debounce from 'throttle-debounce/debounce';
-import { addClass, removeClass, on, off } from 'element-ui/src/utils/dom';
-import { getFirstComponentChild } from 'element-ui/src/utils/vdom';
-import { generateId } from 'element-ui/src/utils/util';
+import { addClass, removeClass, on, off } from '../../../src/utils/dom';
+import { getFirstComponentChild } from '../../../src/utils/vdom';
+import { generateId } from '../../../src/utils/util';
 import Vue from 'vue';
 
 export default {
-  name: 'ElTooltip',
+  name: 'VcTooltip',
 
   mixins: [Popper],
 
@@ -32,7 +32,7 @@ export default {
     },
     transition: {
       type: String,
-      default: 'el-fade-in-linear'
+      default: 'vc-fade-in-linear'
     },
     popperOptions: {
       default() {
@@ -60,7 +60,7 @@ export default {
   },
   computed: {
     tooltipId() {
-      return `el-tooltip-${generateId()}`;
+      return `vc-tooltip-${generateId()}`;
     }
   },
   beforeCreate() {
@@ -91,7 +91,7 @@ export default {
             aria-hidden={ (this.disabled || !this.showPopper) ? 'true' : 'false' }
             v-show={!this.disabled && this.showPopper}
             class={
-              ['el-tooltip__popper', 'is-' + this.effect, this.popperClass]
+              ['vc-tooltip__popper', 'is-' + this.effect, this.popperClass]
             }>
             { this.$slots.content || this.content }
           </div>
@@ -105,7 +105,7 @@ export default {
     if (!vnode) return vnode;
 
     const data = vnode.data = vnode.data || {};
-    data.staticClass = this.concatClass(data.staticClass, 'el-tooltip');
+    data.staticClass = this.concatClass(data.staticClass, 'vc-tooltip');
 
     return vnode;
   },

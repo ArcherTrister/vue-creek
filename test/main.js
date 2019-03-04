@@ -3,11 +3,11 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-import Element from 'element-ui';
+// import Element from 'element-ui';
 import Creek from '../lib/index';
 import '../lib/theme-chalk/index.css';
 
-Vue.use(Element);
+// Vue.use(Element);
 Vue.use(Creek);
 
 Vue.config.productionTip = false;
