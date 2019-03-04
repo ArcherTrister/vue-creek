@@ -327,7 +327,7 @@ export default {
     },
     getTime() {
       this.$video.addEventListener('durationchange', (e) => {
-        console.log(e);
+        console.log('ed', e);
       });
       this.$video.addEventListener('progress', (e) => {
         try {

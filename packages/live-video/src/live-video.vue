@@ -218,7 +218,7 @@ export default {
       startTime: null,
       firstPlay: true,
       $video: null,
-      $flvVideo: null,
+      $liveVideo: null,
       video: {
         $videoSlider: null,
         len: 0,
@@ -277,11 +277,11 @@ export default {
     init() {
       this.$video = this.$el.getElementsByTagName('video')[0];
       if (flvjs.isSupported()) {
-        if (this.$flvVideo) {
-          this.$flvVideo.detachMediaElement();
-          delete this.$flvVideo;
+        if (this.$liveVideo) {
+          this.$liveVideo.detachMediaElement();
+          delete this.$liveVideo;
         }
-        this.$flvVideo = flvjs.createPlayer({
+        this.$liveVideo = flvjs.createPlayer({
           type: this.sources.type,
           isLive: this.sources.isLive,
           hasVideo: true,
@@ -290,8 +290,8 @@ export default {
         }, {
           isLive: this.sources.isLive
         });
-        this.$flvVideo.attachMediaElement(this.$video);
-        this.$flvVideo.load();
+        this.$liveVideo.attachMediaElement(this.$video);
+        this.$liveVideo.load();
       }
 
       this.initCore();
@@ -350,27 +350,55 @@ export default {
       this.state.contrlShow = !this.state.contrlShow;
     },
     getVideoTime() {
+      console.log('======================================================================');
       this.$video.addEventListener('durationchange', (e) => {
-        console.log(e);
+        console.log('e', e);
       });
       this.$video.addEventListener('progress', (e) => {
-        this.video.loaded = (-1 + (this.$video.buffered.end(0) / this.$video.duration)) * 100;
+        try {
+          let end = this.$video.buffered.end(0);
+          console.log('end', end);
+          console.log('duration', this.$video.duration);
+          console.log('liveVideoduration', this.$liveVideo.duration);
+          this.video.loaded = (-1 + (end / this.$video.duration)) * 100;
+        } catch (error) {
+          console.log('error', error);
+          this.video.loaded = 0;
+        }
       });
+      console.log('$Video', this.$video.duration);
       this.video.len = this.$video.duration;
+
+      console.log('======================================================================');
+
+      // this.$liveVideo.addEventListener('durationchange', (e) => {
+      //   console.log('e', e);
+      // });
+      // this.$liveVideo.addEventListener('progress', (e) => {
+      //   try {
+      //     let end = this.$liveVideo.buffered.end(0);
+      //     console.log('end', end);
+      //     this.video.loaded = (-1 + (end / this.$liveVideo.duration)) * 100;
+      //   } catch (error) {
+      //     this.video.loaded = 0;
+      //   }
+      // });
+      // console.log('$liveVideo', this.$liveVideo.duration);
+      // this.video.len = this.$liveVideo.duration;
     },
     setVideoByTime(percent) {
       this.$video.currentTime = Math.floor(percent * this.video.len);
     },
     play() {
       this.state.playing = !this.state.playing;
-      if (this.$flvVideo) {
+      if (this.$liveVideo) {
         if (this.state.playing) {
           if (this.firstPlay) { this.firstPlay = false; this.startTime = new Date(); }
           if (this.timerOut == null) {this.showRuntime();}
-          this.$flvVideo.play();
+          this.$liveVideo.play();
           this.mouseLeaveVideo();
         } else {
-          this.$flvVideo.pause();
+          this.$liveVideo.pause();
           clearTimeout(this.timerOut);
           this.timerOut = null;
         }
@@ -448,6 +476,9 @@ export default {
         this.video.pos.current = x;
         this.setVideoByTime(x / this.video.pos.width);
       }
+      console.log('x', x);
+      console.log('start', this.video.pos.start);
+      console.log('width', this.video.pos.width);
     },
     mouseUpAction(e) {
       this.volume.moving = false;

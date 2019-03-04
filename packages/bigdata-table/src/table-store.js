@@ -161,7 +161,7 @@ TableStore.prototype.mutations = {
 
         this.updateAllSelected();
       } else {
-        // console.warn('WARN: rowKey is required when reserve-selection is enabled.');
+        console.warn('WARN: rowKey is required when reserve-selection is enabled.');
       }
     }
 

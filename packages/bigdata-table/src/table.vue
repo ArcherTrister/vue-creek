@@ -226,7 +226,6 @@ import TableFooter from './table-footer';
 
 import dataHandle from './mixins/data-handle.js';
 import renderDom from './dom/renderDom.js';
-// console.log(renderDom)
 
 let tableIdSeed = 1;
 
@@ -449,8 +448,6 @@ export default {
         this.layout.updateElsHeight();
       }
       this.layout.updateColumnsWidth();
-      //
-      // console.log('====================================================')
     }
   },
 
