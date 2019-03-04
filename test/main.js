@@ -8,6 +8,7 @@ import Creek from '../lib/index';
 import '../lib/theme-chalk/index.css';
 
 // Vue.use(Element);
+console.log(Creek);
 Vue.use(Creek);
 
 Vue.config.productionTip = false;

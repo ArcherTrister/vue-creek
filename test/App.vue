@@ -4,7 +4,7 @@
     <!-- <DefaultVideo :sources="defaultSources"
                   :options="defaultOptions"></DefaultVideo> -->
     <live-video :sources="liveSources"
-               :options="liveOptions"></live-video>
+                :options="liveOptions"></live-video>
     <!-- <BigdataTable :data="tableData"
      :height="258"
                   style="width: 100%">
@@ -58,6 +58,9 @@ export default {
         address: '上海市普陀区金沙江路 1516 弄'
       }]
     };
+  },
+  mounted() {
+    console.log(this.$Utils);
   }
 };
 </script>

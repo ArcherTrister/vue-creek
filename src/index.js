@@ -8,6 +8,8 @@ import LiveVideo from '../packages/live-video/index.js';
 import locale from 'vue-creek/src/locale';
 import CollapseTransition from 'vue-creek/src/transitions/collapse-transition';
 
+import Utils from '../commons/utils/index.js';
+
 const components = [
   BigdataTable,
   TableColumn,
@@ -17,12 +19,20 @@ const components = [
   CollapseTransition
 ];
 
+const prototypes = [
+  Utils
+];
+
 const install = function(Vue, opts = {}) {
   locale.use(opts.locale);
   locale.i18n(opts.i18n);
 
   components.forEach(component => {
     Vue.component(component.name, component);
+  });
+
+  prototypes.forEach(prototype => {
+    Object.defineProperty(Vue.prototype, prototype.name(), { value: prototype });
   });
 
   Vue.prototype.$CREEK = {
