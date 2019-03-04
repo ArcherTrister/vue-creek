@@ -2,14 +2,14 @@
 
 import BigdataTable from '../packages/bigdata-table/index.js';
 import DefaultVideo from '../packages/default-video/index.js';
-import FlvVideo from '../packages/flv-video/index.js';
+import LiveVideo from '../packages/live-video/index.js';
 import locale from 'vue-creek/src/locale';
 import CollapseTransition from 'vue-creek/src/transitions/collapse-transition';
 
 const components = [
   BigdataTable,
   DefaultVideo,
-  FlvVideo,
+  LiveVideo,
   CollapseTransition
 ];
 
@@ -41,5 +41,5 @@ export default {
   CollapseTransition,
   BigdataTable,
   DefaultVideo,
-  FlvVideo
+  LiveVideo
 };

@@ -1,5 +1,5 @@
 {
   "bigdata-table": "./packages/bigdata-table/index.js",
   "default-video": "./packages/default-video/index.js",
-  "flv-video": "./packages/flv-video/index.js"
+  "live-video": "./packages/live-video/index.js"
 }

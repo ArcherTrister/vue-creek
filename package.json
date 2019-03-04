@@ -1,6 +1,6 @@
 {
   "name": "vue-creek",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A Component Library for Vue.js.",
   "main": "lib/vue-creek.common.js",
   "files": [
@@ -50,7 +50,6 @@
   "style": "lib/theme-chalk/index.css",
   "dependencies": {
     "async-validator": "~1.8.1",
-    "babel-helper-vue-jsx-merge-props": "^2.0.0",
     "deepmerge": "^1.2.0",
     "normalize-wheel": "^1.0.1",
     "resize-observer-polyfill": "^1.5.0",
@@ -140,8 +139,6 @@
     "uglifyjs-webpack-plugin": "^2.1.1",
     "uppercamelcase": "^1.1.0",
     "url-loader": "^1.0.1",
-    "vue": "^2.5.16",
-    "vue-creek": "^1.0.3",
     "vue-loader": "^15.2.4",
     "vue-markdown-loader": "^2.4.1",
     "vue-router": "^3.0.1",

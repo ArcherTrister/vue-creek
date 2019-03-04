@@ -1,11 +1,10 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <!-- <FlvVideo></FlvVideo> -->
-    <!-- <DefaultVideo :sources="sources"
-                  :options="options"></DefaultVideo> -->
-    <LiveVideo :sources="sources"
-               :options="options"></LiveVideo>
+    <DefaultVideo :sources="defaultSources"
+                  :options="defaultOptions"></DefaultVideo>
+    <LiveVideo :sources="liveSources"
+               :options="liveOptions"></LiveVideo>
     <router-view />
   </div>
 </template>
@@ -15,8 +14,10 @@ export default {
   name: 'App',
   data() {
     return {
-      sources: { src: 'https://cn-nmghhht-cu-live-04.live-play.acgvideo.com/live-bvc/282029/live_16539048_6881003.flv?expires=1551631345&ssig=HVO8oak55paQYQJ-uPhKBA&oi=3721737304&trid=061fcb85c1d3449c9d0bb13f0366e726', type: 'flv' },
-      options: { volume: 0.1, showPlayBtn: true,
+      defaultSources: { src: 'http://www.w3school.com.cn/i/movie.ogg', type: 'video/ogg'},
+      defaultOptions: { volume: 0.1},
+      liveSources: { src: 'http://220.165.9.44:16604/RealplayFlv.do?DevIDNO=016666666666&Channel=0&StreamType=1', type: 'flv' },
+      liveOptions: { volume: 0.1, showPlayBtn: true,
         showSlider: true,
         showTime: true,
         showVol: false,

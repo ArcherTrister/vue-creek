@@ -83,7 +83,7 @@
         </div>
         <div class="__cov-contrl-video-time"
              v-show="options.showTime">
-          <span class="__cov-contrl-video-time-text">{{video.displayTime}}</span>
+          <span class="__cov-contrl-video-time-text" title="直播时间">{{video.displayTime}}</span>
         </div>
         <div class="__cov-contrl-vol-box"
              v-show="options.showVol">
@@ -182,19 +182,6 @@ const getMousePosition = function(e, type = 'x') {
   }
   return e.pageY;
 };
-// const pad = (val) => {
-//   val = Math.floor(val);
-//   if (val < 10) {
-//     return '0' + val;
-//   }
-//   return val + '';
-// };
-// const timeParse = (sec) => {
-//   let min = 0;
-//   min = Math.floor(sec / 60);
-//   sec = sec - min * 60;
-//   return pad(min) + ':' + pad(sec);
-// };
 export default {
   name: 'LiveVideo',
   props: {
@@ -227,7 +214,8 @@ export default {
   },
   data() {
     return {
-      startTime: new Date(),
+      timerOut: null,
+      startTime: null,
       firstPlay: true,
       $video: null,
       $flvVideo: null,
@@ -237,7 +225,7 @@ export default {
         current: 0,
         loaded: 0,
         moving: false,
-        displayTime: '00:00',
+        displayTime: '00:00:00',
         pos: {
           start: 0,
           width: 0,
@@ -275,15 +263,15 @@ export default {
   },
   ready() {
     this.init();
-    this.startTime = new Date();
   },
   mounted() {
     this.init();
-    this.startTime = new Date();
   },
   beforeDestroy() {
     document.body.removeEventListener('mousemove', this.mouseMoveAction);
     document.body.removeEventListener('mouseup', this.mouseUpAction);
+    clearTimeout(this.timerOut);
+    this.timerOut = null;
   },
   methods: {
     init() {
@@ -345,7 +333,7 @@ export default {
       this.video.pos.start = $videoSlider.getBoundingClientRect().left;
       this.video.pos.innerWidth = $videoInner.getBoundingClientRect().width;
       this.video.pos.width = $videoSlider.getBoundingClientRect().width - this.video.pos.innerWidth;
-      this.getTime();
+      this.getVideoTime();
     },
     mouseEnterVideo() {
       if (this.tmp.contrlHideTimer) {
@@ -366,7 +354,7 @@ export default {
     toggleContrlShow() {
       this.state.contrlShow = !this.state.contrlShow;
     },
-    getTime() {
+    getVideoTime() {
       this.$video.addEventListener('durationchange', (e) => {
         console.log(e);
       });
@@ -382,11 +370,14 @@ export default {
       this.state.playing = !this.state.playing;
       if (this.$flvVideo) {
         if (this.state.playing) {
-          if (this.firstPlay) { this.firstPlay = false; this.showRuntime(); }
+          if (this.firstPlay) { this.firstPlay = false; this.startTime = new Date(); }
+          if (this.timerOut) {this.showRuntime();}
           this.$flvVideo.play();
           this.mouseLeaveVideo();
         } else {
           this.$flvVideo.pause();
+          clearTimeout(this.timerOut);
+          this.timerOut = null;
         }
       }
     },
@@ -468,9 +459,8 @@ export default {
       this.video.moving = false;
     },
     showRuntime() {
-      setTimeout(this.showRuntime(), 1000); // 每秒运行一次函数
-      let Y = new Date();
-      let T = (Y.getTime() - this.startTime.getTime()); // 获取当前时间与指定时间之间的时间间隔（ms）
+      this.timerOut = setTimeout(this.showRuntime, 1000); // 每秒运行一次函数
+      let T = (new Date().getTime() - this.startTime.getTime()); // 获取当前时间与指定时间之间的时间间隔（ms）
       let i = 24 * 60 * 60 * 1000;
       let d = T / i;
       let D = Math.floor(d); // 计算天数并向下取整
@@ -480,7 +470,7 @@ export default {
       let M = Math.floor(m); // 计算剩余不足一小时的分钟数并向下取整
       let s = (m - M) * 60;
       let S = Math.floor(s); // 计算剩余不足一分钟的秒数并向下取整
-      this.video.displayTime = Y + D + ' ' + H + ':' + M + ':' + S + ':';
+      this.video.displayTime = (D > 0 ? (D + '天') : '') + (H > 10 ? H : ('0' + H)) + ':' + (M > 10 ? M : ('0' + M)) + ':' + (S > 10 ? S : ('0' + S));
     }
   }
 };
