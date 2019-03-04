@@ -3,12 +3,11 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
+import Element from 'element-ui';
 import Creek from '../lib/index';
 import '../lib/theme-chalk/index.css';
-// import Creek from 'vue-creek';
-// import flv from '../src/utils/flv.js';
-// console.log(flv);
-console.log(Creek);
+
+Vue.use(Element);
 Vue.use(Creek);
 
 Vue.config.productionTip = false;
