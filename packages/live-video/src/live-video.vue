@@ -83,7 +83,8 @@
         </div>
         <div class="__cov-contrl-video-time"
              v-show="options.showTime">
-          <span class="__cov-contrl-video-time-text" title="直播时间">{{video.displayTime}}</span>
+          <span class="__cov-contrl-video-time-text"
+                title="直播时间">{{video.displayTime}}</span>
         </div>
         <div class="__cov-contrl-vol-box"
              v-show="options.showVol">
@@ -182,6 +183,19 @@ const getMousePosition = function(e, type = 'x') {
   }
   return e.pageY;
 };
+// const pad = (val) => {
+//   val = Math.floor(val);
+//   if (val < 10) {
+//     return '0' + val;
+//   }
+//   return val + '';
+// };
+// const timeParse = (sec) => {
+//   let min = 0;
+//   min = Math.floor(sec / 60);
+//   sec = sec - min * 60;
+//   return pad(min) + ':' + pad(sec);
+// };
 export default {
   name: 'LiveVideo',
   props: {
@@ -350,41 +364,21 @@ export default {
       this.state.contrlShow = !this.state.contrlShow;
     },
     getVideoTime() {
-      console.log('======================================================================');
       this.$video.addEventListener('durationchange', (e) => {
-        console.log('e', e);
+        console.log(e);
       });
       this.$video.addEventListener('progress', (e) => {
         try {
           let end = this.$video.buffered.end(0);
-          console.log('end', end);
-          console.log('duration', this.$video.duration);
-          console.log('liveVideoduration', this.$liveVideo.duration);
           this.video.loaded = (-1 + (end / this.$video.duration)) * 100;
+          console.log('loaded', this.video.loaded);
         } catch (error) {
-          console.log('error', error);
+          console.log(error);
           this.video.loaded = 0;
         }
       });
       console.log('$Video', this.$video.duration);
       this.video.len = this.$video.duration;
-
-      console.log('======================================================================');
-
-      // this.$liveVideo.addEventListener('durationchange', (e) => {
-      //   console.log('e', e);
-      // });
-      // this.$liveVideo.addEventListener('progress', (e) => {
-      //   try {
-      //     let end = this.$liveVideo.buffered.end(0);
-      //     console.log('end', end);
-      //     this.video.loaded = (-1 + (end / this.$liveVideo.duration)) * 100;
-      //   } catch (error) {
-      //     this.video.loaded = 0;
-      //   }
-      // });
-      // console.log('$liveVideo', this.$liveVideo.duration);
-      // this.video.len = this.$liveVideo.duration;
     },
     setVideoByTime(percent) {
       this.$video.currentTime = Math.floor(percent * this.video.len);
@@ -394,15 +388,28 @@ export default {
       if (this.$liveVideo) {
         if (this.state.playing) {
           if (this.firstPlay) { this.firstPlay = false; this.startTime = new Date(); }
-          if (this.timerOut == null) {this.showRuntime();}
+          if (this.timerOut == null) { this.showRuntime(); }
           this.$liveVideo.play();
           this.mouseLeaveVideo();
+          this.$video.addEventListener('timeupdate', this.timeline);
+          this.$video.addEventListener('ended', (e) => {
+            this.state.playing = false;
+            this.video.pos.current = 0;
+            this.$video.currentTime = 0;
+          });
+
         } else {
           this.$liveVideo.pause();
           clearTimeout(this.timerOut);
           this.timerOut = null;
         }
       }
+    },
+    timeline() {
+      const percent = this.$video.currentTime / this.$video.duration;
+      this.video.pos.current = (this.video.pos.width * percent).toFixed(3);
+      console.log('current', this.video.pos.current);
+      // this.video.displayTime = timeParse(this.$video.duration - this.$video.currentTime);
     },
     volMove(e) {
       this.initVol();
