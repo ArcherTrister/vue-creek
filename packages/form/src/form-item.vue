@@ -1,31 +1,31 @@
 <template>
-  <div class="el-form-item"
+  <div class="vc-form-item"
        :class="[{
-      'el-form-item--feedback': elForm && elForm.statusIcon,
+      'vc-form-item--feedback': elForm && elForm.statusIcon,
       'is-error': validateState === 'error',
       'is-validating': validateState === 'validating',
       'is-success': validateState === 'success',
       'is-required': isRequired || required,
       'is-no-asterisk': elForm && elForm.hideRequiredAsterisk
     },
-    sizeClass ? 'el-form-item--' + sizeClass : ''
+    sizeClass ? 'vc-form-item--' + sizeClass : ''
   ]">
     <label :for="labelFor"
-           class="el-form-item__label"
+           class="vc-form-item__label"
            :style="labelStyle"
            v-if="label || $slots.label">
       <slot name="label">{{label + form.labelSuffix}}</slot>
     </label>
-    <div class="el-form-item__content"
+    <div class="vc-form-item__content"
          :style="contentStyle">
       <slot></slot>
-      <transition name="el-zoom-in-top">
+      <transition name="vc-zoom-in-top">
         <slot v-if="validateState === 'error' && showMessage && form.showMessage"
               name="error"
               :error="validateMessage">
-          <div class="el-form-item__error"
+          <div class="vc-form-item__error"
                :class="{
-              'el-form-item__error--inline': typeof inlineMessage === 'boolean'
+              'vc-form-item__error--inline': typeof inlineMessage === 'boolean'
                 ? inlineMessage
                 : (elForm && elForm.inlineMessage || false)
             }">
@@ -38,9 +38,9 @@
 </template>
 <script>
 import AsyncValidator from 'async-validator';
-import emitter from 'element-ui/src/mixins/emitter';
-import objectAssign from 'element-ui/src/utils/merge';
-import { noop, getPropByPath } from 'element-ui/src/utils/util';
+import emitter from 'vue-creek/src/mixins/emitter';
+import objectAssign from 'vue-creek/src/utils/merge';
+import { noop, getPropByPath } from 'vue-creek/src/utils/util';
 
 export default {
   name: 'VcFormItem',
@@ -49,7 +49,7 @@ export default {
 
   mixins: [emitter],
 
-  provide () {
+  provide() {
     return {
       elFormItem: this
     };
@@ -82,20 +82,20 @@ export default {
   watch: {
     error: {
       immediate: true,
-      handler (value) {
+      handler(value) {
         this.validateMessage = value;
         this.validateState = value ? 'error' : '';
       }
     },
-    validateStatus (value) {
+    validateStatus(value) {
       this.validateState = value;
     }
   },
   computed: {
-    labelFor () {
+    labelFor() {
       return this.for || this.prop;
     },
-    labelStyle () {
+    labelStyle() {
       const ret = {};
       if (this.form.labelPosition === 'top') return ret;
       const labelWidth = this.labelWidth || this.form.labelWidth;
@@ -104,7 +104,7 @@ export default {
       }
       return ret;
     },
-    contentStyle () {
+    contentStyle() {
       const ret = {};
       const label = this.label;
       if (this.form.labelPosition === 'top' || this.form.inline) return ret;
@@ -115,7 +115,7 @@ export default {
       }
       return ret;
     },
-    form () {
+    form() {
       let parent = this.$parent;
       let parentName = parent.$options.componentName;
       while (parentName !== 'VcForm') {
@@ -127,7 +127,7 @@ export default {
       }
       return parent;
     },
-    fieldValue () {
+    fieldValue() {
       const model = this.form.model;
       if (!model || !this.prop) { return; }
 
@@ -138,7 +138,7 @@ export default {
 
       return getPropByPath(model, path, true).v;
     },
-    isRequired () {
+    isRequired() {
       let rules = this.getRules();
       let isRequired = false;
 
@@ -153,17 +153,17 @@ export default {
       }
       return isRequired;
     },
-    _formSize () {
+    _formSize() {
       return this.elForm.size;
     },
-    elFormItemSize () {
+    elFormItemSize() {
       return this.size || this._formSize;
     },
-    sizeClass () {
+    sizeClass() {
       return this.elFormItemSize || (this.$ELEMENT || {}).size;
     }
   },
-  data () {
+  data() {
     return {
       validateState: '',
       validateMessage: '',
@@ -173,7 +173,7 @@ export default {
     };
   },
   methods: {
-    validate (trigger, callback = noop) {
+    validate(trigger, callback = noop) {
       this.validateDisabled = false;
       const rules = this.getFilteredRule(trigger);
       if ((!rules || rules.length === 0) && this.required === undefined) {
@@ -204,12 +204,12 @@ export default {
         this.elForm && this.elForm.$emit('validate', this.prop, !errors, this.validateMessage || null);
       });
     },
-    clearValidate () {
+    clearValidate() {
       this.validateState = '';
       this.validateMessage = '';
       this.validateDisabled = false;
     },
-    resetField () {
+    resetField() {
       this.validateState = '';
       this.validateMessage = '';
 
@@ -229,9 +229,9 @@ export default {
         prop.o[prop.k] = this.initialValue;
       }
 
-      this.broadcast('ElTimeSelect', 'fieldReset', this.initialValue);
+      this.broadcast('VcTimeSelect', 'fieldReset', this.initialValue);
     },
-    getRules () {
+    getRules() {
       let formRules = this.form.rules;
       const selfRules = this.rules;
       const requiredRule = this.required !== undefined ? { required: !!this.required } : [];
@@ -241,7 +241,7 @@ export default {
 
       return [].concat(selfRules || formRules || []).concat(requiredRule);
     },
-    getFilteredRule (trigger) {
+    getFilteredRule(trigger) {
       const rules = this.getRules();
 
       return rules.filter(rule => {
@@ -253,10 +253,10 @@ export default {
         }
       }).map(rule => objectAssign({}, rule));
     },
-    onFieldBlur () {
+    onFieldBlur() {
       this.validate('blur');
     },
-    onFieldChange () {
+    onFieldChange() {
       if (this.validateDisabled) {
         this.validateDisabled = false;
         return;
@@ -265,7 +265,7 @@ export default {
       this.validate('change');
     }
   },
-  mounted () {
+  mounted() {
     if (this.prop) {
       this.dispatch('VcForm', 'el.form.addField', [this]);
 
@@ -285,7 +285,7 @@ export default {
       }
     }
   },
-  beforeDestroy () {
+  beforeDestroy() {
     this.dispatch('VcForm', 'el.form.removeField', [this]);
   }
 };

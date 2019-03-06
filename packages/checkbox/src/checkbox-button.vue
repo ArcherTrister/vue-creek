@@ -143,7 +143,7 @@ export default {
     },
 
     size() {
-      return this._checkboxGroup.checkboxGroupSize || this._elFormItemSize || (this.$CREEK || {}).size;
+      return this._checkboxGroup.checkboxGroupSize || this._elFormItemSize || (this.$ELEMENT || {}).size;
     },
 
     isDisabled() {

@@ -3,10 +3,6 @@
 import BigdataTable from '../packages/bigdata-table/index.js';
 import TableColumn from '../packages/table-column/index.js';
 import TableColumnPro from '../packages/table-column-pro/index.js';
-import Input from '../packages/input/index.js';
-import Select from '../packages/select/index.js';
-import DatePicker from '../packages/date-picker/index.js';
-import TimePicker from '../packages/time-picker/index.js';
 import Tooltip from '../packages/tooltip/index.js';
 import DefaultVideo from '../packages/default-video/index.js';
 import LiveVideo from '../packages/live-video/index.js';
@@ -19,10 +15,6 @@ const components = [
   BigdataTable,
   TableColumn,
   TableColumnPro,
-  Input,
-  Select,
-  DatePicker,
-  TimePicker,
   Tooltip,
   DefaultVideo,
   LiveVideo,
@@ -66,10 +58,6 @@ export default {
   BigdataTable,
   TableColumn,
   TableColumnPro,
-  Input,
-  Select,
-  DatePicker,
-  TimePicker,
   Tooltip,
   DefaultVideo,
   LiveVideo

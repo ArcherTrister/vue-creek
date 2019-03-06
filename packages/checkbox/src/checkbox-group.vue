@@ -29,7 +29,7 @@ export default {
       return (this.elFormItem || {}).elFormItemSize;
     },
     checkboxGroupSize() {
-      return this.size || this._elFormItemSize || (this.$CREEK || {}).size;
+      return this.size || this._elFormItemSize || (this.$ELEMENT || {}).size;
     }
   },
 

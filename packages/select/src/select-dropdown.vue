@@ -26,7 +26,7 @@ export default {
     },
 
     popperOptions: {
-      default () {
+      default() {
         return {
           gpuAcceleration: false
         };
@@ -43,25 +43,25 @@ export default {
     }
   },
 
-  data () {
+  data() {
     return {
       minWidth: ''
     };
   },
 
   computed: {
-    popperClass () {
+    popperClass() {
       return this.$parent.popperClass;
     }
   },
 
   watch: {
-    '$parent.inputWidth' () {
+    '$parent.inputWidth'() {
       this.minWidth = this.$parent.$el.getBoundingClientRect().width + 'px';
     }
   },
 
-  mounted () {
+  mounted() {
     this.referenceElm = this.$parent.$refs.reference.$el;
     this.$parent.popperElm = this.popperElm = this.$el;
     this.$on('updatePopper', () => {

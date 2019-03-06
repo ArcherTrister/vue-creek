@@ -120,7 +120,7 @@ export default {
     }
   },
 
-  data () {
+  data() {
     return {
       textareaCalcStyle: {},
       hovering: false,
@@ -152,7 +152,7 @@ export default {
     /** @Deprecated in next major version */
     autoComplete: {
       type: String,
-      validator (val) {
+      validator(val) {
         process.env.NODE_ENV !== 'production' &&
           console.warn('[Element Warn][Input]\'auto-complete\' property will be deprecated in next major version. please use \'autocomplete\' instead.');
         return true;
@@ -177,42 +177,42 @@ export default {
   },
 
   computed: {
-    _elFormItemSize () {
+    _elFormItemSize() {
       return (this.elFormItem || {}).elFormItemSize;
     },
-    validateState () {
+    validateState() {
       return this.elFormItem ? this.elFormItem.validateState : '';
     },
-    needStatusIcon () {
+    needStatusIcon() {
       return this.elForm ? this.elForm.statusIcon : false;
     },
-    validateIcon () {
+    validateIcon() {
       return {
         validating: 'vc-icon-loading',
         success: 'vc-icon-circle-check',
         error: 'vc-icon-circle-close'
       }[this.validateState];
     },
-    textareaStyle () {
+    textareaStyle() {
       return merge({}, this.textareaCalcStyle, { resize: this.resize });
     },
-    inputSize () {
+    inputSize() {
       return this.size || this._elFormItemSize || (this.$ELEMENT || {}).size;
     },
-    inputDisabled () {
+    inputDisabled() {
       return this.disabled || (this.elForm || {}).disabled;
     },
-    nativeInputValue () {
+    nativeInputValue() {
       return this.value === null || this.value === undefined ? '' : this.value;
     },
-    showClear () {
+    showClear() {
       return this.clearable &&
         !this.inputDisabled &&
         !this.readonly &&
         this.nativeInputValue &&
         (this.focused || this.hovering);
     },
-    showPwdVisible () {
+    showPwdVisible() {
       return this.showPassword &&
         !this.inputDisabled &&
         !this.readonly &&
@@ -221,7 +221,7 @@ export default {
   },
 
   watch: {
-    value (val) {
+    value(val) {
       this.$nextTick(this.resizeTextarea);
       if (this.validateEvent) {
         this.dispatch('VcFormItem', 'el.form.change', [val]);
@@ -230,13 +230,13 @@ export default {
   },
 
   methods: {
-    focus () {
+    focus() {
       this.getInput().focus();
     },
-    blur () {
+    blur() {
       this.getInput().blur();
     },
-    getMigratingConfig () {
+    getMigratingConfig() {
       return {
         props: {
           'icon': 'icon is removed, use suffix-icon / prefix-icon instead.',
@@ -247,17 +247,17 @@ export default {
         }
       };
     },
-    handleBlur (event) {
+    handleBlur(event) {
       this.focused = false;
       this.$emit('blur', event);
       if (this.validateEvent) {
         this.dispatch('VcFormItem', 'el.form.blur', [this.value]);
       }
     },
-    select () {
+    select() {
       this.getInput().select();
     },
-    resizeTextarea () {
+    resizeTextarea() {
       if (this.$isServer) return;
       const { autosize, type } = this;
       if (type !== 'textarea') return;
@@ -272,11 +272,11 @@ export default {
 
       this.textareaCalcStyle = calcTextareaHeight(this.$refs.textarea, minRows, maxRows);
     },
-    handleFocus (event) {
+    handleFocus(event) {
       this.focused = true;
       this.$emit('focus', event);
     },
-    handleComposition (event) {
+    handleComposition(event) {
       if (event.type === 'compositionstart') {
         this.isOnComposition = true;
       }
@@ -285,7 +285,7 @@ export default {
         this.handleInput(event);
       }
     },
-    handleInput (event) {
+    handleInput(event) {
       if (this.isOnComposition) return;
 
       // hack for https://github.com/ElemeFE/element/issues/8548
@@ -301,10 +301,10 @@ export default {
         input.value = this.value;
       });
     },
-    handleChange (event) {
+    handleChange(event) {
       this.$emit('change', event.target.value);
     },
-    calcIconOffset (place) {
+    calcIconOffset(place) {
       let elList = [].slice.call(this.$el.querySelectorAll(`.vc-input__${place}`) || []);
       if (!elList.length) return;
       let el = null;
@@ -327,34 +327,34 @@ export default {
         el.removeAttribute('style');
       }
     },
-    updateIconOffset () {
+    updateIconOffset() {
       this.calcIconOffset('prefix');
       this.calcIconOffset('suffix');
     },
-    clear () {
+    clear() {
       this.$emit('input', '');
       this.$emit('change', '');
       this.$emit('clear');
     },
-    handlePasswordVisible () {
+    handlePasswordVisible() {
       this.passwordVisible = !this.passwordVisible;
       this.focus();
     },
-    getInput () {
+    getInput() {
       return this.$refs.input || this.$refs.textarea;
     }
   },
 
-  created () {
+  created() {
     this.$on('inputSelect', this.select);
   },
 
-  mounted () {
+  mounted() {
     this.resizeTextarea();
     this.updateIconOffset();
   },
 
-  updated () {
+  updated() {
     this.$nextTick(this.updateIconOffset);
   }
 };

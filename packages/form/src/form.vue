@@ -1,21 +1,21 @@
 <template>
-  <form class="el-form"
+  <form class="vc-form"
         :class="[
-    labelPosition ? 'el-form--label-' + labelPosition : '',
-    { 'el-form--inline': inline }
+    labelPosition ? 'vc-form--labvc-' + labelPosition : '',
+    { 'vc-form--inline': inline }
   ]">
     <slot></slot>
   </form>
 </template>
 <script>
-import objectAssign from 'element-ui/src/utils/merge';
+import objectAssign from 'vue-creek/src/utils/merge';
 
 export default {
   name: 'VcForm',
 
   componentName: 'VcForm',
 
-  provide () {
+  provide() {
     return {
       elForm: this
     };
@@ -49,18 +49,18 @@ export default {
     }
   },
   watch: {
-    rules () {
+    rules() {
       if (this.validateOnRuleChange) {
         this.validate(() => { });
       }
     }
   },
-  data () {
+  data() {
     return {
       fields: []
     };
   },
-  created () {
+  created() {
     this.$on('el.form.addField', (field) => {
       if (field) {
         this.fields.push(field);
@@ -74,7 +74,7 @@ export default {
     });
   },
   methods: {
-    resetFields () {
+    resetFields() {
       if (!this.model) {
         console.warn('[Element Warn][Form]model is required for resetFields to work.');
         return;
@@ -83,7 +83,7 @@ export default {
         field.resetField();
       });
     },
-    clearValidate (props = []) {
+    clearValidate(props = []) {
       const fields = props.length
         ? (typeof props === 'string'
           ? this.fields.filter(field => props === field.prop)
@@ -93,7 +93,7 @@ export default {
         field.clearValidate();
       });
     },
-    validate (callback) {
+    validate(callback) {
       if (!this.model) {
         console.warn('[Element Warn][Form]model is required for validate to work!');
         return;
@@ -103,7 +103,7 @@ export default {
       // if no callback, return promise
       if (typeof callback !== 'function' && window.Promise) {
         promise = new window.Promise((resolve, reject) => {
-          callback = function (valid) {
+          callback = function(valid) {
             valid ? resolve(valid) : reject(valid);
           };
         });
@@ -132,7 +132,7 @@ export default {
         return promise;
       }
     },
-    validateField (props, cb) {
+    validateField(props, cb) {
       props = [].concat(props);
       const fields = this.fields.filter(field => props.indexOf(field.prop) !== -1);
       if (!fields.length) {

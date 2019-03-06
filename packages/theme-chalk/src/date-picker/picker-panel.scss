@@ -1,4 +1,4 @@
-@import '../common/var';
+@import "../common/var";
 
 @include b(picker-panel) {
   color: $--color-text-regular;
@@ -11,7 +11,7 @@
 
   @include e((body, body-wrapper)) {
     &::after {
-      content: '';
+      content: "";
       display: table;
       clear: both;
     }
@@ -98,7 +98,7 @@
   }
 }
 
-.vc-picker-panel *[slot='sidebar'],
+.vc-picker-panel *[slot=sidebar],
 .vc-picker-panel__sidebar {
   position: absolute;
   top: 0;
@@ -111,7 +111,7 @@
   overflow: auto;
 }
 
-.vc-picker-panel *[slot='sidebar'] + .vc-picker-panel__body,
+.vc-picker-panel *[slot=sidebar] + .vc-picker-panel__body,
 .vc-picker-panel__sidebar + .vc-picker-panel__body {
   margin-left: 110px;
 }

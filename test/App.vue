@@ -8,17 +8,17 @@
     <BigdataTable :data="tableData"
                   :height="258"
                   style="width: 100%">
-      <vc-table-column-pro prop="date"
+      <!-- <vc-table-column-pro prop="date"
                            :callback="requestTransactionLogs"
                            :startDate.sync="request_params.startDate"
                            :endDate.sync="request_params.endDate"
                            label="日期"
                            renderType="date"
-                           :width="180"></vc-table-column-pro>
-      <!-- <vc-table-column prop="date"
+                           :width="180"></vc-table-column-pro> -->
+      <vc-table-column prop="date"
                        label="日期"
                        width="180">
-      </vc-table-column> -->
+      </vc-table-column>
       <vc-table-column prop="name"
                        label="姓名"
                        width="180">

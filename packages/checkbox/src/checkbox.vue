@@ -143,7 +143,7 @@ export default {
     },
 
     checkboxSize() {
-      const temCheckboxSize = this.size || this._elFormItemSize || (this.$CREEK || {}).size;
+      const temCheckboxSize = this.size || this._elFormItemSize || (this.$ELEMENT || {}).size;
       return this.isGroup
         ? this._checkboxGroup.checkboxGroupSize || temCheckboxSize
         : temCheckboxSize;

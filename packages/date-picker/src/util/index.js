@@ -2,13 +2,28 @@ import dateUtil from 'vue-creek/src/utils/date';
 import { t } from 'vue-creek/src/locale';
 
 const weeks = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+const months = [
+  'jan',
+  'feb',
+  'mar',
+  'apr',
+  'may',
+  'jun',
+  'jul',
+  'aug',
+  'sep',
+  'oct',
+  'nov',
+  'dec'
+];
 const getI18nSettings = () => {
   return {
-    dayNamesShort: weeks.map(week => t(`el.datepicker.weeks.${ week }`)),
-    dayNames: weeks.map(week => t(`el.datepicker.weeks.${ week }`)),
-    monthNamesShort: months.map(month => t(`el.datepicker.months.${ month }`)),
-    monthNames: months.map((month, index) => t(`el.datepicker.month${ index + 1 }`)),
+    dayNamesShort: weeks.map(week => t(`el.datepicker.weeks.${week}`)),
+    dayNames: weeks.map(week => t(`el.datepicker.weeks.${week}`)),
+    monthNamesShort: months.map(month => t(`el.datepicker.months.${month}`)),
+    monthNames: months.map((month, index) =>
+      t(`el.datepicker.month${index + 1}`)
+    ),
     amPm: ['am', 'pm']
   };
 };
@@ -52,7 +67,7 @@ export const getDayCountOfMonth = function(year, month) {
   }
 
   if (month === 1) {
-    if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+    if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
       return 29;
     } else {
       return 28;
@@ -100,12 +115,20 @@ export const getWeekNumber = function(src) {
   const date = new Date(src.getTime());
   date.setHours(0, 0, 0, 0);
   // Thursday in current week decides the year.
-  date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
+  date.setDate(date.getDate() + 3 - ((date.getDay() + 6) % 7));
   // January 4 is always in week 1.
   const week1 = new Date(date.getFullYear(), 0, 4);
   // Adjust to Thursday in week 1 and count number of weeks from date to week 1.
   // Rounding should be fine for Daylight Saving Time. Its shift should never be more than 12 hours.
-  return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
+  return (
+    1 +
+    Math.round(
+      ((date.getTime() - week1.getTime()) / 86400000 -
+        3 +
+        ((week1.getDay() + 6) % 7)) /
+        7
+    )
+  );
 };
 
 export const getRangeHours = function(ranges) {
@@ -166,15 +189,31 @@ export const getRangeMinutes = function(ranges, hour) {
 
 export const range = function(n) {
   // see https://stackoverflow.com/questions/3746725/create-a-javascript-array-containing-1-n
-  return Array.apply(null, {length: n}).map((_, n) => n);
+  return Array.apply(null, { length: n }).map((_, n) => n);
 };
 
 export const modifyDate = function(date, y, m, d) {
-  return new Date(y, m, d, date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds());
+  return new Date(
+    y,
+    m,
+    d,
+    date.getHours(),
+    date.getMinutes(),
+    date.getSeconds(),
+    date.getMilliseconds()
+  );
 };
 
 export const modifyTime = function(date, h, m, s) {
-  return new Date(date.getFullYear(), date.getMonth(), date.getDate(), h, m, s, date.getMilliseconds());
+  return new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate(),
+    h,
+    m,
+    s,
+    date.getMilliseconds()
+  );
 };
 
 export const modifyWithTimeString = (date, time) => {
@@ -182,7 +221,12 @@ export const modifyWithTimeString = (date, time) => {
     return date;
   }
   time = parseDate(time, 'HH:mm:ss');
-  return modifyTime(date, time.getHours(), time.getMinutes(), time.getSeconds());
+  return modifyTime(
+    date,
+    time.getHours(),
+    time.getMinutes(),
+    time.getSeconds()
+  );
 };
 
 export const clearTime = function(date) {
@@ -190,16 +234,25 @@ export const clearTime = function(date) {
 };
 
 export const clearMilliseconds = function(date) {
-  return new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), 0);
+  return new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate(),
+    date.getHours(),
+    date.getMinutes(),
+    date.getSeconds(),
+    0
+  );
 };
 
 export const limitTimeRange = function(date, ranges, format = 'HH:mm:ss') {
   // TODO: refactory a more elegant solution
   if (ranges.length === 0) return date;
-  const normalizeDate = date => dateUtil.parse(dateUtil.format(date, format), format);
+  const normalizeDate = date =>
+    dateUtil.parse(dateUtil.format(date, format), format);
   const ndate = normalizeDate(date);
   const nranges = ranges.map(range => range.map(normalizeDate));
-  if (nranges.some(nrange => ndate >= nrange[0] && ndate <= nrange[1])) return date;
+  if (nranges.some(nrange => ndate >= nrange[0] && ndate <= nrange[1])) {return date;}
 
   let minDate = nranges[0][0];
   let maxDate = nranges[0][0];
@@ -211,12 +264,7 @@ export const limitTimeRange = function(date, ranges, format = 'HH:mm:ss') {
 
   const ret = ndate < minDate ? minDate : maxDate;
   // preserve Year/Month/Date
-  return modifyDate(
-    ret,
-    date.getFullYear(),
-    date.getMonth(),
-    date.getDate()
-  );
+  return modifyDate(ret, date.getFullYear(), date.getMonth(), date.getDate());
 };
 
 export const timeWithinRange = function(date, selectableRange, format) {

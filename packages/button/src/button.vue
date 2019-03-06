@@ -60,19 +60,19 @@ export default {
   },
 
   computed: {
-    _elFormItemSize () {
+    _elFormItemSize() {
       return (this.elFormItem || {}).elFormItemSize;
     },
-    buttonSize () {
+    buttonSize() {
       return this.size || this._elFormItemSize || (this.$ELEMENT || {}).size;
     },
-    buttonDisabled () {
+    buttonDisabled() {
       return this.disabled || (this.elForm || {}).disabled;
     }
   },
 
   methods: {
-    handleClick (evt) {
+    handleClick(evt) {
       this.$emit('click', evt);
     }
   }

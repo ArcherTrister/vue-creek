@@ -39,7 +39,7 @@ export default {
     }
   },
 
-  data () {
+  data() {
     return {
       index: -1,
       groupDisabled: false,
@@ -50,19 +50,19 @@ export default {
   },
 
   computed: {
-    isObject () {
+    isObject() {
       return Object.prototype.toString.call(this.value).toLowerCase() === '[object object]';
     },
 
-    currentLabel () {
+    currentLabel() {
       return this.label || (this.isObject ? '' : this.value);
     },
 
-    currentValue () {
+    currentValue() {
       return this.value || this.label || '';
     },
 
-    itemSelected () {
+    itemSelected() {
       if (!this.select.multiple) {
         return this.isEqual(this.value, this.select.value);
       } else {
@@ -70,7 +70,7 @@ export default {
       }
     },
 
-    limitReached () {
+    limitReached() {
       if (this.select.multiple) {
         return !this.itemSelected &&
           (this.select.value || []).length >= this.select.multipleLimit &&
@@ -82,22 +82,22 @@ export default {
   },
 
   watch: {
-    currentLabel () {
-      if (!this.created && !this.select.remote) this.dispatch('VcSelect', 'setSelected');
+    currentLabel() {
+      if (!this.created && !this.select.remote) this.dispatch('ElSelect', 'setSelected');
     },
-    value (val, oldVal) {
+    value(val, oldVal) {
       const { remote, valueKey } = this.select;
       if (!this.created && !remote) {
         if (valueKey && typeof val === 'object' && typeof oldVal === 'object' && val[valueKey] === oldVal[valueKey]) {
           return;
         }
-        this.dispatch('VcSelect', 'setSelected');
+        this.dispatch('ElSelect', 'setSelected');
       }
     }
   },
 
   methods: {
-    isEqual (a, b) {
+    isEqual(a, b) {
       if (!this.isObject) {
         return a === b;
       } else {
@@ -106,7 +106,7 @@ export default {
       }
     },
 
-    contains (arr = [], target) {
+    contains(arr = [], target) {
       if (!this.isObject) {
         return arr.indexOf(target) > -1;
       } else {
@@ -117,23 +117,23 @@ export default {
       }
     },
 
-    handleGroupDisabled (val) {
+    handleGroupDisabled(val) {
       this.groupDisabled = val;
     },
 
-    hoverItem () {
+    hoverItem() {
       if (!this.disabled && !this.groupDisabled) {
         this.select.hoverIndex = this.select.options.indexOf(this);
       }
     },
 
-    selectOptionClick () {
+    selectOptionClick() {
       if (this.disabled !== true && this.groupDisabled !== true) {
-        this.dispatch('VcSelect', 'handleOptionClick', [this, true]);
+        this.dispatch('ElSelect', 'handleOptionClick', [this, true]);
       }
     },
 
-    queryChange (query) {
+    queryChange(query) {
       this.visible = new RegExp(escapeRegexpString(query), 'i').test(this.currentLabel) || this.created;
       if (!this.visible) {
         this.select.filteredOptionsCount--;
@@ -141,7 +141,7 @@ export default {
     }
   },
 
-  created () {
+  created() {
     this.select.options.push(this);
     this.select.cachedOptions.push(this);
     this.select.optionsCount++;
@@ -151,7 +151,7 @@ export default {
     this.$on('handleGroupDisabled', this.handleGroupDisabled);
   },
 
-  beforeDestroy () {
+  beforeDestroy() {
     this.select.onOptionDestroy(this.select.options.indexOf(this));
   }
 };
