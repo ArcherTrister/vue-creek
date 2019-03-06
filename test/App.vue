@@ -8,17 +8,25 @@
     <BigdataTable :data="tableData"
                   :height="258"
                   style="width: 100%">
-      <!-- <vc-table-column-pro prop="date"
+      <vc-table-column-pro prop="date"
                            :callback="requestTransactionLogs"
                            :startDate.sync="request_params.startDate"
                            :endDate.sync="request_params.endDate"
                            label="日期"
                            renderType="date"
-                           :width="180"></vc-table-column-pro> -->
+                           :width="180"></vc-table-column-pro>
       <vc-table-column prop="date"
                        label="日期"
                        width="180">
       </vc-table-column>
+      <vc-table-column-pro prop="name"
+                           label="客户代码 "
+                           :width="120"
+                           placeholder="请输入客户代码"
+                           :callback="requestTransactionLogs"
+                           renderType="input"
+                           :param.sync="request_params.clientCode"> </vc-table-column-pro>
+      <!-- <vc-table-column-pro  prop="address" label="事件 " placeholder="请选择事件"   :selectList="listEventEnum" :callback="requestTransactionLogs"  renderType="select" :param.sync="request_params.event" :width="100">  </vc-table-column-pro> -->
       <vc-table-column prop="name"
                        label="姓名"
                        width="180">
@@ -34,11 +42,12 @@
 <script>
 export default {
   name: 'App',
-  data() {
+  data () {
     return {
       request_params: {
         startDate: '',
-        endDate: ''
+        endDate: '',
+        clientCode: ''
       },
       defaultSources: { src: 'http://pic.ibaotu.com/00/56/77/28b888piCuvW.mp4', type: 'video/mp4' },
       defaultOptions: { volume: 0.1 },
@@ -70,11 +79,13 @@ export default {
       }]
     };
   },
-  mounted() {
+  mounted () {
     console.log(this.$Utils);
   },
   methods: {
-    requestTransactionLogs() { }
+    requestTransactionLogs (a, b, c, d) {
+      console.log(a, b);
+    }
   }
 };
 </script>

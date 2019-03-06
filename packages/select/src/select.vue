@@ -133,9 +133,9 @@ import Emitter from 'vue-creek/src/mixins/emitter';
 import Focus from 'vue-creek/src/mixins/focus';
 import Locale from 'vue-creek/src/mixins/locale';
 import VcInput from 'vue-creek/packages/input';
-import ElSelectMenu from './select-dropdown.vue';
+import VcSelectMenu from './select-dropdown.vue';
 import VcOption from './option.vue';
-import ElTag from 'vue-creek/packages/tag';
+import VcTag from 'vue-creek/packages/tag';
 import VcScrollbar from 'vue-creek/packages/scrollbar';
 import debounce from 'throttle-debounce/debounce';
 import Clickoutside from 'vue-creek/src/utils/clickoutside';
@@ -150,9 +150,9 @@ import { isKorean } from 'vue-creek/src/utils/shared';
 export default {
   mixins: [Emitter, Locale, Focus('reference'), NavigationMixin],
 
-  name: 'ElSelect',
+  name: 'VcSelect',
 
-  componentName: 'ElSelect',
+  componentName: 'VcSelect',
 
   inject: {
     elForm: {
@@ -236,9 +236,9 @@ export default {
 
   components: {
     VcInput,
-    ElSelectMenu,
+    VcSelectMenu,
     VcOption,
-    ElTag,
+    VcTag,
     VcScrollbar
   },
 
@@ -259,7 +259,7 @@ export default {
       type: String,
       validator(val) {
         process.env.NODE_ENV !== 'production' &&
-          console.warn('[Element Warn][Select]\'auto-complete\' property will be deprecated in next major version. please use \'autocomplete\' instead.');
+          console.warn('[Vue-Creek Warn][Select]\'auto-complete\' property will be deprecated in next major version. please use \'autocomplete\' instead.');
         return true;
       }
     },

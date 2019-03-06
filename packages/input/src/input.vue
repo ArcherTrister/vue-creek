@@ -154,7 +154,7 @@ export default {
       type: String,
       validator(val) {
         process.env.NODE_ENV !== 'production' &&
-          console.warn('[Element Warn][Input]\'auto-complete\' property will be deprecated in next major version. please use \'autocomplete\' instead.');
+          console.warn('[Vue-Creek Warn][Input]\'auto-complete\' property will be deprecated in next major version. please use \'autocomplete\' instead.');
         return true;
       }
     },

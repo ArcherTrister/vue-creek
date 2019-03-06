@@ -83,7 +83,7 @@ export default {
 
   watch: {
     currentLabel() {
-      if (!this.created && !this.select.remote) this.dispatch('ElSelect', 'setSelected');
+      if (!this.created && !this.select.remote) this.dispatch('VcSelect', 'setSelected');
     },
     value(val, oldVal) {
       const { remote, valueKey } = this.select;
@@ -91,7 +91,7 @@ export default {
         if (valueKey && typeof val === 'object' && typeof oldVal === 'object' && val[valueKey] === oldVal[valueKey]) {
           return;
         }
-        this.dispatch('ElSelect', 'setSelected');
+        this.dispatch('VcSelect', 'setSelected');
       }
     }
   },
@@ -129,7 +129,7 @@ export default {
 
     selectOptionClick() {
       if (this.disabled !== true && this.groupDisabled !== true) {
-        this.dispatch('ElSelect', 'handleOptionClick', [this, true]);
+        this.dispatch('VcSelect', 'handleOptionClick', [this, true]);
       }
     },
 

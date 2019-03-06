@@ -3,11 +3,11 @@
 </template>
 
 <script>
-  export default {
-    name: 'ElIcon',
+export default {
+  name: 'VcIcon',
 
-    props: {
-      name: String
-    }
-  };
+  props: {
+    name: String
+  }
+};
 </script>

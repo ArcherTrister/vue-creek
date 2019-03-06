@@ -1,8 +1,15 @@
 {
   "bigdata-table": "./packages/bigdata-table/index.js",
+  "date-picker": "./packages/date-picker/index.js",
+  "default-video": "./packages/default-video/index.js",
+  "form": "./packages/form/index.js",
+  "form-item": "./packages/form-item/index.js",
+  "input": "./packages/input/index.js",
+  "live-video": "./packages/live-video/index.js",
+  "popover": "./packages/popover/index.js",
+  "select": "./packages/select/index.js",
   "table-column": "./packages/table-column/index.js",
   "table-column-pro": "./packages/table-column-pro/index.js",
-  "tooltip": "./packages/tooltip/index.js",
-  "default-video": "./packages/default-video/index.js",
-  "live-video": "./packages/live-video/index.js"
+  "time-picker": "./packages/time-picker/index.js",
+  "tooltip": "./packages/tooltip/index.js"
 }

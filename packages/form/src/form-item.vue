@@ -55,7 +55,7 @@ export default {
     };
   },
 
-  inject: ['elForm'],
+  inject: ['vcForm'],
 
   props: {
     label: String,

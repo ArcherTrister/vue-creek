@@ -76,7 +76,7 @@ export default {
   methods: {
     resetFields() {
       if (!this.model) {
-        console.warn('[Element Warn][Form]model is required for resetFields to work.');
+        console.warn('[Vue-Creek Warn][Form]model is required for resetFields to work.');
         return;
       }
       this.fields.forEach(field => {
@@ -95,7 +95,7 @@ export default {
     },
     validate(callback) {
       if (!this.model) {
-        console.warn('[Element Warn][Form]model is required for validate to work!');
+        console.warn('[Vue-Creek Warn][Form]model is required for validate to work!');
         return;
       }
 
@@ -136,7 +136,7 @@ export default {
       props = [].concat(props);
       const fields = this.fields.filter(field => props.indexOf(field.prop) !== -1);
       if (!fields.length) {
-        console.warn('[Element Warn]please pass correct props!');
+        console.warn('[Vue-Creek Warn]please pass correct props!');
         return;
       }
 

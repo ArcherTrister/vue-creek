@@ -1,20 +1,19 @@
 <template>
   <span>
-    <transition
-      :name="transition"
-      @after-enter="handleAfterEnter"
-      @after-leave="handleAfterLeave">
-      <div
-        class="vc-popover vc-popper"
-        :class="[popperClass, content && 'vc-popover--plain']"
-        ref="popper"
-        v-show="!disabled && showPopper"
-        :style="{ width: width + 'px' }"
-        role="tooltip"
-        :id="tooltipId"
-        :aria-hidden="(disabled || !showPopper) ? 'true' : 'false'"
-      >
-        <div class="vc-popover__title" v-if="title" v-text="title"></div>
+    <transition :name="transition"
+                @after-enter="handleAfterEnter"
+                @after-leave="handleAfterLeave">
+      <div class="vc-popover vc-popper"
+           :class="[popperClass, content && 'vc-popover--plain']"
+           ref="popper"
+           v-show="!disabled && showPopper"
+           :style="{ width: width + 'px' }"
+           role="tooltip"
+           :id="tooltipId"
+           :aria-hidden="(disabled || !showPopper) ? 'true' : 'false'">
+        <div class="vc-popover__title"
+             v-if="title"
+             v-text="title"></div>
         <slot>{{ content }}</slot>
       </div>
     </transition>
@@ -28,7 +27,7 @@ import { addClass, removeClass } from 'vue-creek/src/utils/dom';
 import { generateId } from 'vue-creek/src/utils/util';
 
 export default {
-  name: 'ElPopover',
+  name: 'VcPopover',
 
   mixins: [Popper],
 
