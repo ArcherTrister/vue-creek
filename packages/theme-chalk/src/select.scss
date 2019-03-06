@@ -1,29 +1,28 @@
-@import "mixins/mixins";
-@import "mixins/utils";
-@import "common/var";
-@import "select-dropdown";
-@import "input";
-@import "tag";
-@import "option";
-@import "option-group";
-@import "scrollbar";
+@import 'mixins/mixins';
+@import 'mixins/utils';
+@import 'common/var';
+@import 'select-dropdown';
+@import 'input';
+@import 'tag';
+@import 'option';
+@import 'option-group';
+@import 'scrollbar';
 
 @include b(select) {
   display: inline-block;
   position: relative;
 
-  .el-select__tags
-    >span {
-      display: contents;
-    }
+  .vc-select__tags > span {
+    display: contents;
+  }
 
   &:hover {
-    .el-input__inner {
+    .vc-input__inner {
       border-color: $--select-border-color-hover;
     }
   }
 
-  .el-input__inner {
+  .vc-input__inner {
     cursor: pointer;
     padding-right: 35px;
 
@@ -32,11 +31,11 @@
     }
   }
 
-  .el-input {
-    & .el-select__caret {
+  .vc-input {
+    & .vc-select__caret {
       color: $--select-input-color;
       font-size: $--select-input-font-size;
-      transition: transform .3s;
+      transition: transform 0.3s;
       transform: rotateZ(180deg);
       cursor: pointer;
 
@@ -59,7 +58,7 @@
     }
 
     &.is-disabled {
-      & .el-input__inner {
+      & .vc-input__inner {
         cursor: not-allowed;
 
         &:hover {
@@ -68,12 +67,12 @@
       }
     }
 
-    &.is-focus .el-input__inner {
+    &.is-focus .vc-input__inner {
       border-color: $--select-input-focus-background;
     }
   }
 
-  > .el-input {
+  > .vc-input {
     display: block;
   }
 
@@ -119,17 +118,17 @@
     flex-wrap: wrap;
   }
 
-  .el-tag__close {
+  .vc-tag__close {
     margin-top: -2px;
   }
 
-  .el-tag {
+  .vc-tag {
     box-sizing: border-box;
     border-color: transparent;
     margin: 2px 0 2px 6px;
     background-color: #f0f2f5;
 
-    &__close.el-icon-close {
+    &__close.vc-icon-close {
       background-color: $--color-text-placeholder;
       right: -7px;
       top: 0;
@@ -141,7 +140,7 @@
 
       &::before {
         display: block;
-        transform: translate(0, .5px);
+        transform: translate(0, 0.5px);
       }
     }
   }

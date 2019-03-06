@@ -1,20 +1,19 @@
 <template>
   <span>
-    <transition
-      :name="transition"
-      @after-enter="handleAfterEnter"
-      @after-leave="handleAfterLeave">
-      <div
-        class="el-popover el-popper"
-        :class="[popperClass, content && 'el-popover--plain']"
-        ref="popper"
-        v-show="!disabled && showPopper"
-        :style="{ width: width + 'px' }"
-        role="tooltip"
-        :id="tooltipId"
-        :aria-hidden="(disabled || !showPopper) ? 'true' : 'false'"
-      >
-        <div class="el-popover__title" v-if="title" v-text="title"></div>
+    <transition :name="transition"
+                @after-enter="handleAfterEnter"
+                @after-leave="handleAfterLeave">
+      <div class="vc-popover vc-popper"
+           :class="[popperClass, content && 'vc-popover--plain']"
+           ref="popper"
+           v-show="!disabled && showPopper"
+           :style="{ width: width + 'px' }"
+           role="tooltip"
+           :id="tooltipId"
+           :aria-hidden="(disabled || !showPopper) ? 'true' : 'false'">
+        <div class="vc-popover__title"
+             v-if="title"
+             v-text="title"></div>
         <slot>{{ content }}</slot>
       </div>
     </transition>
@@ -22,13 +21,13 @@
   </span>
 </template>
 <script>
-import Popper from 'element-ui/src/utils/vue-popper';
-import { on, off } from 'element-ui/src/utils/dom';
-import { addClass, removeClass } from 'element-ui/src/utils/dom';
-import { generateId } from 'element-ui/src/utils/util';
+import Popper from 'vue-creek/src/utils/vue-popper';
+import { on, off } from 'vue-creek/src/utils/dom';
+import { addClass, removeClass } from 'vue-creek/src/utils/dom';
+import { generateId } from 'vue-creek/src/utils/util';
 
 export default {
-  name: 'ElPopover',
+  name: 'VcPopover',
 
   mixins: [Popper],
 
@@ -62,12 +61,12 @@ export default {
   },
 
   computed: {
-    tooltipId() {
-      return `el-popover-${generateId()}`;
+    tooltipId () {
+      return `vc-popover-${generateId()}`;
     }
   },
   watch: {
-    showPopper(val) {
+    showPopper (val) {
       if (this.disabled) {
         return;
       }
@@ -75,7 +74,7 @@ export default {
     }
   },
 
-  mounted() {
+  mounted () {
     let reference = this.referenceElm = this.reference || this.$refs.reference;
     const popper = this.popper || this.$refs.popper;
 
@@ -84,7 +83,7 @@ export default {
     }
     // 可访问性
     if (reference) {
-      addClass(reference, 'el-popover__reference');
+      addClass(reference, 'vc-popover__reference');
       reference.setAttribute('aria-describedby', this.tooltipId);
       reference.setAttribute('tabindex', 0); // tab序列
       popper.setAttribute('tabindex', 0);
@@ -123,36 +122,36 @@ export default {
     }
   },
 
-  beforeDestroy() {
+  beforeDestroy () {
     this.cleanup();
   },
 
-  deactivated() {
+  deactivated () {
     this.cleanup();
   },
 
   methods: {
-    doToggle() {
+    doToggle () {
       this.showPopper = !this.showPopper;
     },
-    doShow() {
+    doShow () {
       this.showPopper = true;
     },
-    doClose() {
+    doClose () {
       this.showPopper = false;
     },
-    handleFocus() {
+    handleFocus () {
       addClass(this.referenceElm, 'focusing');
       if (this.trigger === 'click' || this.trigger === 'focus') this.showPopper = true;
     },
-    handleClick() {
+    handleClick () {
       removeClass(this.referenceElm, 'focusing');
     },
-    handleBlur() {
+    handleBlur () {
       removeClass(this.referenceElm, 'focusing');
       if (this.trigger === 'click' || this.trigger === 'focus') this.showPopper = false;
     },
-    handleMouseEnter() {
+    handleMouseEnter () {
       clearTimeout(this._timer);
       if (this.openDelay) {
         this._timer = setTimeout(() => {
@@ -162,18 +161,18 @@ export default {
         this.showPopper = true;
       }
     },
-    handleKeydown(ev) {
+    handleKeydown (ev) {
       if (ev.keyCode === 27 && this.trigger !== 'manual') { // esc
         this.doClose();
       }
     },
-    handleMouseLeave() {
+    handleMouseLeave () {
       clearTimeout(this._timer);
       this._timer = setTimeout(() => {
         this.showPopper = false;
       }, 200);
     },
-    handleDocumentClick(e) {
+    handleDocumentClick (e) {
       let reference = this.reference || this.$refs.reference;
       const popper = this.popper || this.$refs.popper;
 
@@ -188,21 +187,21 @@ export default {
         popper.contains(e.target)) return;
       this.showPopper = false;
     },
-    handleAfterEnter() {
+    handleAfterEnter () {
       this.$emit('after-enter');
     },
-    handleAfterLeave() {
+    handleAfterLeave () {
       this.$emit('after-leave');
       this.doDestroy();
     },
-    cleanup() {
+    cleanup () {
       if (this.openDelay) {
         clearTimeout(this._timer);
       }
     }
   },
 
-  destroyed() {
+  destroyed () {
     const reference = this.reference;
 
     off(reference, 'click', this.doToggle);

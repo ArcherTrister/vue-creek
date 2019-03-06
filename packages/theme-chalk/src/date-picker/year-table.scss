@@ -1,11 +1,11 @@
-@import "../common/var";
+@import '../common/var';
 
 @include b(year-table) {
   font-size: 12px;
   margin: -1px;
   border-collapse: collapse;
 
-  .el-icon {
+  .vc-icon {
     color: $--datepicker-icon-color;
   }
 

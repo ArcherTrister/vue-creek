@@ -679,15 +679,15 @@ $--scrollbar-hover-background-color: rgba(
 
 /* Carousel
 --------------------------*/
-$--carousel-arrow-font-size: 12px !default;
-$--carousel-arrow-size: 36px !default;
-$--carousel-arrow-background: rgba(31, 45, 61, 0.11) !default;
-$--carousel-arrow-hover-background: rgba(31, 45, 61, 0.23) !default;
-$--carousel-indicator-width: 30px !default;
-$--carousel-indicator-height: 2px !default;
-$--carousel-indicator-padding-horizontal: 4px !default;
-$--carousel-indicator-padding-vertical: 12px !default;
-$--carousel-indicator-out-color: $--border-color-hover !default;
+$--carousvc-arrow-font-size: 12px !default;
+$--carousvc-arrow-size: 36px !default;
+$--carousvc-arrow-background: rgba(31, 45, 61, 0.11) !default;
+$--carousvc-arrow-hover-background: rgba(31, 45, 61, 0.23) !default;
+$--carousvc-indicator-width: 30px !default;
+$--carousvc-indicator-height: 2px !default;
+$--carousvc-indicator-padding-horizontal: 4px !default;
+$--carousvc-indicator-padding-vertical: 12px !default;
+$--carousvc-indicator-out-color: $--border-color-hover !default;
 
 /* Collapse
 --------------------------*/
@@ -705,11 +705,11 @@ $--collapse-content-color: $--color-text-primary !default;
 --------------------------*/
 $--transfer-border-color: $--border-color-lighter !default;
 $--transfer-border-radius: $--border-radius-base !default;
-$--transfer-panel-width: 200px !default;
-$--transfer-panel-header-height: 40px !default;
-$--transfer-panel-header-background: $--background-color-base !default;
-$--transfer-panel-footer-height: 40px !default;
-$--transfer-panel-body-height: 246px !default;
+$--transfer-panvc-width: 200px !default;
+$--transfer-panvc-header-height: 40px !default;
+$--transfer-panvc-header-background: $--background-color-base !default;
+$--transfer-panvc-footer-height: 40px !default;
+$--transfer-panvc-body-height: 246px !default;
 $--transfer-item-height: 30px !default;
 $--transfer-item-hover-background: $--color-text-secondary !default;
 $--transfer-filter-height: 32px !default;

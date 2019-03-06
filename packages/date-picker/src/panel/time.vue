@@ -1,10 +1,10 @@
 <template>
-  <transition name="el-zoom-in-top" @after-leave="$emit('dodestroy')">
+  <transition name="vc-zoom-in-top" @after-leave="$emit('dodestroy')">
     <div
       v-show="visible"
-      class="el-time-panel el-popper"
+      class="vc-time-panel vc-popper"
       :class="popperClass">
-      <div class="el-time-panel__content" :class="{ 'has-seconds': showSeconds }">
+      <div class="vc-time-panel__content" :class="{ 'has-seconds': showSeconds }">
         <time-spinner
           ref="spinner"
           @change="handleChange"
@@ -15,14 +15,14 @@
           :date="date">
         </time-spinner>
       </div>
-      <div class="el-time-panel__footer">
+      <div class="vc-time-panel__footer">
         <button
           type="button"
-          class="el-time-panel__btn cancel"
+          class="vc-time-panel__btn cancel"
           @click="handleCancel">{{ t('el.datepicker.cancel') }}</button>
         <button
           type="button"
-          class="el-time-panel__btn"
+          class="vc-time-panel__btn"
           :class="{confirm: !disabled}"
           @click="handleConfirm()">{{ t('el.datepicker.confirm') }}</button>
       </div>
@@ -32,7 +32,7 @@
 
 <script type="text/babel">
   import { limitTimeRange, isDate, clearMilliseconds, timeWithinRange } from '../util';
-  import Locale from 'element-ui/src/mixins/locale';
+  import Locale from 'vue-creek/src/mixins/locale';
   import TimeSpinner from '../basic/time-spinner';
 
   export default {

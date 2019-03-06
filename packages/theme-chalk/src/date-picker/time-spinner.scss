@@ -1,8 +1,8 @@
-@import "../common/var";
+@import '../common/var';
 
 @include b(time-spinner) {
   &.has-seconds {
-    .el-time-spinner__wrapper {
+    .vc-time-spinner__wrapper {
       width: 33.3%;
     }
   }
@@ -15,7 +15,7 @@
     vertical-align: top;
     position: relative;
 
-    & .el-scrollbar__wrap:not(.el-scrollbar__wrap--hidden-default) {
+    & .vc-scrollbar__wrap:not(.vc-scrollbar__wrap--hidden-default) {
       padding-bottom: 15px;
     }
 
@@ -24,11 +24,11 @@
       text-align: center;
       overflow: hidden;
 
-      .el-time-spinner__list {
+      .vc-time-spinner__list {
         transform: translateY(-32px);
       }
 
-      .el-time-spinner__item:hover:not(.disabled):not(.active) {
+      .vc-time-spinner__item:hover:not(.disabled):not(.active) {
         background: $--color-white;
         cursor: default;
       }
@@ -51,20 +51,20 @@
       color: $--color-primary;
     }
 
-    &.el-icon-arrow-up {
+    &.vc-icon-arrow-up {
       top: 10px;
     }
 
-    &.el-icon-arrow-down {
+    &.vc-icon-arrow-down {
       bottom: 10px;
     }
   }
 
   @include e(input) {
-    &.el-input {
+    &.vc-input {
       width: 70%;
 
-      .el-input__inner {
+      .vc-input__inner {
         padding: 0;
         text-align: center;
       }

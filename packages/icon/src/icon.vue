@@ -1,13 +1,13 @@
 <template>
-  <i :class="'el-icon-' + name"></i>
+  <i :class="'vc-icon-' + name"></i>
 </template>
 
 <script>
-  export default {
-    name: 'ElIcon',
+export default {
+  name: 'VcIcon',
 
-    props: {
-      name: String
-    }
-  };
+  props: {
+    name: String
+  }
+};
 </script>

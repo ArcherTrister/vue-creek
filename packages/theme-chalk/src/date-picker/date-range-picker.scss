@@ -1,4 +1,4 @@
-@import "../common/var";
+@import '../common/var';
 
 @include b(date-range-picker) {
   width: 646px;
@@ -12,11 +12,11 @@
     width: 100%;
   }
 
-  .el-picker-panel__body {
+  .vc-picker-panel__body {
     min-width: 513px;
   }
 
-  .el-picker-panel__content {
+  .vc-picker-panel__content {
     margin: 0;
   }
 
@@ -25,11 +25,11 @@
     text-align: center;
     height: 28px;
 
-    [class*=arrow-left] {
+    [class*='arrow-left'] {
       float: left;
     }
 
-    [class*=arrow-right] {
+    [class*='arrow-right'] {
       float: right;
     }
 
@@ -52,8 +52,7 @@
     }
 
     @include when(right) {
-      .el-date-range-picker__header {
-
+      .vc-date-range-picker__header {
         div {
           margin-left: 50px;
           margin-right: 50px;
@@ -80,7 +79,7 @@
     width: 100%;
     box-sizing: border-box;
 
-    > .el-icon-arrow-right {
+    > .vc-icon-arrow-right {
       font-size: 20px;
       vertical-align: middle;
       display: table-cell;
@@ -93,7 +92,7 @@
     display: table-cell;
     padding: 0 5px;
 
-    .el-picker-panel {
+    .vc-picker-panel {
       position: absolute;
       top: 13px;
       right: 0;

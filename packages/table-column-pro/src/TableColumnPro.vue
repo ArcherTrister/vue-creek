@@ -125,7 +125,7 @@ export default {
         },
         [
           createElement(
-            'el-popover',
+            'vc-popover',
             {
               props: {
                 placement: 'bottom',
@@ -134,7 +134,7 @@ export default {
               }
             },
             [
-              createElement('el-input', {
+              createElement('vc-input', {
                 props: {
                   placeholder: this.placeholder,
                   value: this.param
@@ -186,7 +186,7 @@ export default {
         },
         [
           createElement(
-            'el-popover',
+            'vc-popover',
             {
               props: {
                 placement: 'bottom',
@@ -196,7 +196,7 @@ export default {
             },
             [
               createElement(
-                'el-select',
+                'vc-select',
                 {
                   props: {
                     placeholder: this.placeholder,
@@ -212,7 +212,7 @@ export default {
                 },
                 [
                   this.selectList.map(item => {
-                    return createElement('el-option', {
+                    return createElement('vc-option', {
                       props: {
                         value: item.value,
                         label: item.label
@@ -250,7 +250,7 @@ export default {
         },
         [
           createElement(
-            'el-popover',
+            'vc-popover',
             {
               props: {
                 placement: 'bottom',
@@ -259,7 +259,7 @@ export default {
               }
             },
             [
-              createElement('el-date-picker', {
+              createElement('vc-date-picker', {
                 props: {
                   placeholder: this.placeholder,
                   value: this.value,
@@ -312,7 +312,7 @@ export default {
         },
         [
           createElement(
-            'el-popover',
+            'vc-popover',
             {
               props: {
                 placement: 'bottom',
@@ -321,7 +321,7 @@ export default {
               }
             },
             [
-              createElement('el-time-picker', {
+              createElement('vc-time-picker', {
                 props: {
                   placeholder: this.placeholder,
                   value: this.value,

@@ -1,12 +1,12 @@
-@import "../common/var";
-@import "../mixins/mixins";
+@import '../common/var';
+@import '../mixins/mixins';
 
 @include b(date-table) {
   font-size: 12px;
   user-select: none;
 
   @include when(week-mode) {
-    .el-date-table__row {
+    .vc-date-table__row {
       &:hover {
         div {
           background-color: $--datepicker-inrange-color;

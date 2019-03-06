@@ -1,17 +1,17 @@
 <template>
   <transition
-    name="el-zoom-in-top"
+    name="vc-zoom-in-top"
     @after-leave="$emit('dodestroy')">
     <div
       v-show="visible"
-      class="el-time-range-picker el-picker-panel el-popper"
+      class="vc-time-range-picker vc-picker-panel vc-popper"
       :class="popperClass">
-      <div class="el-time-range-picker__content">
-        <div class="el-time-range-picker__cell">
-          <div class="el-time-range-picker__header">{{ t('el.datepicker.startTime') }}</div>
+      <div class="vc-time-range-picker__content">
+        <div class="vc-time-range-picker__cell">
+          <div class="vc-time-range-picker__header">{{ t('el.datepicker.startTime') }}</div>
           <div
             :class="{ 'has-seconds': showSeconds, 'is-arrow': arrowControl }"
-            class="el-time-range-picker__body el-time-panel__content">
+            class="vc-time-range-picker__body vc-time-panel__content">
             <time-spinner
               ref="minSpinner"
               :show-seconds="showSeconds"
@@ -23,11 +23,11 @@
             </time-spinner>
           </div>
         </div>
-        <div class="el-time-range-picker__cell">
-          <div class="el-time-range-picker__header">{{ t('el.datepicker.endTime') }}</div>
+        <div class="vc-time-range-picker__cell">
+          <div class="vc-time-range-picker__header">{{ t('el.datepicker.endTime') }}</div>
           <div
             :class="{ 'has-seconds': showSeconds, 'is-arrow': arrowControl }"
-            class="el-time-range-picker__body el-time-panel__content">
+            class="vc-time-range-picker__body vc-time-panel__content">
             <time-spinner
               ref="maxSpinner"
               :show-seconds="showSeconds"
@@ -40,14 +40,14 @@
           </div>
         </div>
       </div>
-      <div class="el-time-panel__footer">
+      <div class="vc-time-panel__footer">
         <button
           type="button"
-          class="el-time-panel__btn cancel"
+          class="vc-time-panel__btn cancel"
           @click="handleCancel()">{{ t('el.datepicker.cancel') }}</button>
         <button
           type="button"
-          class="el-time-panel__btn confirm"
+          class="vc-time-panel__btn confirm"
           @click="handleConfirm()"
           :disabled="btnDisabled">{{ t('el.datepicker.confirm') }}</button>
       </div>
@@ -63,7 +63,7 @@
     clearMilliseconds,
     timeWithinRange
   } from '../util';
-  import Locale from 'element-ui/src/mixins/locale';
+  import Locale from 'vue-creek/src/mixins/locale';
   import TimeSpinner from '../basic/time-spinner';
 
   const MIN_TIME = parseDate('00:00:00', 'HH:mm:ss');

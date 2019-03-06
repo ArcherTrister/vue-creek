@@ -5,13 +5,20 @@
                   :options="defaultOptions"></DefaultVideo> -->
     <live-video :sources="liveSources"
                 :options="liveOptions"></live-video>
-    <!-- <BigdataTable :data="tableData"
-     :height="258"
+    <BigdataTable :data="tableData"
+                  :height="258"
                   style="width: 100%">
-      <vc-table-column prop="date"
+      <vc-table-column-pro prop="date"
+                           :callback="requestTransactionLogs"
+                           :startDate.sync="request_params.startDate"
+                           :endDate.sync="request_params.endDate"
+                           label="日期"
+                           renderType="date"
+                           :width="180"></vc-table-column-pro>
+      <!-- <vc-table-column prop="date"
                        label="日期"
                        width="180">
-      </vc-table-column>
+      </vc-table-column> -->
       <vc-table-column prop="name"
                        label="姓名"
                        width="180">
@@ -19,7 +26,7 @@
       <vc-table-column prop="address"
                        label="地址">
       </vc-table-column>
-    </BigdataTable> -->
+    </BigdataTable>
     <router-view />
   </div>
 </template>
@@ -29,6 +36,10 @@ export default {
   name: 'App',
   data() {
     return {
+      request_params: {
+        startDate: '',
+        endDate: ''
+      },
       defaultSources: { src: 'http://pic.ibaotu.com/00/56/77/28b888piCuvW.mp4', type: 'video/mp4' },
       defaultOptions: { volume: 0.1 },
       liveSources: { src: 'http://220.165.9.44:16604/RealplayFlv.do?DevIDNO=016666666666&Channel=0&StreamType=1', type: 'flv' },
@@ -61,6 +72,9 @@ export default {
   },
   mounted() {
     console.log(this.$Utils);
+  },
+  methods: {
+    requestTransactionLogs() { }
   }
 };
 </script>
