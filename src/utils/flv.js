@@ -1021,7 +1021,7 @@
   var seekpoint=this._pendingResolveSeekPoint
   this._pendingResolveSeekPoint=null
   if(_browser2.default.safari&&syncPoints.length>0&&syncPoints[0].originalDts===seekpoint){seekpoint=syncPoints[0].pts}
-  this._emitter.emit(_transmuxingEvents2.default.RECOMMEND_SEEKPOINT,seekpoint)}}},{key:'_enableStatisticsReporter',value:function _enableStatisticsReporter(){if(this._statisticsReporter==null){console.log('_enableStatisticsReporter')
+  this._emitter.emit(_transmuxingEvents2.default.RECOMMEND_SEEKPOINT,seekpoint)}}},{key:'_enableStatisticsReporter',value:function _enableStatisticsReporter(){if(this._statisticsReporter==null){
   this._statisticsReporter=self.setInterval(this._reportStatisticsInfo.bind(this),this._config.statisticsInfoReportInterval)}}},{key:'_disableStatisticsReporter',value:function _disableStatisticsReporter(){if(this._statisticsReporter){self.clearInterval(this._statisticsReporter)
   this._statisticsReporter=null}}},{key:'_reportSegmentMediaInfo',value:function _reportSegmentMediaInfo(segmentIndex){var segmentInfo=this._mediaInfo.segments[segmentIndex]
   var exportInfo=Object.assign({},segmentInfo)
@@ -3060,7 +3060,7 @@
   if(this._statisticsReporter!=null){window.clearInterval(this._statisticsReporter)
   this._statisticsReporter=null}}},{key:'play',value:function play(){return this._mediaElement.play()}},{key:'pause',value:function pause(){this._mediaElement.pause()}},{key:'_onvLoadedMetadata',value:function _onvLoadedMetadata(e){if(this._pendingSeekTime!=null){this._mediaElement.currentTime=this._pendingSeekTime
   this._pendingSeekTime=null}
-  this._emitter.emit(_playerEvents2.default.MEDIA_INFO,this.mediaInfo)}},{key:'_reportStatisticsInfo',value:function _reportStatisticsInfo(){console.log('_reportStatisticsInfo')
+  this._emitter.emit(_playerEvents2.default.MEDIA_INFO,this.mediaInfo)}},{key:'_reportStatisticsInfo',value:function _reportStatisticsInfo(){
   this._emitter.emit(_playerEvents2.default.STATISTICS_INFO,this.statisticsInfo)}},{key:'type',get:function get(){return this._type}},{key:'buffered',get:function get(){return this._mediaElement.buffered}},{key:'duration',get:function get(){return this._mediaElement.duration}},{key:'volume',get:function get(){return this._mediaElement.volume},set:function set(value){this._mediaElement.volume=value}},{key:'muted',get:function get(){return this._mediaElement.muted},set:function set(muted){this._mediaElement.muted=muted}},{key:'currentTime',get:function get(){if(this._mediaElement){return this._mediaElement.currentTime}
   return 0},set:function set(seconds){if(this._mediaElement){this._mediaElement.currentTime=seconds}else{this._pendingSeekTime=seconds}}},{key:'mediaInfo',get:function get(){var mediaPrefix=this._mediaElement instanceof HTMLAudioElement?'audio/':'video/'
   var info={mimeType:mediaPrefix+this._mediaDataSource.type}

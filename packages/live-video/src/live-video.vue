@@ -371,13 +371,11 @@ export default {
         try {
           let end = this.$video.buffered.end(0);
           this.video.loaded = (-1 + (end / this.$video.duration)) * 100;
-          console.log('loaded', this.video.loaded);
         } catch (error) {
           console.log(error);
           this.video.loaded = 0;
         }
       });
-      console.log('$Video', this.$video.duration);
       this.video.len = this.$video.duration;
     },
     setVideoByTime(percent) {
@@ -408,7 +406,6 @@ export default {
     timeline() {
       const percent = this.$video.currentTime / this.$video.duration;
       this.video.pos.current = (this.video.pos.width * percent).toFixed(3);
-      console.log('current', this.video.pos.current);
       // this.video.displayTime = timeParse(this.$video.duration - this.$video.currentTime);
     },
     volMove(e) {
@@ -483,9 +480,6 @@ export default {
         this.video.pos.current = x;
         this.setVideoByTime(x / this.video.pos.width);
       }
-      console.log('x', x);
-      console.log('start', this.video.pos.start);
-      console.log('width', this.video.pos.width);
     },
     mouseUpAction(e) {
       this.volume.moving = false;
