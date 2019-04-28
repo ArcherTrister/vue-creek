@@ -13,6 +13,7 @@ npm publish
 安装并使用
 npm i vue-creek --save
 import VueCreek from 'vue-creek'
+import 'vue-creek/lib/theme-chalk/index.css';
 //打印组件列表，版本信息等
 console.log(VueCreek)
 Vue.Use(VueCreek)
