@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <!-- <DefaultVideo :sources="defaultSources"
-                  :options="defaultOptions"></DefaultVideo> -->
+    <DefaultVideo :sources="defaultSources"
+                  :options="defaultOptions"></DefaultVideo>
     <live-video :sources="liveSources"
                 :options="liveOptions"></live-video>
-    <!-- <BigdataTable :data="tableData"
+    <BigdataTable :data="tableData"
      :height="258"
                   style="width: 100%">
       <vc-table-column prop="date"
@@ -19,7 +19,7 @@
       <vc-table-column prop="address"
                        label="地址">
       </vc-table-column>
-    </BigdataTable> -->
+    </BigdataTable>
     <router-view />
   </div>
 </template>
@@ -31,7 +31,7 @@ export default {
     return {
       defaultSources: { src: 'http://pic.ibaotu.com/00/56/77/28b888piCuvW.mp4', type: 'video/mp4' },
       defaultOptions: { volume: 0.1 },
-      liveSources: { src: 'http://220.165.9.44:16604/RealplayFlv.do?DevIDNO=016666666666&Channel=0&StreamType=1', type: 'flv' },
+      liveSources: { src: 'http://pic.ibaotu.com/00/56/77/28b888piCuvW.mp4', type: 'flv' },
       liveOptions: {
         volume: 0.1,
         showPlayBtn: true,

@@ -1,6 +1,6 @@
 {
   "name": "vue-creek",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "A Component Library for Vue.js.",
   "main": "lib/vue-creek.common.js",
   "files": [
