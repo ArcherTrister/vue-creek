@@ -1,6 +1,6 @@
 <template>
   <transition name="vc-zoom-in-top">
-    <div class="vc-table-filter bigdata-header-filter"
+    <div class="vc-table-filter big-data-header-filter"
          v-if="multiple"
          v-show="showPopper">
       <div class="vc-table-filter__content">
@@ -244,20 +244,20 @@ export default {
 };
 </script>
 <style scoped>
-.bigdata-header-filter {
+.big-data-header-filter {
 }
-.bigdata-header-filter .filter-keyword {
+.big-data-header-filter .filter-keyword {
   margin: 5px;
   margin-bottom: 0;
   width: 110px;
 }
-.bigdata-header-filter .vc-table-filter__checkbox-group {
+.big-data-header-filter .vc-table-filter__checkbox-group {
   max-height: 400px;
   width: 120px;
   overflow-x: hidden;
   overflow-y: auto;
 }
-.bigdata-header-filter .filter-label {
+.big-data-header-filter .filter-label {
   width: 120px;
   overflow: hidden;
   white-space: nowrap;

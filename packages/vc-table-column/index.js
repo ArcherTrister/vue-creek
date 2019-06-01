@@ -1,4 +1,4 @@
-import VcTableColumn from '../bigdata-table/src/table-column';
+import VcTableColumn from '../big-data-table/src/vc-table-column';
 
 /* istanbul ignore next */
 VcTableColumn.install = function(Vue) {

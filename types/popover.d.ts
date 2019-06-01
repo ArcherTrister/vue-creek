@@ -15,13 +15,13 @@ export interface PopoverSlots {
 }
 
 /** Popover directive definition */
-export interface ElPopoverDirective extends VNodeDirective {
+export interface VcPopoverDirective extends VNodeDirective {
   name: 'popover',
   arg: string
 }
 
 /** Popover Component */
-export declare class ElPopover extends VueCreekUIComponent {
+export declare class VcPopover extends VueCreekUIComponent {
   /** How the popover is triggered */
   trigger: PopoverTrigger
 

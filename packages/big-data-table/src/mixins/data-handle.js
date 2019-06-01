@@ -160,7 +160,7 @@ export default {
       return h(
         'div',
         {
-          class: 'vue-element-bigdata-table-div',
+          class: 'vue-element-big-data-table-div',
           style: prop.style
         },
         this.getTables(h, prop)

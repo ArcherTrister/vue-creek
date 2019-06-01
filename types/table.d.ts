@@ -38,7 +38,7 @@ export interface treeNode {
 }
 
 /** Table Component */
-export declare class BigdataTable extends VueCreekUIComponent {
+export declare class BigDataTable extends VueCreekUIComponent {
   /** Table data */
   data: object[]
 

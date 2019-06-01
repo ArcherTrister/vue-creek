@@ -1,5 +1,5 @@
 <template>
-  <div class="vc-table vue-element-bigdata-table"
+  <div class="vc-table vue-element-big-data-table"
        :class="[{
       'vc-table--fit': fit,
       'vc-table--striped': stripe,
@@ -230,7 +230,7 @@ import renderDom from './dom/renderDom.js';
 let tableIdSeed = 1;
 
 export default {
-  name: 'BigdataTable',
+  name: 'BigDataTable',
 
   mixins: [Locale, Migrating, dataHandle],
   directives: {
@@ -673,8 +673,8 @@ export default {
 };
 </script>
 <style>
-.vue-element-bigdata-table
-  .vue-element-bigdata-table-div
+.vue-element-big-data-table
+  .vue-element-big-data-table-div
   > table
   > tbody
   > tr

@@ -10,7 +10,7 @@
       :sources="liveSources"
       :options="liveOptions"
     ></live-video>
-    <BigdataTable
+    <BigDataTable
       :data="tableData"
       :height="258"
       style="width: 100%"
@@ -38,7 +38,7 @@
         label="地址"
       >
       </vc-table-column>
-    </BigdataTable>
+    </BigDataTable>
     <router-view />
   </div>
 </template>

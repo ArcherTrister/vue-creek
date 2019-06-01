@@ -39,7 +39,7 @@ export interface TableColumnFilter {
 }
 
 /** TableColumn Component */
-export declare class ElTableColumn extends VueCreekUIComponent {
+export declare class VcTableColumn extends VueCreekUIComponent {
   /** Type of the column. If set to `selection`, the column will display checkbox. If set to `index`, the column will display index of the row (staring from 1). If set to `expand`, the column will display expand icon. */
   type: TableColumnType
 

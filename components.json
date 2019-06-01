@@ -1,6 +1,6 @@
 {
-  "bigdata-table": "./packages/bigdata-table/index.js",
-  "table-column": "./packages/table-column/index.js",
+  "big-data-table": "./packages/big-data-table/index.js",
+  "vc-table-column": "./packages/vc-table-column/index.js",
   "tooltip": "./packages/tooltip/index.js",
   "default-video": "./packages/default-video/index.js",
   "live-video": "./packages/live-video/index.js"
