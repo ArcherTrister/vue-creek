@@ -25,7 +25,7 @@
     "lint": "eslint src/**/* test/**/* packages/**/* build/**/* --quiet",
     "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix packages",
     "pub": "npm run bootstrap && sh build/git-release.sh && sh build/release.sh && node build/bin/gen-indices.js && sh build/deploy-faas.sh",
-    "test": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "test": "webpack-dev-server --port=8088 --inline --config build/webpack.dev.conf.js",
     "test:watch": "npm run build:theme && cross-env BABEL_ENV=test karma start test/unit/karma.conf.js"
   },
   "faas": {
