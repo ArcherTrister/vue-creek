@@ -1,15 +1,15 @@
-#此项目不再维护，推荐项目 <a href="https://github.com/xuliangzhan/vxe-table">vxe-table</a>
+# 此项目不再维护，推荐项目 <a href="https://github.com/xuliangzhan/vxe-table">vxe-table</a>
 
-##生成包
+## 生成包
 
 ```javascript
 npm run lint:fix
 npm run dist
 ```
 
-##发布包
+## 发布包
 
-###第一次发布
+### 第一次发布
 
 ```javascript
 npm adduser //提示输入账号，密码和邮箱，然后将提示创建成功
@@ -17,7 +17,7 @@ npm adduser //提示输入账号，密码和邮箱，然后将提示创建成功
 npm publish
 ```
 
-###非第一次发布包：
+### 非第一次发布包：
 
 ```javascript
 //在终端输入npm login，然后输入你创建的账号和密码，和邮箱，登陆
@@ -28,7 +28,7 @@ npm login
 npm publish
 ```
 
-##安装并使用
+## 安装并使用
 
 ```javascript
 npm i vue-creek --save
@@ -43,7 +43,7 @@ console.log(VueCreek)
 Vue.Use(VueCreek)
 ```
 
-##更新包
+## 更新包
 
 ```javascript
 npm update vue-creek --save
