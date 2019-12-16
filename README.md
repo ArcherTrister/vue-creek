@@ -1,3 +1,4 @@
+#此项目不再维护，推荐项目 <a href="https://github.com/xuliangzhan/vxe-table">vxe-table</a>
 
 ##生成包
 
